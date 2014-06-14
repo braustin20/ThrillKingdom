@@ -42,10 +42,10 @@ class AAttraction : public AActor
 		 *	Start Constants
 		 */
 
-		UPROPERTY()
+		UPROPERTY(Const, VisibleDefaultsOnly, Category = constants)
 			const float MIN_ENTRANCE_FEE = 0.0f;
 
-		UPROPERTY()
+		UPROPERTY(Const, VisibleDefaultsOnly, Category = constants)
 			const float MAX_ENTRANCE_FEE = 999.99f;
 
 		/*
@@ -57,26 +57,15 @@ class AAttraction : public AActor
 		 *	Start Fields
 		 */
 
-		UPROPERTY()
-			FString AttractionName;
+		FString AttractionName;
 
-		UPROPERTY()
-			EAttractionStatus::Status AttractionStatus;
+		EAttractionStatus::Status AttractionStatus;
 
-		UPROPERTY()
-			float Length;
-
-		UPROPERTY()
-			float Width;
-
-		UPROPERTY()
-			float Height;
-
-		UPROPERTY()
-			float EntranceFee;
-
-		UPROPERTY()
-			float OperatingCosts;
+		float Length;
+		float Width;
+		float Height;
+		float EntranceFee;
+		float OperatingCosts;
 
 		//TODO: add a container for scenery tags
 
@@ -89,10 +78,14 @@ class AAttraction : public AActor
 		/*
 		 *	Start Getter Methods
 		 */
+		UFUNCTION(BlueprintCallable, Category = getters)
+			FString GetAttractionName();
 
-		FString GetAttractionName();
-		float GetEntranceFee();
-		float GetOperatingCosts();
+		UFUNCTION(BlueprintCallable, Category = getters)
+			float GetEntranceFee();
+
+		UFUNCTION(BlueprintCallable, Category = getters)
+			float GetOperatingCosts();
 
 		virtual EAttractionStatus::Status GetAttractionStatus();
 
@@ -105,9 +98,14 @@ class AAttraction : public AActor
 		 *	Start Setter Methods
 		 */
 
-		void SetAttractionName(FString NewAttractionName);
-		void SetEntranceFee(float NewEntranceFee);
-		void SetOperatingCosts();
+		UFUNCTION(BlueprintCallable, Category = setters)
+			void SetAttractionName(FString NewAttractionName);
+
+		UFUNCTION(BlueprintCallable, Category = getters)
+			void SetEntranceFee(float NewEntranceFee);
+
+		UFUNCTION(BlueprintCallable, Category = getters)
+			void SetOperatingCosts();
 
 		//can see situations in which this may need to be overriden
 		virtual void SetAttractionStatus(EAttractionStatus::Status NewAttractionStatus);
@@ -119,9 +117,10 @@ class AAttraction : public AActor
 		/*
 		 *	Start Attraction actions
 		 */
-
-		void UpEntranceFee(float Amount);
-		void DownEntranceFee(float Amount);
+		UFUNCTION(BlueprintCallable, Category = actions)
+			void UpEntranceFee(float Amount);
+		UFUNCTION(BlueprintCallable, Category = actions)
+			void DownEntranceFee(float Amount);
 
 		virtual AGuest ServiceGuest(AGuest CurrGuest) = 0;      //abstract
 		virtual void Operate() = 0;                             //abstract
