@@ -18,15 +18,15 @@ namespace EGuestGender
 
 
 /**
-*  Class:      Guest
+*	Class:      Guest
 *
-*  Purpose :	A character in a park.Can interact with attractions.
-*              Has a number of attributes which affect the behavior of
-*              the Guest, which are represented by fields.
+*	Purpose :	A character in a park.Can interact with attractions.
+*				Has a number of attributes which affect the behavior of
+*				the Guest, which are represented by fields.
 *
-*  Native :	Guest.h
+*	Native :	Guest.h
 *
-*  Fields :
+*	Fields :
 *	Methods :
 */
 

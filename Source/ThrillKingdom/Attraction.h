@@ -23,8 +23,8 @@ namespace EAttractionStatus
 *	Class:		Attraction
 *
 *	Purpose:	The abstract class representing any item that a Guest
-*              can directly interact with.  Cannot be instantiated in
-*              game.
+*				can directly interact with.  Cannot be instantiated in
+*				game.
 *
 *	Native:		Attraction.h
 *
