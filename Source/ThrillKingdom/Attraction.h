@@ -2,20 +2,21 @@
 
 #pragma once
 
+#include "Guest.h"
 #include "GameFramework/Actor.h"
 #include "Attraction.generated.h"
 
 /**
  *	Class:		Attraction
  *
- *  Purpose:	The abstract class representing any item that a Guest
+ *	Purpose:	The abstract class representing any item that a Guest
  *              can directly interact with.  Cannot be instantiated in
  *              game.
  *
- *  Native:		Attraction.h
+ *	Native:		Attraction.h
  *
- *  Fields:
- *  Methods:
+ *	Fields:
+ *	Methods:
  */
 
 UCLASS()
@@ -24,7 +25,7 @@ class AAttraction : public AActor
 		GENERATED_UCLASS_BODY()
 
 		/*
-		 *  Start Constants
+		 *	Start Constants
 		 */
 
 		UPROPERTY()
@@ -34,12 +35,12 @@ class AAttraction : public AActor
 			const float MAX_ENTRANCE_FEE = 999.99f;
 
 		/*
-		 *  End Constants
+		 *	End Constants
 		 */
 
 
 		/*
-		 *  Start Fields
+		 *	Start Fields
 		 */
 
 		UPROPERTY()
@@ -66,13 +67,13 @@ class AAttraction : public AActor
 		//TODO: add a container for scenery tags
 
 		/*
-		 *  End Fields
+		 *	End Fields
 		 */
 
 	public:
 
 		/*
-		 *  Start Getter Methods
+		 *	Start Getter Methods
 		 */
 
 		FString GetAttractionName();
@@ -82,12 +83,12 @@ class AAttraction : public AActor
 		virtual EAttractionStatus::Status GetAttractionStatus();
 
 		/*
-		 *  End Getter Methods
+		 *	End Getter Methods
 		 */
 
 
 		/*
-		 *  Start Setter Methods
+		 *	Start Setter Methods
 		 */
 
 		void SetAttractionName(FString NewAttractionName);
@@ -98,11 +99,11 @@ class AAttraction : public AActor
 		virtual void SetAttractionStatus(EAttractionStatus::Status NewAttractionStatus);
 
 		/*
-		 *  End Setter Methods
+		 *	End Setter Methods
 		 */
 
 		/*
-		 *  Start Attraction actions
+		 *	Start Attraction actions
 		 */
 
 		void UpEntranceFee(float Amount);
@@ -112,7 +113,7 @@ class AAttraction : public AActor
 		virtual void Operate() = 0;                             //abstract
 
 		/*
-		 *  End Attraction actions
+		 *	End Attraction actions
 		 */
 	
 };

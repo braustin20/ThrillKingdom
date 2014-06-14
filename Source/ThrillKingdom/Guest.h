@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "Attraction.h"
 #include "GameFramework/Character.h"
 #include "Guest.generated.h"
 
@@ -26,9 +27,9 @@ class AGuest : public ACharacter
 		GENERATED_UCLASS_BODY()
 
 		/*
-		 *  Start Constants
+		 *	Start Constants
 	   	 *
-		 *  Honestly chances are that all of these values are going to have to be tweaked
+		 *	Honestly chances are that all of these values are going to have to be tweaked
 		 */
 
 		UPROPERTY()
@@ -57,14 +58,14 @@ class AGuest : public ACharacter
 			const float MAX_WALLET = 99999.99f;     //TODO: figure out a good value for this
 
 		/*
-		 *  End constants
+		 *	End constants
 		 */
 
 		/*
-		 *  Start Fields
+		 *	Start Fields
 		 *
-		 *  These fields are written using easy to tweak and work with types
-		 *  should be refactored for efficiency once tweaked with more efficient types
+		 *	These fields are written using easy to tweak and work with types
+		 *	should be refactored for efficiency once tweaked with more efficient types
 		 */
 
 		//TODO: write a set of functions using NTCS instead of FStrings
@@ -80,7 +81,7 @@ class AGuest : public ACharacter
 		//A string containing the thoughts of the guest about the park.
 		//Not 100% sure if we need one of these, what do you guys think?
 		UPROPERTY()
-			FSTRING CurrThought;
+			FString CurrThought;
 
 		//Represents how thirsty the guest is, always positive.
 		//0 meeans no thirst, 100.0f is the maximum value for thirst.
@@ -131,7 +132,7 @@ class AGuest : public ACharacter
 		//TODO: write container for guest inventory
 
 		/*
-		 *  End fields
+		 *	End fields
 		 */
 
 		void GenerateAge();     //TODO: impliment this method
@@ -141,9 +142,9 @@ class AGuest : public ACharacter
 	public:
 
 		/*
-		 *  Start Getter methods
+		 *	Start Getter methods
 		 *
-		 *  All methods will need to be refactored at some point as well
+		 *	All methods will need to be refactored at some point as well
 		 */
 
 		FString GetName();
@@ -153,11 +154,11 @@ class AGuest : public ACharacter
 		EGuestGender::Gender GetGender();
 
 		/*
-		 *  End Getter methods
+		 *	End Getter methods
 		 */
 
 		/*
-		 *  Start Setter methods
+		 *	Start Setter methods
 		 */
 
 		void SetName(FString Name);
@@ -171,7 +172,7 @@ class AGuest : public ACharacter
 		void SetWallet(float NewWallet);
 
 		/*
-		 *  End Setter Methods
+		 *	End Setter Methods
 		 */
 
 		/*
@@ -195,7 +196,7 @@ class AGuest : public ACharacter
 		void UpEnergy(float Amount);
 		void DownEnergy(float Amount);
 
-		virtual void Interact(AAttraction CurrAttraction);
+		virtual void Interact(AAttraction* CurrAttraction);
 
 		/*
 		 *	End Guest actions
