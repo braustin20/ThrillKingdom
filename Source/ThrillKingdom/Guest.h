@@ -6,18 +6,29 @@
 #include "GameFramework/Character.h"
 #include "Guest.generated.h"
 
+UENUM(BlueprintType)
+namespace EGuestGender
+{
+	enum Gender
+	{
+		female		UMETA(DisplayName = "female"),
+		male		UMETA(DisplayName = "male")
+	};
+}
+
+
 /**
- *  Class:      Guest
- *
- *  Purpose :	A character in a park.Can interact with attractions.
- *              Has a number of attributes which affect the behavior of
- *              the Guest, which are represented by fields.
- *
- *  Native :	Guest.h
- *
- *  Fields :
- *	Methods :
- */
+*  Class:      Guest
+*
+*  Purpose :	A character in a park.Can interact with attractions.
+*              Has a number of attributes which affect the behavior of
+*              the Guest, which are represented by fields.
+*
+*  Native :	Guest.h
+*
+*  Fields :
+*	Methods :
+*/
 
 
 //TODO:  add autodoc syntax to comments

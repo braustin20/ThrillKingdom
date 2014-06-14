@@ -6,18 +6,32 @@
 #include "GameFramework/Actor.h"
 #include "Attraction.generated.h"
 
+UENUM(BlueprintType)
+namespace EAttractionStatus
+{
+	enum Status
+	{
+		open			UMETA(DisplayName = "open"),
+		testing			UMETA(DisplayName = "testing"),
+		closed			UMETA(DisplayName = "closed"),
+		outOfService	UMETA(DisplayName = "out of service")
+	};
+}
+
+
 /**
- *	Class:		Attraction
- *
- *	Purpose:	The abstract class representing any item that a Guest
- *              can directly interact with.  Cannot be instantiated in
- *              game.
- *
- *	Native:		Attraction.h
- *
- *	Fields:
- *	Methods:
- */
+*	Class:		Attraction
+*
+*	Purpose:	The abstract class representing any item that a Guest
+*              can directly interact with.  Cannot be instantiated in
+*              game.
+*
+*	Native:		Attraction.h
+*
+*	Fields:
+*	Methods:
+*/
+
 
 UCLASS()
 class AAttraction : public AActor
