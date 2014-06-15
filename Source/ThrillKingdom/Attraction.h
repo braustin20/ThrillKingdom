@@ -36,7 +36,63 @@ namespace EAttractionStatus
 UCLASS()
 class AAttraction : public AActor
 {
-		GENERATED_UCLASS_BODY()
+	GENERATED_UCLASS_BODY()
+
+	public:
+
+		/*
+		*	Start Getter Methods
+		*/
+		UFUNCTION(BlueprintCallable, Category = getters)
+			FString GetAttractionName();
+
+		UFUNCTION(BlueprintCallable, Category = getters)
+			float GetEntranceFee();
+
+		UFUNCTION(BlueprintCallable, Category = getters)
+			float GetOperatingCosts();
+
+		virtual EAttractionStatus::Status GetAttractionStatus();
+
+		/*
+		*	End Getter Methods
+		*/
+
+
+		/*
+		*	Start Setter Methods
+		*/
+
+		UFUNCTION(BlueprintCallable, Category = setters)
+			void SetAttractionName(FString NewAttractionName);
+
+		UFUNCTION(BlueprintCallable, Category = setters)
+			void SetEntranceFee(float NewEntranceFee);
+
+		UFUNCTION(BlueprintCallable, Category = setters)
+			void SetOperatingCosts();
+
+		//can see situations in which this may need to be overriden
+		virtual void SetAttractionStatus(EAttractionStatus::Status NewAttractionStatus);
+
+		/*
+		*	End Setter Methods
+		*/
+
+		/*
+		*	Start Attraction actions
+		*/
+		UFUNCTION(BlueprintCallable, Category = actions)
+			void UpEntranceFee(float Amount);
+		UFUNCTION(BlueprintCallable, Category = actions)
+			void DownEntranceFee(float Amount);
+
+		virtual AGuest ServiceGuest(AGuest CurrGuest) = 0;      //abstract
+		virtual void Operate() = 0;                             //abstract
+
+		/*
+		*	End Attraction actions
+		*/
 
 		/*
 		 *	Start Constants
@@ -52,7 +108,7 @@ class AAttraction : public AActor
 		 *	End Constants
 		 */
 
-
+	protected:
 		/*
 		 *	Start Fields
 		 */
@@ -71,62 +127,6 @@ class AAttraction : public AActor
 
 		/*
 		 *	End Fields
-		 */
-
-	public:
-
-		/*
-		 *	Start Getter Methods
-		 */
-		UFUNCTION(BlueprintCallable, Category = getters)
-			FString GetAttractionName();
-
-		UFUNCTION(BlueprintCallable, Category = getters)
-			float GetEntranceFee();
-
-		UFUNCTION(BlueprintCallable, Category = getters)
-			float GetOperatingCosts();
-
-		virtual EAttractionStatus::Status GetAttractionStatus();
-
-		/*
-		 *	End Getter Methods
-		 */
-
-
-		/*
-		 *	Start Setter Methods
-		 */
-
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetAttractionName(FString NewAttractionName);
-
-		UFUNCTION(BlueprintCallable, Category = getters)
-			void SetEntranceFee(float NewEntranceFee);
-
-		UFUNCTION(BlueprintCallable, Category = getters)
-			void SetOperatingCosts();
-
-		//can see situations in which this may need to be overriden
-		virtual void SetAttractionStatus(EAttractionStatus::Status NewAttractionStatus);
-
-		/*
-		 *	End Setter Methods
-		 */
-
-		/*
-		 *	Start Attraction actions
-		 */
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void UpEntranceFee(float Amount);
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void DownEntranceFee(float Amount);
-
-		virtual AGuest ServiceGuest(AGuest CurrGuest) = 0;      //abstract
-		virtual void Operate() = 0;                             //abstract
-
-		/*
-		 *	End Attraction actions
 		 */
 	
 };
