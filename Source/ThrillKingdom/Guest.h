@@ -58,7 +58,7 @@ class AGuest : public ACharacter
 			float GetWallet();
 
 		UFUNCTION(BlueprintCallable, Category = getters)
-			int GetAge();
+			int8 GetAge();
 
 		UFUNCTION(BlueprintCallable, Category = getters)
 			EGuestGender::Gender GetGender();
