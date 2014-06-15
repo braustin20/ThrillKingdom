@@ -37,6 +37,103 @@ class AGuest : public ACharacter
 {
 		GENERATED_UCLASS_BODY()
 
+	public:
+
+		/*
+		*	Start Getter methods
+		*
+		*	All methods will need to be refactored at some point as well
+		*/
+
+		UFUNCTION(BlueprintCallable, Category = getters)
+			FString GetName();
+
+		UFUNCTION(BlueprintCallable, Category = getters)
+			FString GetStatus();
+
+		UFUNCTION(BlueprintCallable, Category = getters)
+			FString GetCurrThought();
+
+		UFUNCTION(BlueprintCallable, Category = getters)
+			float GetWallet();
+
+		UFUNCTION(BlueprintCallable, Category = getters)
+			int GetAge();
+
+		UFUNCTION(BlueprintCallable, Category = getters)
+			EGuestGender::Gender GetGender();
+
+		/*
+		*	End Getter methods
+		*/
+
+		/*
+		*	Start Setter methods
+		*/
+
+		UFUNCTION(BlueprintCallable, Category = setters)
+			void SetName(FString Name);
+
+		UFUNCTION(BlueprintCallable, Category = setters)
+			void SetStatus(FString NewStatus);
+
+		//not sure if I want to keep any of the below setters, but I have a feeling they might be useful, delete them if they don't end up being used
+		UFUNCTION(BlueprintCallable, Category = setters)
+			void SetHunger(float NewHunger);
+
+		UFUNCTION(BlueprintCallable, Category = setters)
+			void SetThirst(float NewThirst);
+
+		UFUNCTION(BlueprintCallable, Category = setters)
+			void SetMood(float NewMood);
+
+		UFUNCTION(BlueprintCallable, Category = setters)
+			void SetEnergy(float NewEnergy);
+
+		UFUNCTION(BlueprintCallable, Category = setters)
+			void SetWallet(float NewWallet);
+
+		/*
+		*	End Setter Methods
+		*/
+
+		/*
+		*	Start Guest actions
+		*
+		*	May want to use excpetions in these to detect errors, or return boolean values to designate failure or success
+		*/
+
+		UFUNCTION(BlueprintCallable, Category = actions)
+			void Spend(float Amount);
+		UFUNCTION(BlueprintCallable, Category = actions)
+			void Withdraw(float Amount);
+
+		UFUNCTION(BlueprintCallable, Category = actions)
+			void UpThirst(float Amount);
+		UFUNCTION(BlueprintCallable, Category = actions)
+			void DownThirst(float Amount);
+
+		UFUNCTION(BlueprintCallable, Category = actions)
+			void UpHunger(float Amount);
+		UFUNCTION(BlueprintCallable, Category = actions)
+			void DownHunger(float Amount);
+
+		UFUNCTION(BlueprintCallable, Category = actions)
+			void UpMood(float Amount);
+		UFUNCTION(BlueprintCallable, Category = actions)
+			void DownMood(float Amount);
+
+		UFUNCTION(BlueprintCallable, Category = actions)
+			void UpEnergy(float Amount);
+		UFUNCTION(BlueprintCallable, Category = actions)
+			void DownEnergy(float Amount);
+
+		virtual void Interact(AAttraction* CurrAttraction);
+
+		/*
+		*	End Guest actions
+		*/
+
 		/*
 		 *	Start Constants
 	   	 *
@@ -72,6 +169,7 @@ class AGuest : public ACharacter
 		 *	End constants
 		 */
 
+	protected:
 		/*
 		 *	Start Fields
 		 *
@@ -137,102 +235,5 @@ class AGuest : public ACharacter
 		void GenerateAge();     //TODO: impliment this method
 		void GenerateGender();
 		void GenerateName();    //TODO: impliment this method
-
-	public:
-
-		/*
-		 *	Start Getter methods
-		 *
-		 *	All methods will need to be refactored at some point as well
-		 */
-
-		UFUNCTION(BlueprintCallable, Category = getters)
-			FString GetName();
-
-		UFUNCTION(BlueprintCallable, Category = getters)
-			FString GetStatus();
-
-		UFUNCTION(BlueprintCallable, Category = getters)
-			FString GetCurrThought();
-
-		UFUNCTION(BlueprintCallable, Category = getters)
-			float GetWallet();
-
-		UFUNCTION(BlueprintCallable, Category = getters)
-			int GetAge();
-
-		UFUNCTION(BlueprintCallable, Category = getters)
-			EGuestGender::Gender GetGender();
-
-		/*
-		 *	End Getter methods
-		 */
-
-		/*
-		 *	Start Setter methods
-		 */
-
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetName(FString Name);
-
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetStatus(FString NewStatus);
-
-		//not sure if I want to keep any of the below setters, but I have a feeling they might be useful, delete them if they don't end up being used
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetHunger(float NewHunger);
-		
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetThirst(float NewThirst);
-
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetMood(float NewMood);
-
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetEnergy(float NewEnergy);
-
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetWallet(float NewWallet);
-
-		/*
-		 *	End Setter Methods
-		 */
-
-		/*
-		 *	Start Guest actions
-		 *
-		 *	May want to use excpetions in these to detect errors, or return boolean values to designate failure or success
-		 */
-
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void Spend(float Amount);
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void Withdraw(float Amount);
-
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void UpThirst(float Amount);
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void DownThirst(float Amount);
-
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void UpHunger(float Amount);
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void DownHunger(float Amount);
-
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void UpMood(float Amount);
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void DownMood(float Amount);
-
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void UpEnergy(float Amount);
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void DownEnergy(float Amount);
-
-		virtual void Interact(AAttraction* CurrAttraction);
-
-		/*
-		 *	End Guest actions
-		 */
 	
 };
