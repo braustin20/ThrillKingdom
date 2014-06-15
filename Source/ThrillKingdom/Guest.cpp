@@ -4,7 +4,7 @@
 #include "Guest.h"
 
 
-AGuest::AGuest(const class FPostConstructInitializeProperties& PCIP)
+AGuest::AGuest(const class FPostConstructInitializeProperties& PCIP) 
 	: Super(PCIP)
 {
 	//Generates a Gender for the guest.  Has no arguments and returns no value,
@@ -16,24 +16,24 @@ AGuest::AGuest(const class FPostConstructInitializeProperties& PCIP)
 
 		if (Temp == 0)
 		{
-			Gender = Female;
+			EGuestGender::Gender = female;
 		}
 
 		else
 		{
-			Gender = Male;
+			EGuestGender::Gender = male;
 		}
 	}
 
 
 	//Sets guestName to name
-	void SetName(TString name)
+	void SetName(FString name)
 	{
 		GuestName = name;
 	}
 
 	//sets status to NewStatus
-	void SetStatus(TString NewStatus)
+	void SetStatus(FString NewStatus)
 	{
 		Status = NewStatus;
 	}
@@ -41,7 +41,7 @@ AGuest::AGuest(const class FPostConstructInitializeProperties& PCIP)
 	//sets Hunger to NewHunger if NewHunger is in between MIN_HUNGER and MAX_HUNGER
 	void SetHunger(float NewHunger)
 	{
-		if (NewHunger >= MIN_HUNGER && NewHUNGER <= MAX_HUNGER)
+		if (NewHunger >= MIN_HUNGER && NewHunger <= MAX_HUNGER)
 		{
 			Hunger = NewHunger;
 		}
@@ -79,7 +79,7 @@ AGuest::AGuest(const class FPostConstructInitializeProperties& PCIP)
 
 	void SetEnergy(float NewEnergy)
 	{
-		if (NewEnergy >= MIN_ENERGY && NewMood <= MAX_ENERGY)
+		if (NewEnergy >= MIN_ENERGY && NewEnergy <= MAX_ENERGY)
 		{
 			Energy = NewEnergy;
 		}
@@ -245,12 +245,12 @@ AGuest::AGuest(const class FPostConstructInitializeProperties& PCIP)
 
 	FString GetName()
 	{
-		return guestName;
+		return GuestName;
 	}
 
 	FString GetStatus()
 	{
-		return status;
+		return Status;
 	}
 
 	float GetWallet()
@@ -260,7 +260,7 @@ AGuest::AGuest(const class FPostConstructInitializeProperties& PCIP)
 
 	int8 GetAge()
 	{
-		return age;
+		return Age;
 	}
 
 	Gender GetGender()
