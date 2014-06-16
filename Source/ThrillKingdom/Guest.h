@@ -17,17 +17,17 @@ namespace EGuestGender
 
 
 /**
-*	Class:      Guest
-*
-*	Purpose :	A character in a park.Can interact with attractions.
-*				Has a number of attributes which affect the behavior of
-*				the Guest, which are represented by fields.
-*
-*	Native :	Guest.h
-*
-*	Fields :
-*	Methods :
-*/
+ *	Class:      Guest
+ *
+ *	Purpose :	A character in a park.Can interact with attractions.
+ *				Has a number of attributes which affect the behavior of
+ *				the Guest, which are represented by fields.
+ *
+ *	Native :	Guest.h
+ *
+ *	Fields :
+ *	Methods :
+ */
 
 //forward declaration of AAttraction
 class AAttraction;
@@ -40,10 +40,10 @@ public:
 	GENERATED_UCLASS_BODY()
 
 		/*
-		*	Start Getter methods
-		*
-		*	All methods will need to be refactored at some point as well
-		*/
+		 *	Start Getter methods
+		 *
+		 *	All methods will need to be refactored at some point as well
+		 */
 
 		UFUNCTION(BlueprintCallable, Category = getters)
 		FString GetName();
@@ -64,12 +64,12 @@ public:
 		EGuestGender::Gender GetGender();
 
 	/*
-	*	End Getter methods
-	*/
+	 *	End Getter methods
+	 */
 
 	/*
-	*	Start Setter methods
-	*/
+	 *	Start Setter methods
+	 */
 
 	UFUNCTION(BlueprintCallable, Category = setters)
 		void SetName(FString Name);
@@ -94,14 +94,14 @@ public:
 		void SetWallet(float NewWallet);
 
 	/*
-	*	End Setter Methods
-	*/
+	 *	End Setter Methods
+	 */
 
 	/*
-	*	Start Guest actions
-	*
-	*	May want to use excpetions in these to detect errors, or return boolean values to designate failure or success
-	*/
+	 *	Start Guest actions
+	 *
+	 *	May want to use excpetions in these to detect errors, or return boolean values to designate failure or success
+	 */
 
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void Spend(float Amount);
@@ -131,14 +131,14 @@ public:
 	//virtual void Interact(AAttraction* CurrAttraction);
 
 	/*
-	*	End Guest actions
-	*/
+	 *	End Guest actions
+	 */
 
 	/*
-	*	Start Constants
-	*
-	*	Honestly chances are that all of these values are going to have to be tweaked
-	*/
+	 *	Start Constants
+	 *
+	 *	Honestly chances are that all of these values are going to have to be tweaked
+	 */
 
 	//TODO:  Re-const these fields once they have been changed to ints, also set these values in the constructor.  May need to use #define to set these values
 
@@ -168,16 +168,16 @@ public:
 		/*const*/ float MaxWallet;// = 99999.99f;     //TODO: figure out a good value for this
 
 	/*
-	*	End constants
-	*/
+	 *	End constants
+	 */
 
 protected:
 	/*
-	*	Start Fields
-	*
-	*	These fields are written using easy to tweak and work with types
-	*	should be refactored for efficiency once tweaked with more efficient types
-	*/
+	 *	Start Fields
+	 *
+	 *	These fields are written using easy to tweak and work with types
+	 *	should be refactored for efficiency once tweaked with more efficient types
+	 */
 
 	//TODO: write a set of functions using NTCS instead of FStrings
 
@@ -231,8 +231,8 @@ protected:
 	//TODO: write container for guest inventory
 
 	/*
-	*	End fields
-	*/
+	 *	End fields
+	 */
 
 	void GenerateAge();     //TODO: impliment this method
 	void GenerateGender();

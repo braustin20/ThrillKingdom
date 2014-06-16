@@ -20,17 +20,17 @@ namespace EAttractionStatus
 
 
 /**
-*	Class:		Attraction
-*
-*	Purpose:	The abstract class representing any item that a Guest
-*				can directly interact with.  Cannot be instantiated in
-*				game.
-*
-*	Native:		Attraction.h
-*
-*	Fields:
-*	Methods:
-*/
+ *	Class:		Attraction
+ *
+ *	Purpose:	The abstract class representing any item that a Guest
+ *				can directly interact with.  Cannot be instantiated in
+ *				game.
+ *
+ *	Native:		Attraction.h
+ *
+ *	Fields:
+ *	Methods:
+ */
 
 
 //forward declaration of class AGuest
@@ -43,8 +43,8 @@ public:
 	GENERATED_UCLASS_BODY()
 
 		/*
-		*	Start Getter Methods
-		*/
+		 *	Start Getter Methods
+		 */
 		UFUNCTION(BlueprintCallable, Category = getters)
 		FString GetAttractionName();
 
@@ -57,13 +57,13 @@ public:
 	virtual EAttractionStatus::Status GetAttractionStatus();
 
 	/*
-	*	End Getter Methods
-	*/
+	 *	End Getter Methods
+	 */
 
 
 	/*
-	*	Start Setter Methods
-	*/
+	 *	Start Setter Methods
+	 */
 
 	UFUNCTION(BlueprintCallable, Category = setters)
 		void SetAttractionName(FString NewAttractionName);
@@ -78,27 +78,27 @@ public:
 	virtual void SetAttractionStatus(EAttractionStatus::Status NewAttractionStatus);
 
 	/*
-	*	End Setter Methods
-	*/
+	 *	End Setter Methods
+	 */
 
 	/*
-	*	Start Attraction actions
-	*/
+	 *	Start Attraction actions
+	 */
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void UpEntranceFee(float Amount);
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void DownEntranceFee(float Amount);
 
-	virtual AGuest* ServiceGuest(AGuest* CurrGuest) PURE_VIRTUAL(AAttraction::ServiceGuest, );      //abstract
-	virtual void Operate() PURE_VIRTUAL(AAttraction::Operate, );                             //abstract
+	virtual AGuest* ServiceGuest(AGuest* CurrGuest) PURE_VIRTUAL(AAttraction::ServiceGuest,);		//abstract
+	virtual void Operate() PURE_VIRTUAL(AAttraction::Operate, );									//abstract
 
 	/*
-	*	End Attraction actions
-	*/
+	 *	End Attraction actions
+	 */
 
 	/*
-	*	Start Constants
-	*/
+	 *	Start Constants
+	 */
 
 	//TODO:  Re-const these fields once they have been changed to ints, also set these values in the constructor.  May need to use #define to set these values
 
@@ -109,13 +109,13 @@ public:
 		/*const*/ float MaxEntranceFee;// = 999.99f;
 
 	/*
-	*	End Constants
-	*/
+	 *	End Constants
+	 */
 
 protected:
 	/*
-	*	Start Fields
-	*/
+	 *	Start Fields
+	 */
 
 	FString AttractionName;
 
@@ -130,7 +130,7 @@ protected:
 	//TODO: add a container for scenery tags
 
 	/*
-	*	End Fields
-	*/
+	 *	End Fields
+	 */
 
 };
