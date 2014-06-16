@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "Attraction.h"
 #include "GameFramework/Character.h"
 #include "Guest.generated.h"
 
@@ -30,14 +29,15 @@ namespace EGuestGender
 *	Methods :
 */
 
+//forward declaration of AAttraction
+class AAttraction;
 
 //TODO:  add autodoc syntax to comments
-UCLASS()
+UCLASS(config = game)
 class AGuest : public ACharacter
 {
-		GENERATED_UCLASS_BODY()
-
-	public:
+public:
+	GENERATED_UCLASS_BODY()
 
 		/*
 		*	Start Getter methods
@@ -46,194 +46,196 @@ class AGuest : public ACharacter
 		*/
 
 		UFUNCTION(BlueprintCallable, Category = getters)
-			FString GetName();
+		FString GetName();
 
-		UFUNCTION(BlueprintCallable, Category = getters)
-			FString GetStatus();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		FString GetStatus();
 
-		UFUNCTION(BlueprintCallable, Category = getters)
-			FString GetCurrThought();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		FString GetCurrThought();
 
-		UFUNCTION(BlueprintCallable, Category = getters)
-			float GetWallet();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		float GetWallet();
 
-		UFUNCTION(BlueprintCallable, Category = getters)
-			int8 GetAge();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		int8 GetAge();
 
-		UFUNCTION(BlueprintCallable, Category = getters)
-			EGuestGender::Gender GetGender();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		EGuestGender::Gender GetGender();
 
-		/*
-		*	End Getter methods
-		*/
+	/*
+	*	End Getter methods
+	*/
 
-		/*
-		*	Start Setter methods
-		*/
+	/*
+	*	Start Setter methods
+	*/
 
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetName(FString Name);
+	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetName(FString Name);
 
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetStatus(FString NewStatus);
+	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetStatus(FString NewStatus);
 
-		//not sure if I want to keep any of the below setters, but I have a feeling they might be useful, delete them if they don't end up being used
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetHunger(float NewHunger);
+	//not sure if I want to keep any of the below setters, but I have a feeling they might be useful, delete them if they don't end up being used
+	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetHunger(float NewHunger);
 
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetThirst(float NewThirst);
+	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetThirst(float NewThirst);
 
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetMood(float NewMood);
+	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetMood(float NewMood);
 
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetEnergy(float NewEnergy);
+	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetEnergy(float NewEnergy);
 
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetWallet(float NewWallet);
+	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetWallet(float NewWallet);
 
-		/*
-		*	End Setter Methods
-		*/
+	/*
+	*	End Setter Methods
+	*/
 
-		/*
-		*	Start Guest actions
-		*
-		*	May want to use excpetions in these to detect errors, or return boolean values to designate failure or success
-		*/
+	/*
+	*	Start Guest actions
+	*
+	*	May want to use excpetions in these to detect errors, or return boolean values to designate failure or success
+	*/
 
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void Spend(float Amount);
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void Withdraw(float Amount);
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void Spend(float Amount);
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void Withdraw(float Amount);
 
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void UpThirst(float Amount);
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void DownThirst(float Amount);
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void UpThirst(float Amount);
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void DownThirst(float Amount);
 
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void UpHunger(float Amount);
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void DownHunger(float Amount);
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void UpHunger(float Amount);
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void DownHunger(float Amount);
 
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void UpMood(float Amount);
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void DownMood(float Amount);
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void UpMood(float Amount);
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void DownMood(float Amount);
 
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void UpEnergy(float Amount);
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void DownEnergy(float Amount);
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void UpEnergy(float Amount);
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void DownEnergy(float Amount);
 
-		virtual void Interact(AAttraction* CurrAttraction);
+	//virtual void Interact(AAttraction* CurrAttraction);
 
-		/*
-		*	End Guest actions
-		*/
+	/*
+	*	End Guest actions
+	*/
 
-		/*
-		 *	Start Constants
-	   	 *
-		 *	Honestly chances are that all of these values are going to have to be tweaked
-		 */
+	/*
+	*	Start Constants
+	*
+	*	Honestly chances are that all of these values are going to have to be tweaked
+	*/
 
-		UPROPERTY(Const, VisibleDefaultsOnly, Category = constants)
-			const float MIN_THIRST = 0.0f;
-		UPROPERTY(Const, VisibleDefaultsOnly, Category = constants)
-			const float MAX_THIRST = 100.0f;
+	//TODO:  Re-const these fields once they have been changed to ints, also set these values in the constructor.  May need to use #define to set these values
 
-		UPROPERTY(Const, VisibleDefaultsOnly, Category = constants)
-			const float MIN_HUNGER = 0.0f;
-		UPROPERTY(Const, VisibleDefaultsOnly, Category = constants)
-			const float MAX_HUNGER = 100.0f;
+	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/*const*/ float MinThirst;// = 0.0f;
+	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/*const*/ float MaxThirst;// = 100.0f;
 
-		UPROPERTY(Const, VisibleDefaultsOnly, Category = constants)
-			const float MIN_MOOD = -100.0f;
-		UPROPERTY(Const, VisibleDefaultsOnly, Category = constants)
-			const float MAX_MOOD = 100.0f;
+	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/*const*/ float MinHunger;// = 0.0f;
+	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/*const*/ float MaxHunger;// = 100.0f;
 
-		UPROPERTY(Const, VisibleDefaultsOnly, Category = constants)
-			const float MIN_ENERGY = 0.0f;
-		UPROPERTY(Const, VisibleDefaultsOnly, Category = constants)
-			const float MAX_ENERGY = 100.0f;
+	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/*const*/ float MinMood;// = -100.0f;
+	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/*const*/ float MaxMood;// = 100.0f;
 
-		UPROPERTY(Const, VisibleDefaultsOnly, Category = constants)
-			const float MIN_WALLET = 0.0f;
-		UPROPERTY(Const, VisibleDefaultsOnly, Category = constants)
-			const float MAX_WALLET = 99999.99f;     //TODO: figure out a good value for this
+	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/*const*/ float MinEnergy;// = 0.0f;
+	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/*const*/ float MaxEnergy;// = 100.0f;
 
-		/*
-		 *	End constants
-		 */
+	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/*const*/ float MinWallet;// = 0.0f;
+	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/*const*/ float MaxWallet;// = 99999.99f;     //TODO: figure out a good value for this
 
-	protected:
-		/*
-		 *	Start Fields
-		 *
-		 *	These fields are written using easy to tweak and work with types
-		 *	should be refactored for efficiency once tweaked with more efficient types
-		 */
+	/*
+	*	End constants
+	*/
 
-		//TODO: write a set of functions using NTCS instead of FStrings
+protected:
+	/*
+	*	Start Fields
+	*
+	*	These fields are written using easy to tweak and work with types
+	*	should be refactored for efficiency once tweaked with more efficient types
+	*/
 
-		//The guest's name
-		FString GuestName;
+	//TODO: write a set of functions using NTCS instead of FStrings
 
-		//A string containing a short status update regarding the guest
-		FString Status;
+	//The guest's name
+	FString GuestName;
 
-		//A string containing the thoughts of the guest about the park.
-		//Not 100% sure if we need one of these, what do you guys think?
-		FString CurrThought;
+	//A string containing a short status update regarding the guest
+	FString Status;
 
-		//Represents how thirsty the guest is, always positive.
-		//0 meeans no thirst, 100.0f is the maximum value for thirst.
-		float Thirst;
+	//A string containing the thoughts of the guest about the park.
+	//Not 100% sure if we need one of these, what do you guys think?
+	FString CurrThought;
 
-		//Represents how hungry the guest is, always positive.
-		//0 means no hunger, 100.0f is the maximum value for hunger.
-		float Hunger;
+	//Represents how thirsty the guest is, always positive.
+	//0 meeans no thirst, 100.0f is the maximum value for thirst.
+	float Thirst;
 
-		//Represents how the guest feels.  0 is neutral,
-		//a negative number represents a bad mood, a positive number
-		//represents a good mood. -100.0f and 100.0f are the lower
-		//and upper limits respectively.
-		float Mood;
+	//Represents how hungry the guest is, always positive.
+	//0 means no hunger, 100.0f is the maximum value for hunger.
+	float Hunger;
 
-		//Represents how tired the guest is, always positive.
-		//0 means no energy, 100.0f is the maximum amount of energy
-		float Energy;
+	//Represents how the guest feels.  0 is neutral,
+	//a negative number represents a bad mood, a positive number
+	//represents a good mood. -100.0f and 100.0f are the lower
+	//and upper limits respectively.
+	float Mood;
 
-		//Represents how sick the guest feels, always positive.
-		//0 means the guest does not feel sick, and 100.0f means the guest
-		//feels very sick
-		float Nauseau;
+	//Represents how tired the guest is, always positive.
+	//0 means no energy, 100.0f is the maximum amount of energy
+	float Energy;
 
-		//Represents the amount of money the guest has, is never
-		//a negative number.  Always truncated to two decimal
-		//points.
-		float Wallet;
+	//Represents how sick the guest feels, always positive.
+	//0 means the guest does not feel sick, and 100.0f means the guest
+	//feels very sick
+	float Nauseau;
 
-		//Represents the age of the guest.  Determined by the protected
-		//method generateAge when a Guest is initialized.
-		int8 Age;
+	//Represents the amount of money the guest has, is never
+	//a negative number.  Always truncated to two decimal
+	//points.
+	float Wallet;
 
-		//Represents the guest's Gender.  Determined by the protected
-		//method generateGender when a Guest is initialized, or when
-		//initialized through the constructor.
-		EGuestGender::Gender Gender;
+	//Represents the age of the guest.  Determined by the protected
+	//method generateAge when a Guest is initialized.
+	int8 Age;
 
-		//TODO: write container for guest inventory
+	//Represents the guest's Gender.  Determined by the protected
+	//method generateGender when a Guest is initialized, or when
+	//initialized through the constructor.
+	EGuestGender::Gender Gender;
 
-		/*
-		 *	End fields
-		 */
+	//TODO: write container for guest inventory
 
-		void GenerateAge();     //TODO: impliment this method
-		void GenerateGender();
-		void GenerateName();    //TODO: impliment this method
-	
+	/*
+	*	End fields
+	*/
+
+	void GenerateAge();     //TODO: impliment this method
+	void GenerateGender();
+	void GenerateName();    //TODO: impliment this method
+
 };

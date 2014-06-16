@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "Guest.h"
+//#include "Guest.h"
 #include "GameFramework/Actor.h"
 #include "Attraction.generated.h"
 
@@ -33,100 +33,104 @@ namespace EAttractionStatus
 */
 
 
-UCLASS()
+//forward declaration of class AGuest
+class AGuest;
+
+UCLASS(abstract)
 class AAttraction : public AActor
 {
+public:
 	GENERATED_UCLASS_BODY()
-
-	public:
 
 		/*
 		*	Start Getter Methods
 		*/
 		UFUNCTION(BlueprintCallable, Category = getters)
-			FString GetAttractionName();
+		FString GetAttractionName();
 
-		UFUNCTION(BlueprintCallable, Category = getters)
-			float GetEntranceFee();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		float GetEntranceFee();
 
-		UFUNCTION(BlueprintCallable, Category = getters)
-			float GetOperatingCosts();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		float GetOperatingCosts();
 
-		virtual EAttractionStatus::Status GetAttractionStatus();
+	virtual EAttractionStatus::Status GetAttractionStatus();
 
-		/*
-		*	End Getter Methods
-		*/
+	/*
+	*	End Getter Methods
+	*/
 
 
-		/*
-		*	Start Setter Methods
-		*/
+	/*
+	*	Start Setter Methods
+	*/
 
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetAttractionName(FString NewAttractionName);
+	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetAttractionName(FString NewAttractionName);
 
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetEntranceFee(float NewEntranceFee);
+	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetEntranceFee(float NewEntranceFee);
 
-		UFUNCTION(BlueprintCallable, Category = setters)
-			void SetOperatingCosts();
+	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetOperatingCosts();
 
-		//can see situations in which this may need to be overriden
-		virtual void SetAttractionStatus(EAttractionStatus::Status NewAttractionStatus);
+	//can see situations in which this may need to be overriden
+	virtual void SetAttractionStatus(EAttractionStatus::Status NewAttractionStatus);
 
-		/*
-		*	End Setter Methods
-		*/
+	/*
+	*	End Setter Methods
+	*/
 
-		/*
-		*	Start Attraction actions
-		*/
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void UpEntranceFee(float Amount);
-		UFUNCTION(BlueprintCallable, Category = actions)
-			void DownEntranceFee(float Amount);
+	/*
+	*	Start Attraction actions
+	*/
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void UpEntranceFee(float Amount);
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void DownEntranceFee(float Amount);
 
-		virtual AGuest ServiceGuest(AGuest CurrGuest) = 0;      //abstract
-		virtual void Operate() = 0;                             //abstract
+	virtual AGuest* ServiceGuest(AGuest* CurrGuest) PURE_VIRTUAL(AAttraction::ServiceGuest, );      //abstract
+	virtual void Operate() PURE_VIRTUAL(AAttraction::Operate, );                             //abstract
 
-		/*
-		*	End Attraction actions
-		*/
+	/*
+	*	End Attraction actions
+	*/
 
-		/*
-		 *	Start Constants
-		 */
+	/*
+	*	Start Constants
+	*/
 
-		UPROPERTY(Const, VisibleDefaultsOnly, Category = constants)
-			const float MIN_ENTRANCE_FEE = 0.0f;
+	//TODO:  Re-const these fields once they have been changed to ints, also set these values in the constructor.  May need to use #define to set these values
 
-		UPROPERTY(Const, VisibleDefaultsOnly, Category = constants)
-			const float MAX_ENTRANCE_FEE = 999.99f;
+	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/*const*/ float MinEntranceFee;// = 0.0f;
 
-		/*
-		 *	End Constants
-		 */
+	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/*const*/ float MaxEntranceFee;// = 999.99f;
 
-	protected:
-		/*
-		 *	Start Fields
-		 */
+	/*
+	*	End Constants
+	*/
 
-		FString AttractionName;
+protected:
+	/*
+	*	Start Fields
+	*/
 
-		EAttractionStatus::Status AttractionStatus;
+	FString AttractionName;
 
-		float Length;
-		float Width;
-		float Height;
-		float EntranceFee;
-		float OperatingCosts;
+	EAttractionStatus::Status AttractionStatus;
 
-		//TODO: add a container for scenery tags
+	float Length;
+	float Width;
+	float Height;
+	float EntranceFee;
+	float OperatingCosts;
 
-		/*
-		 *	End Fields
-		 */
-	
+	//TODO: add a container for scenery tags
+
+	/*
+	*	End Fields
+	*/
+
 };

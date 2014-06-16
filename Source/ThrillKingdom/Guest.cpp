@@ -4,8 +4,8 @@
 #include "Guest.h"
 
 
-AGuest::AGuest(const class FPostConstructInitializeProperties& PCIP) 
-	: Super(PCIP)
+AGuest::AGuest(const class FPostConstructInitializeProperties& PCIP)
+: Super(PCIP)
 {
 	//TODO: add constructor code
 }
@@ -41,23 +41,23 @@ void AGuest::SetStatus(FString NewStatus)
 	Status = NewStatus;
 }
 
-//sets Hunger to NewHunger if NewHunger is in between MIN_HUNGER and MAX_HUNGER
+//sets Hunger to NewHunger if NewHunger is in between MinHunger and MaxHunger
 void AGuest::SetHunger(float NewHunger)
 {
-	if (NewHunger >= MIN_HUNGER && NewHunger <= MAX_HUNGER)
+	if (NewHunger >= MinHunger && NewHunger <= MaxHunger)
 	{
 		Hunger = NewHunger;
 	}
 	/*else
 	{
-		//TODO: do something if either of the above conditions are not met
+	//TODO: do something if either of the above conditions are not met
 	}*/
 }
 
-//sets thrist to NewThrist if NewThirst is in between MIN_THIRST and MAX_THIRST
+//sets thrist to NewThrist if NewThirst is in between MinThirst and MaxThirst
 void AGuest::SetThirst(float NewThirst)
 {
-	if (NewThirst >= MIN_THIRST && NewThirst <= MAX_THIRST)
+	if (NewThirst >= MinThirst && NewThirst <= MaxThirst)
 	{
 		Thirst = NewThirst;
 	}
@@ -67,10 +67,10 @@ void AGuest::SetThirst(float NewThirst)
 	//}
 }
 
-//sets Mood to NewMood if NewMoood is in between MIN_MOOD and MAX_MOOD
+//sets Mood to NewMood if NewMoood is in between MinMood and MaxMood
 void AGuest::SetMood(float NewMood)
 {
-	if (NewMood >= MIN_MOOD && NewMood <= MAX_MOOD)
+	if (NewMood >= MinMood && NewMood <= MaxMood)
 	{
 		Mood = NewMood;
 	}
@@ -82,7 +82,7 @@ void AGuest::SetMood(float NewMood)
 
 void AGuest::SetEnergy(float NewEnergy)
 {
-	if (NewEnergy >= MIN_ENERGY && NewEnergy <= MAX_ENERGY)
+	if (NewEnergy >= MinEnergy && NewEnergy <= MaxEnergy)
 	{
 		Energy = NewEnergy;
 	}
@@ -94,7 +94,7 @@ void AGuest::SetEnergy(float NewEnergy)
 
 void AGuest::SetWallet(float NewWallet)
 {
-	if (NewWallet >= MIN_WALLET && NewWallet <= MAX_WALLET)
+	if (NewWallet >= MinWallet && NewWallet <= MaxWallet)
 	{
 		Wallet = NewWallet;
 	}
@@ -109,7 +109,7 @@ void AGuest::Spend(float Amount)
 	float NewWallet = Wallet - Amount;
 
 	//only process the transaction if Amount is positive and if spending Amount will leave the guest with a positive Wallet
-	if (Amount >= 0 && NewWallet >= MIN_WALLET)
+	if (Amount >= 0 && NewWallet >= MinWallet)
 	{
 		Wallet = NewWallet;
 	}
@@ -123,7 +123,7 @@ void AGuest::Withdraw(float Amount)
 {
 	float NewWallet = Wallet - Amount;
 
-	if (Amount >= 0 && NewWallet <= MAX_WALLET)
+	if (Amount >= 0 && NewWallet <= MaxWallet)
 	{
 		Wallet += Amount;
 	}
@@ -137,7 +137,7 @@ void AGuest::UpThirst(float Amount)
 {
 	float NewThirst = Thirst + Amount;
 
-	if (Amount >= 0 && NewThirst <= MAX_THIRST)
+	if (Amount >= 0 && NewThirst <= MaxThirst)
 	{
 		Thirst = NewThirst;
 	}
@@ -151,7 +151,7 @@ void AGuest::DownThirst(float Amount)
 {
 	float NewThirst = Thirst - Amount;
 
-	if (Amount >= 0 && NewThirst >= MIN_THIRST)
+	if (Amount >= 0 && NewThirst >= MinThirst)
 	{
 		Thirst = NewThirst;
 	}
@@ -165,7 +165,7 @@ void AGuest::UpHunger(float Amount)
 {
 	float NewHunger = Hunger + Amount;
 
-	if (Amount >= 0 && NewHunger <= MAX_HUNGER)
+	if (Amount >= 0 && NewHunger <= MaxHunger)
 	{
 		Hunger = NewHunger;
 	}
@@ -179,7 +179,7 @@ void AGuest::DownHunger(float Amount)
 {
 	float NewHunger = Hunger - Amount;
 
-	if (Amount >= 0 && NewHunger >= MIN_HUNGER)
+	if (Amount >= 0 && NewHunger >= MinHunger)
 	{
 		Hunger = NewHunger;
 	}
@@ -193,7 +193,7 @@ void AGuest::UpMood(float Amount)
 {
 	float NewMood = Mood + Amount;
 
-	if (Amount >= 0 && NewMood <= MAX_MOOD)
+	if (Amount >= 0 && NewMood <= MaxMood)
 	{
 		Mood = NewMood;
 	}
@@ -207,7 +207,7 @@ void AGuest::DownMood(float Amount)
 {
 	float NewMood = Mood - Amount;
 
-	if (Amount >= 0 && NewMood >= MIN_MOOD)
+	if (Amount >= 0 && NewMood >= MinMood)
 	{
 		Mood = NewMood;
 	}
@@ -221,7 +221,7 @@ void AGuest::UpEnergy(float Amount)
 {
 	float NewEnergy = Energy + Amount;
 
-	if (Amount >= 0 && NewEnergy <= MAX_ENERGY)
+	if (Amount >= 0 && NewEnergy <= MaxEnergy)
 	{
 		Energy = NewEnergy;
 	}
@@ -235,7 +235,7 @@ void AGuest::DownEnergy(float Amount)
 {
 	float NewEnergy = Energy - Amount;
 
-	if (Amount >= 0 && NewEnergy >= MIN_ENERGY)
+	if (Amount >= 0 && NewEnergy >= MinEnergy)
 	{
 		Energy = NewEnergy;
 	}

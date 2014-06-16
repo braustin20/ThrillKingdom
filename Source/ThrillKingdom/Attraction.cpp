@@ -1,15 +1,16 @@
 
-
+//#include "Guest.h"
 #include "ThrillKingdom.h"
 #include "Attraction.h"
 
 
 AAttraction::AAttraction(const class FPostConstructInitializeProperties& PCIP)
-	: Super(PCIP)
+: Super(PCIP)
 {
-//TODO: add constructor code
+	//TODO: add constructor code
 }
 
+//AGuest* AAttraction::ServiceGuest(AGuest* CurrGuest){}
 
 FString AAttraction::GetAttractionName()
 {
@@ -38,7 +39,7 @@ void AAttraction::SetAttractionName(FString NewAttractionName)
 
 void AAttraction::SetEntranceFee(float NewEntranceFee)
 {
-	if (NewEntranceFee >= MIN_ENTRANCE_FEE && NewEntranceFee <= MAX_ENTRANCE_FEE)
+	if (NewEntranceFee >= MinEntranceFee && NewEntranceFee <= MaxEntranceFee)
 	{
 		EntranceFee = NewEntranceFee;
 	}
@@ -48,11 +49,11 @@ void AAttraction::SetEntranceFee(float NewEntranceFee)
 	//}
 }
 
-void UpEntranceFee(float Amount)
+void AAttraction::UpEntranceFee(float Amount)
 {
 	float NewEntranceFee = EntranceFee + Amount;
 
-	if (Amount >= 0 && NewEntranceFee <= MAX_ENTRANCE_FEE)
+	if (Amount >= 0 && NewEntranceFee <= MaxEntranceFee)
 	{
 		EntranceFee = NewEntranceFee;
 	}
@@ -62,11 +63,11 @@ void UpEntranceFee(float Amount)
 	//}
 }
 
-void DownEntranceFee(float Amount)
+void AAttraction::DownEntranceFee(float Amount)
 {
 	float NewEntranceFee = EntranceFee - Amount;
 
-	if (Amount >= 0 && NewEntranceFee >= MIN_ENTRANCE_FEE)
+	if (Amount >= 0 && NewEntranceFee >= MinEntranceFee)
 	{
 		EntranceFee = NewEntranceFee;
 	}
