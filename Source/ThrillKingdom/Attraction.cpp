@@ -83,3 +83,12 @@ void AAttraction::DownEntranceFee(float Amount)
 	//}
 }
 
+float AAttraction::GetOperatingCosts()
+{
+	return OperatingCosts;
+}
+
+void AAttraction::SetOperatingCosts(float NewOperatingCosts)
+{
+	OperatingCosts = NewOperatingCosts;
+}

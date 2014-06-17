@@ -45,7 +45,7 @@ public:
 		 *	All methods will need to be refactored at some point as well
 		 */
 
-		UFUNCTION(BlueprintCallable, Category = getters)
+	UFUNCTION(BlueprintCallable, Category = getters)
 		FString GetName();
 
 	UFUNCTION(BlueprintCallable, Category = getters)

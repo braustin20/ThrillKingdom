@@ -45,7 +45,7 @@ public:
 		/*
 		 *	Start Getter Methods
 		 */
-		UFUNCTION(BlueprintCallable, Category = getters)
+	UFUNCTION(BlueprintCallable, Category = getters)
 		FString GetAttractionName();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
@@ -72,7 +72,7 @@ public:
 		void SetEntranceFee(float NewEntranceFee);
 
 	UFUNCTION(BlueprintCallable, Category = setters)
-		void SetOperatingCosts();
+		void SetOperatingCosts(float NewOperatingCosts);
 
 	//can see situations in which this may need to be overriden
 	virtual void SetAttractionStatus(EAttractionStatus::Status NewAttractionStatus);

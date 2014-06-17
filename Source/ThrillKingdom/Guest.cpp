@@ -285,3 +285,8 @@ EGuestGender::Gender AGuest::GetGender()
 {
 	return Gender;
 }
+
+FString AGuest::GetCurrThought()
+{
+	return CurrThought;
+}
