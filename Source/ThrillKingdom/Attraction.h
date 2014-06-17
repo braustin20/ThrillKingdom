@@ -2,7 +2,6 @@
 
 #pragma once
 
-//#include "Guest.h"
 #include "GameFramework/Actor.h"
 #include "Attraction.generated.h"
 
@@ -103,10 +102,10 @@ public:
 	//TODO:  Re-const these fields once they have been changed to ints, also set these values in the constructor.  May need to use #define to set these values
 
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
-		/*const*/ float MinEntranceFee;// = 0.0f;
+		/*const*/ float MinEntranceFee;
 
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
-		/*const*/ float MaxEntranceFee;// = 999.99f;
+		/*const*/ float MaxEntranceFee;
 
 	/*
 	 *	End Constants

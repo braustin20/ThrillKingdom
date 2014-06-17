@@ -143,29 +143,29 @@ public:
 	//TODO:  Re-const these fields once they have been changed to ints, also set these values in the constructor.  May need to use #define to set these values
 
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
-		/*const*/ float MinThirst;// = 0.0f;
+		/*const*/ float MinThirst;
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
-		/*const*/ float MaxThirst;// = 100.0f;
+		/*const*/ float MaxThirst;
 
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
-		/*const*/ float MinHunger;// = 0.0f;
+		/*const*/ float MinHunger;
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
-		/*const*/ float MaxHunger;// = 100.0f;
+		/*const*/ float MaxHunger;
 
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
-		/*const*/ float MinMood;// = -100.0f;
+		/*const*/ float MinMood;
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
-		/*const*/ float MaxMood;// = 100.0f;
+		/*const*/ float MaxMood;
 
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
-		/*const*/ float MinEnergy;// = 0.0f;
+		/*const*/ float MinEnergy;
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
-		/*const*/ float MaxEnergy;// = 100.0f;
+		/*const*/ float MaxEnergy;
 
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
-		/*const*/ float MinWallet;// = 0.0f;
+		/*const*/ float MinWallet;
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
-		/*const*/ float MaxWallet;// = 99999.99f;     //TODO: figure out a good value for this
+		/*const*/ float MaxWallet;	//TODO: figure out a good value for this
 
 	/*
 	 *	End constants

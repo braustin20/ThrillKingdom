@@ -49,10 +49,10 @@ void AAttraction::SetEntranceFee(float NewEntranceFee)
 	{
 		EntranceFee = NewEntranceFee;
 	}
-	//else
-	//{
-	//	//TODO:  make something happen here if the above conditions are not met
-	//}
+	else
+	{
+		//TODO:  make something happen here if the above conditions are not met
+	}
 }
 
 void AAttraction::UpEntranceFee(float Amount)
@@ -63,10 +63,10 @@ void AAttraction::UpEntranceFee(float Amount)
 	{
 		EntranceFee = NewEntranceFee;
 	}
-	//else
-	//{
-	//	//TODO:  make something happen here if the above conditions are not met
-	//}
+	else
+	{
+		//TODO:  make something happen here if the above conditions are not met
+	}
 }
 
 void AAttraction::DownEntranceFee(float Amount)
@@ -77,10 +77,10 @@ void AAttraction::DownEntranceFee(float Amount)
 	{
 		EntranceFee = NewEntranceFee;
 	}
-	//else
-	//{
-	//	//TODO:  make something happen here if the above conditions are not met
-	//}
+	else
+	{
+		//TODO:  make something happen here if the above conditions are not met
+	}
 }
 
 float AAttraction::GetOperatingCosts()

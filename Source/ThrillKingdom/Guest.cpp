@@ -63,10 +63,10 @@ void AGuest::SetHunger(float NewHunger)
 	{
 		Hunger = NewHunger;
 	}
-	/*else
+	else
 	{
-	//TODO: do something if either of the above conditions are not met
-	}*/
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 //sets thrist to NewThrist if NewThirst is in between MinThirst and MaxThirst
@@ -76,10 +76,10 @@ void AGuest::SetThirst(float NewThirst)
 	{
 		Thirst = NewThirst;
 	}
-	//else
-	//{
-	//	//TODO: do something if either of the above conditions are not met
-	//}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 //sets Mood to NewMood if NewMoood is in between MinMood and MaxMood
@@ -89,10 +89,10 @@ void AGuest::SetMood(float NewMood)
 	{
 		Mood = NewMood;
 	}
-	//else
-	//{
-	//	//TODO: do something if either of the above conditions are not met
-	//}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 void AGuest::SetEnergy(float NewEnergy)
@@ -101,10 +101,10 @@ void AGuest::SetEnergy(float NewEnergy)
 	{
 		Energy = NewEnergy;
 	}
-	//else
-	//{
-	//	//TODO: do something if either of the above conditions are not met
-	//}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 void AGuest::SetWallet(float NewWallet)
@@ -114,9 +114,9 @@ void AGuest::SetWallet(float NewWallet)
 		Wallet = NewWallet;
 	}
 	//else
-	//{
-	//	//TODO: do something`
-	//}
+	{
+		//TODO: do something`
+	}
 }
 
 void AGuest::Spend(float Amount)
@@ -128,10 +128,10 @@ void AGuest::Spend(float Amount)
 	{
 		Wallet = NewWallet;
 	}
-	//else
-	//{
-	//	//TODO: do something if either of the above conditions are not met
-	//}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 void AGuest::Withdraw(float Amount)
@@ -142,10 +142,10 @@ void AGuest::Withdraw(float Amount)
 	{
 		Wallet += Amount;
 	}
-	//else
-	//{
-	//	//TODO: do something if Amount is a negative number
-	//}
+	else
+	{
+		//TODO: do something if Amount is a negative number
+	}
 }
 
 void AGuest::UpThirst(float Amount)
@@ -156,10 +156,10 @@ void AGuest::UpThirst(float Amount)
 	{
 		Thirst = NewThirst;
 	}
-	//else
-	//{
-	//	//TODO: do something if either of the above conditions are not met
-	//}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 void AGuest::DownThirst(float Amount)
@@ -170,10 +170,10 @@ void AGuest::DownThirst(float Amount)
 	{
 		Thirst = NewThirst;
 	}
-	//else
-	//{
-	//	//TODO: do something if either of the above conditions are not met
-	//}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 void AGuest::UpHunger(float Amount)
@@ -184,10 +184,10 @@ void AGuest::UpHunger(float Amount)
 	{
 		Hunger = NewHunger;
 	}
-	//else
-	//{
-	//	//TODO: do something if either of the above conditions are not met
-	//}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 void AGuest::DownHunger(float Amount)
@@ -198,10 +198,10 @@ void AGuest::DownHunger(float Amount)
 	{
 		Hunger = NewHunger;
 	}
-	//else
-	//{
-	//	//TODO: do something if either of the above conditions are not met
-	//}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 void AGuest::UpMood(float Amount)
@@ -212,10 +212,10 @@ void AGuest::UpMood(float Amount)
 	{
 		Mood = NewMood;
 	}
-	//else
-	//{
-	//	//TODO: do something if either of the above conditions are not met
-	//}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 void AGuest::DownMood(float Amount)
@@ -226,10 +226,10 @@ void AGuest::DownMood(float Amount)
 	{
 		Mood = NewMood;
 	}
-	//else
-	//{
-	//	//TODO: do something if either of the above conditions are not met
-	//}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 void AGuest::UpEnergy(float Amount)
@@ -240,10 +240,10 @@ void AGuest::UpEnergy(float Amount)
 	{
 		Energy = NewEnergy;
 	}
-	//else
-	//{
-	//	//TODO: do something if either of the above conditions are not met
-	//}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 void AGuest::DownEnergy(float Amount)
@@ -254,10 +254,10 @@ void AGuest::DownEnergy(float Amount)
 	{
 		Energy = NewEnergy;
 	}
-	//else
-	//{
-	//	//TODO: do something if either of the above conditions are not met
-	//}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 
