@@ -33,7 +33,7 @@ namespace EGuestGender
 class AAttraction;
 
 //TODO:  add autodoc syntax to comments
-UCLASS(config = game)
+UCLASS()
 class AGuest : public ACharacter
 {
 public:

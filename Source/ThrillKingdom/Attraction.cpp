@@ -8,9 +8,15 @@ AAttraction::AAttraction(const class FPostConstructInitializeProperties& PCIP)
 : Super(PCIP)
 {
 	//TODO: add constructor code
+	MinEntranceFee = 0.0f;
+	MaxEntranceFee = 999.99f;
 }
 
-//AGuest* AAttraction::ServiceGuest(AGuest* CurrGuest){}
+//Not a useable implementation, this function is a pure virtual one
+//AGuest* AAttraction::ServiceGuest(AGuest* CurrGuest)
+//{
+//	return CurrGuest;
+//}
 
 FString AAttraction::GetAttractionName()
 {

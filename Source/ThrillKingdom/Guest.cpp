@@ -8,6 +8,21 @@ AGuest::AGuest(const class FPostConstructInitializeProperties& PCIP)
 : Super(PCIP)
 {
 	//TODO: add constructor code
+
+	MinThirst = 0.0f;
+	MaxThirst = 100.0f;
+
+	MinHunger = 0.0f;
+	MaxHunger = 100.0f;
+
+	MinMood = -100.0f;
+	MaxMood = 100.0f;
+
+	MinEnergy = 0.0f;
+	MaxEnergy = 100.0f;
+
+	MinWallet = 0.0f;
+	MaxWallet = 99999.99f;
 }
 
 //Generates a Gender for the guest.  Has no arguments and returns no value,

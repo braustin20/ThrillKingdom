@@ -89,8 +89,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void DownEntranceFee(float Amount);
 
-	virtual AGuest* ServiceGuest(AGuest* CurrGuest) PURE_VIRTUAL(AAttraction::ServiceGuest,);		//abstract
-	virtual void Operate() PURE_VIRTUAL(AAttraction::Operate, );									//abstract
+	virtual AGuest* ServiceGuest(AGuest* CurrGuest) PURE_VIRTUAL(AAttraction::ServiceGuest, return CurrGuest;);		//abstract
+	virtual void Operate() PURE_VIRTUAL(AAttraction::Operate,);														//abstract
 
 	/*
 	 *	End Attraction actions
