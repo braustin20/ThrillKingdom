@@ -260,6 +260,11 @@ void AGuest::DownEnergy(float Amount)
 	}
 }
 
+void AGuest::Interact(AAttraction* CurrAttraction)
+{
+	//TODO: impliment this methods
+}
+
 
 FString AGuest::GetName()
 {
@@ -289,4 +294,9 @@ EGuestGender::Gender AGuest::GetGender()
 FString AGuest::GetCurrThought()
 {
 	return CurrThought;
+}
+
+TArray <FString> AGuest::GetRidesRiddenOn()
+{
+	return RidesRiddenOn;
 }

@@ -63,6 +63,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = getters)
 		EGuestGender::Gender GetGender();
 
+	UFUNCTION(BlueprintCallable, Category = getters)
+		TArray <FString> GetRidesRiddenOn();
+
 	/*
 	 *	End Getter methods
 	 */
@@ -128,7 +131,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void DownEnergy(float Amount);
 
-	//virtual void Interact(AAttraction* CurrAttraction);
+	virtual void Interact(AAttraction* CurrAttraction);
 
 	/*
 	 *	End Guest actions
@@ -228,7 +231,9 @@ protected:
 	//initialized through the constructor.
 	EGuestGender::Gender Gender;
 
-	//TODO: write container for guest inventory
+	//TODO: write containers
+	TArray <FString> RidesRiddenOn;
+
 
 	/*
 	 *	End fields
