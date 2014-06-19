@@ -18,6 +18,6 @@ class URide : public UObject
 	 *  Start Fields
 	 */
 
-	UPROPERTY()
-		float Durability;
+	/*UPROPERTY()
+		float Durability;*/
 };

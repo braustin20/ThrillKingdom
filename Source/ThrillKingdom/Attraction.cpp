@@ -1,77 +1,94 @@
 
-
+//#include "Guest.h"
 #include "ThrillKingdom.h"
 #include "Attraction.h"
 
 
 AAttraction::AAttraction(const class FPostConstructInitializeProperties& PCIP)
-	: Super(PCIP)
+: Super(PCIP)
 {
-	FString GetAttractionName()
-	{
-		return AttractionName;
-	}
-
-	float GetEntranceFee()
-	{
-		return EntranceFee;
-	}
-
-	virtual EAttractionStatus::Status GetAttractionStatus()
-	{
-		return AttractionStatus;
-	}
-
-	virtual void SetAttractionStatus(EAttractionStatus::Status NewAttractionStatus)
-	{
-		AttractionStatus = NewAttractionStatus;
-	}
-
-	void SetAttractionName(FString NewAttractionName)
-	{
-		AttractionName = NewAttractionName;
-	}
-
-	void SetEntranceFee(float NewEntranceFee)
-	{
-		if (NewEntranceFee >= MIN_ENTRANCE_FEE && NewEntranceFee <= MAX_ENTRANCE_FEE)
-		{
-			EntranceFee = NewEntranceFee;
-		}
-		else
-		{
-			//TODO:  make something happen here if the above conditions are not met
-		}
-	}
-
-	void UpEntranceFee(float Amount)
-	{
-		float NewEntranceFee = EntranceFee + Amount;
-
-		if (Amount >= 0 && NewEntranceFee <= MAX_ENTRANCE_FEE)
-		{
-			EntranceFee = NewEntranceFee;
-		}
-		else
-		{
-			//TODO:  make something happen here if the above conditions are not met
-		}
-	}
-
-	void DownEntranceFee(float Amount)
-	{
-		float NewEntranceFee = EntranceFee - Amount;
-
-		if (Amount >= 0 && NewEntranceFee >= MIN_ENTRANCE_FEE)
-		{
-			EntranceFee = NewEntranceFee;
-		}
-		else
-		{
-			//TODO:  make something happen here if the above conditions are not met
-		}
-	}
-
+	//TODO: add constructor code
+	MinEntranceFee = 0.0f;
+	MaxEntranceFee = 999.99f;
 }
 
+//Not a useable implementation, this function is a pure virtual one
+//AGuest* AAttraction::ServiceGuest(AGuest* CurrGuest)
+//{
+//	return CurrGuest;
+//}
 
+FString AAttraction::GetAttractionName()
+{
+	return AttractionName;
+}
+
+float AAttraction::GetEntranceFee()
+{
+	return EntranceFee;
+}
+
+EAttractionStatus::Status AAttraction::GetAttractionStatus()
+{
+	return AttractionStatus;
+}
+
+void AAttraction::SetAttractionStatus(EAttractionStatus::Status NewAttractionStatus)
+{
+	AttractionStatus = NewAttractionStatus;
+}
+
+void AAttraction::SetAttractionName(FString NewAttractionName)
+{
+	AttractionName = NewAttractionName;
+}
+
+void AAttraction::SetEntranceFee(float NewEntranceFee)
+{
+	if (NewEntranceFee >= MinEntranceFee && NewEntranceFee <= MaxEntranceFee)
+	{
+		EntranceFee = NewEntranceFee;
+	}
+	else
+	{
+		//TODO:  make something happen here if the above conditions are not met
+	}
+}
+
+void AAttraction::UpEntranceFee(float Amount)
+{
+	float NewEntranceFee = EntranceFee + Amount;
+
+	if (Amount >= 0 && NewEntranceFee <= MaxEntranceFee)
+	{
+		EntranceFee = NewEntranceFee;
+	}
+	else
+	{
+		//TODO:  make something happen here if the above conditions are not met
+	}
+}
+
+void AAttraction::DownEntranceFee(float Amount)
+{
+	float NewEntranceFee = EntranceFee - Amount;
+
+	if (Amount >= 0 && NewEntranceFee >= MinEntranceFee)
+	{
+		EntranceFee = NewEntranceFee;
+	}
+	else
+	{
+		//TODO:  make something happen here if the above conditions are not met
+	}
+}
+
+float AAttraction::GetOperatingCosts()
+{
+	return OperatingCosts;
+}
+
+void AAttraction::SetOperatingCosts(float NewOperatingCosts)
+{
+	OperatingCosts = NewOperatingCosts;
+}
