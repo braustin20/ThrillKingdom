@@ -97,3 +97,15 @@ void AAttraction::SetOperatingCosts(float NewOperatingCosts)
 {
 	OperatingCosts = NewOperatingCosts;
 }
+
+FVector AAttraction::GetEntranceLocation()
+{
+	return EntranceLocation;
+}
+
+void AAttraction::SetEntranceLocation(FVector NewEntranceLocation)
+{
+	//TODO: check that the location is within the bounds of the park before setting this
+	EntranceLocation = NewEntranceLocation;
+	//TODO: do something if entrance is not within park boundaries
+}

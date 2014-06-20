@@ -52,6 +52,9 @@ public:
 		FString GetAttractionType();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
+		FVector GetEntranceLocation();
+
+	UFUNCTION(BlueprintCallable, Category = getters)
 		float GetEntranceFee();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
@@ -70,6 +73,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = setters)
 		void SetAttractionName(FString NewAttractionName);
+
+	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetEntranceLocation(FVector NewEntranceLocation);
 
 	UFUNCTION(BlueprintCallable, Category = setters)
 		void SetEntranceFee(float NewEntranceFee);
