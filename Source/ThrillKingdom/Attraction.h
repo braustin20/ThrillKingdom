@@ -25,8 +25,6 @@ namespace EAttractionStatus
  *				can directly interact with.  Cannot be instantiated in
  *				game.
  *
- *	Native:		Attraction.h
- *
  *	Fields:
  *	Methods:
  */
