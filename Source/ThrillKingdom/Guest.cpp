@@ -2,6 +2,7 @@
 
 #include "ThrillKingdom.h"
 #include "Guest.h"
+#include "Ride.h"
 
 
 AGuest::AGuest(const class FPostConstructInitializeProperties& PCIP)
@@ -296,12 +297,18 @@ FString AGuest::GetCurrThought()
 	return CurrThought;
 }
 
-TArray <FString> AGuest::GetRidesRiddenOn()
+TArray <FString> AGuest::GetRidesRidden()
 {
-	return RidesRiddenOn;
+	return RidesRidden;
 }
 
 int8 AGuest::GetNumRidesRidden()
 {
 	return NumRidesRidden;
+}
+
+void AGuest::AddToRidesRidden(ARide CurrRide)
+{
+	NumRidesRidden++;
+	RidesRidden[NumRidesRidden] = CurrRide.GetAttractionName();
 }
