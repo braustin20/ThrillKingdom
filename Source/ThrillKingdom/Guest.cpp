@@ -309,6 +309,6 @@ int8 AGuest::GetNumRidesRidden()
 
 void AGuest::AddToRidesRidden(ARide CurrRide)
 {
-	NumRidesRidden++;
 	RidesRidden[NumRidesRidden] = CurrRide.GetAttractionName();
+	NumRidesRidden++;
 }
