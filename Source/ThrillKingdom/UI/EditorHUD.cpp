@@ -1,6 +1,6 @@
 
 
-#include "ThrillKingdom.h"
+#include "ThrillKingdom/ThrillKingdom.h"
 #include "EditorHUD.h"
 
 
