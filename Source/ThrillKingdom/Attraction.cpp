@@ -23,6 +23,11 @@ FString AAttraction::GetAttractionName()
 	return AttractionName;
 }
 
+FString AAttraction::GetAttractionType()
+{
+	return AttractionType;
+}
+
 float AAttraction::GetEntranceFee()
 {
 	return EntranceFee;

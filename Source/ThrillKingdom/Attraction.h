@@ -41,11 +41,15 @@ class AAttraction : public AActor
 public:
 	GENERATED_UCLASS_BODY()
 
-		/*
-		 *	Start Getter Methods
-		 */
+	/*
+	 *	Start Getter Methods
+	 */
+
 	UFUNCTION(BlueprintCallable, Category = getters)
 		FString GetAttractionName();
+
+	UFUNCTION(BlueprintCallable, Category = getters)
+		FString GetAttractionType();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
 		float GetEntranceFee();
@@ -117,8 +121,11 @@ protected:
 	 */
 
 	FString AttractionName;
+	FString AttractionType;
 
 	EAttractionStatus::Status AttractionStatus;
+
+	FVector EntranceLocation;
 
 	float Length;
 	float Width;
