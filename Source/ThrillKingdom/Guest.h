@@ -29,8 +29,9 @@ namespace EGuestGender
  *	Methods :
  */
 
-//forward declaration of AAttraction
+//forward declarations
 class AAttraction;
+//class 
 
 //TODO:  add autodoc syntax to comments
 UCLASS()
@@ -65,6 +66,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = getters)
 		TArray <FString> GetRidesRiddenOn();
+
+	UFUNCTION(BlueprintCallable, Category = getters)
+		int8 GetNumRidesRidden();
 
 	/*
 	 *	End Getter methods
@@ -232,6 +236,8 @@ protected:
 	EGuestGender::Gender Gender;
 
 	//TODO: write containers
+
+	int8 NumRidesRidden;
 	TArray <FString> RidesRiddenOn;
 
 
@@ -242,5 +248,7 @@ protected:
 	void GenerateAge();     //TODO: impliment this method
 	void GenerateGender();
 	void GenerateName();    //TODO: impliment this method
+	//TODO: finish below after Ride is built
+	//void AddToRidesRidden(Ride CurrRide);
 
 };

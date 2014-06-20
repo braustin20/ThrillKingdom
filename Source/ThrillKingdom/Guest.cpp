@@ -300,3 +300,8 @@ TArray <FString> AGuest::GetRidesRiddenOn()
 {
 	return RidesRiddenOn;
 }
+
+int8 AGuest::GetNumRidesRidden()
+{
+	return NumRidesRidden;
+}
