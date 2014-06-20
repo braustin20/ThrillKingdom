@@ -4,7 +4,7 @@
 #include "Ride.h"
 
 
-URide::URide(const class FPostConstructInitializeProperties& PCIP)
+ARide::ARide(const class FPostConstructInitializeProperties& PCIP)
 	: Super(PCIP)
 {
 
