@@ -62,13 +62,13 @@ public:
 		int8 GetAge();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
+		int8 GetNumRidesRidden();
+
+	UFUNCTION(BlueprintCallable, Category = getters)
 		EGuestGender::Gender GetGender();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
 		TArray <FString> GetRidesRidden();
-
-	UFUNCTION(BlueprintCallable, Category = getters)
-		int8 GetNumRidesRidden();
 
 	/*
 	 *	End Getter methods
@@ -135,7 +135,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void DownEnergy(float Amount);
 
-	virtual void Interact(AAttraction* CurrAttraction);
+	virtual void Interact(AAttraction CurrAttraction);
 
 	/*
 	 *	End Guest actions
@@ -230,6 +230,8 @@ protected:
 	//method generateAge when a Guest is initialized.
 	int8 Age;
 
+	int8 NumRidesRidden;
+
 	//Represents the guest's Gender.  Determined by the protected
 	//method generateGender when a Guest is initialized, or when
 	//initialized through the constructor.
@@ -237,7 +239,6 @@ protected:
 
 	//TODO: write containers
 
-	int8 NumRidesRidden;
 	TArray <FString> RidesRidden;
 
 
