@@ -156,7 +156,7 @@ void AGuest::SetWallet(float NewWallet)
 	{
 		Wallet = NewWallet;
 	}
-	//else
+	else
 	{
 		//TODO: do something`
 	}
