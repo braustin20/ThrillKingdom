@@ -23,14 +23,13 @@ namespace EGuestGender
  *				Has a number of attributes which affect the behavior of
  *				the Guest, which are represented by fields.
  *
- *	Native :	Guest.h
- *
  *	Fields :
  *	Methods :
  */
 
-//forward declaration of AAttraction
+//forward declarations
 class AAttraction;
+class ARide;
 
 //TODO:  add autodoc syntax to comments
 UCLASS()
@@ -61,10 +60,13 @@ public:
 		int8 GetAge();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
+		int8 GetNumRidesRidden();
+
+	UFUNCTION(BlueprintCallable, Category = getters)
 		EGuestGender::Gender GetGender();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
-		TArray <FString> GetRidesRiddenOn();
+		TArray <FString> GetRidesRidden();
 
 	/*
 	 *	End Getter methods
@@ -131,7 +133,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void DownEnergy(float Amount);
 
-	virtual void Interact(AAttraction* CurrAttraction);
+	UFUNCTION(BlueprintCallable, Category = actions)
+		virtual void Interact(AAttraction CurrAttraction);
 
 	/*
 	 *	End Guest actions
@@ -232,7 +235,11 @@ protected:
 	EGuestGender::Gender Gender;
 
 	//TODO: write containers
-	TArray <FString> RidesRiddenOn;
+
+	//An array of strings that contains the names of the rides ridden by the guest, uses NumRidesRidden 
+	//to store the total number of rides the guest has ridden 
+	TArray <FString> RidesRidden;
+	int8 NumRidesRidden;
 
 
 	/*
@@ -242,5 +249,6 @@ protected:
 	void GenerateAge();     //TODO: impliment this method
 	void GenerateGender();
 	void GenerateName();    //TODO: impliment this method
+	void AddToRidesRidden(ARide CurrRide);
 
 };

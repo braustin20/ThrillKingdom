@@ -2,22 +2,21 @@
 
 #pragma once
 
-#include "Object.h"
+#include "Attraction.h"
 #include "Ride.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class URide : public UObject
+class ARide : public AAttraction
 {
 	GENERATED_UCLASS_BODY()
 
 
 	/*
-	 *  Start Fields
-	 */
+	*  Start Fields
+	*/
 
-	/*UPROPERTY()
-		float Durability;*/
+	float Durability;
 };

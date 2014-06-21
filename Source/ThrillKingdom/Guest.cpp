@@ -2,7 +2,11 @@
 
 #include "ThrillKingdom.h"
 #include "Guest.h"
+#include "Ride.h"
 
+/*
+ *	Start Constructors
+ */
 
 AGuest::AGuest(const class FPostConstructInitializeProperties& PCIP)
 : Super(PCIP)
@@ -25,24 +29,63 @@ AGuest::AGuest(const class FPostConstructInitializeProperties& PCIP)
 	MaxWallet = 99999.99f;
 }
 
-//Generates a Gender for the guest.  Has no arguments and returns no value,
-//sets Gender to either male or female.  50% chance of generating either.
-//Used primarily for single guests.
-void AGuest::GenerateGender()
+/*
+ *	End Constructors
+ */
+
+
+/*
+ *	Start Getters
+ */
+
+FString AGuest::GetName()
 {
-	int8 Temp = FMath::RandRange(0, 1);
-
-	if (Temp == 0)
-	{
-		Gender = EGuestGender::female;
-	}
-
-	else
-	{
-		Gender = EGuestGender::male;
-	}
+	return GuestName;
 }
 
+FString AGuest::GetStatus()
+{
+	return Status;
+}
+
+FString AGuest::GetCurrThought()
+{
+	return CurrThought;
+}
+
+float AGuest::GetWallet()
+{
+	return trunc(Wallet * 100) / 100;
+}
+
+int8 AGuest::GetAge()
+{
+	return Age;
+}
+
+int8 AGuest::GetNumRidesRidden()
+{
+	return NumRidesRidden;
+}
+
+EGuestGender::Gender AGuest::GetGender()
+{
+	return Gender;
+}
+
+TArray <FString> AGuest::GetRidesRidden()
+{
+	return RidesRidden;
+}
+
+/*
+ *	End Getters
+ */
+
+
+/*
+ *	Start Setters
+ */
 
 //Sets guestName to name
 void AGuest::SetName(FString name)
@@ -118,6 +161,15 @@ void AGuest::SetWallet(float NewWallet)
 		//TODO: do something`
 	}
 }
+
+/*
+ *	End Setters
+ */
+
+
+/*
+ *	Start Guest Activities
+ */
 
 void AGuest::Spend(float Amount)
 {
@@ -260,43 +312,36 @@ void AGuest::DownEnergy(float Amount)
 	}
 }
 
-void AGuest::Interact(AAttraction* CurrAttraction)
+void AGuest::Interact(AAttraction CurrAttraction)
 {
 	//TODO: impliment this methods
 }
 
+/*
+ *	End Guest Activities
+ */
 
-FString AGuest::GetName()
+
+//Generates a Gender for the guest.  Has no arguments and returns no value,
+//sets Gender to either male or female.  50% chance of generating either.
+//Used primarily for single guests.
+void AGuest::GenerateGender()
 {
-	return GuestName;
+	int8 Temp = FMath::RandRange(0, 1);
+
+	if (Temp == 0)
+	{
+		Gender = EGuestGender::female;
+	}
+
+	else
+	{
+		Gender = EGuestGender::male;
+	}
 }
 
-FString AGuest::GetStatus()
+void AGuest::AddToRidesRidden(ARide CurrRide)
 {
-	return Status;
-}
-
-float AGuest::GetWallet()
-{
-	return trunc(Wallet * 100) / 100;
-}
-
-int8 AGuest::GetAge()
-{
-	return Age;
-}
-
-EGuestGender::Gender AGuest::GetGender()
-{
-	return Gender;
-}
-
-FString AGuest::GetCurrThought()
-{
-	return CurrThought;
-}
-
-TArray <FString> AGuest::GetRidesRiddenOn()
-{
-	return RidesRiddenOn;
+	RidesRidden[NumRidesRidden] = CurrRide.GetAttractionName();
+	NumRidesRidden++;
 }
