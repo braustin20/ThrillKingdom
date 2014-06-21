@@ -12,12 +12,26 @@ AEditorCharacter::AEditorCharacter(const class FPostConstructInitializePropertie
 	{
 
 	};
+	
+	// Create a collision capsule and set it's collider properties
+	Base = PCIP.CreateDefaultSubobject<UCapsuleComponent>(this, TEXT("CollisionBase"));
+	Base->InitCapsuleSize(30.0f, 80.0f);
+	Base->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	Base->SetCollisionResponseToAllChannels(ECR_Ignore);
+	Base->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
+	// Replace the root component with the capsule
+	RootComponent = Base;
+
+	
 
 	// Create camera component 
 	Camera = PCIP.CreateDefaultSubobject<UCameraComponent>(this, TEXT("Camera0"));
-	Camera->AttachTo(Base, USpringArmComponent::SocketName);
+	Camera->AttachTo(Base);
 	// Don't rotate camera with controller
 	Camera->bUseControllerViewRotation = false; 
+
+	// Rotate the camera facing downwards
+	Camera->AddLocalRotation(FRotator(-30.0f, 0.0f, 0.f));
 }
 
 // Frame loop

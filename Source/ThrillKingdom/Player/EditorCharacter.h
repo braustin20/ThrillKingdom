@@ -16,11 +16,11 @@ public:
 	GENERATED_UCLASS_BODY()
 
 	/** Component used as a base and collision */
-	UPROPERTY(Category = Default, VisibleDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(Category = Default, VisibleAnywhere, BlueprintReadOnly)
 	TSubobjectPtr<class UCapsuleComponent> Base;
 
 	/** Camera component that will be our viewpoint */
-	UPROPERTY(Category = Camera, VisibleDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(Category = Camera, VisibleAnywhere, BlueprintReadOnly)
 	TSubobjectPtr<class UCameraComponent> Camera;
 	
 	// Begin AActor overrides
