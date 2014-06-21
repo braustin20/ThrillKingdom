@@ -134,7 +134,7 @@ public:
 		void DownEnergy(float Amount);
 
 	UFUNCTION(BlueprintCallable, Category = actions)
-		virtual void Interact(AAttraction CurrAttraction);
+		virtual void Interact(AAttraction* CurrAttraction);
 
 	/*
 	 *	End Guest actions
@@ -249,6 +249,6 @@ protected:
 	void GenerateAge();     //TODO: impliment this method
 	void GenerateGender();
 	void GenerateName();    //TODO: impliment this method
-	void AddToRidesRidden(ARide CurrRide);
+	void AddToRidesRidden(ARide* CurrRide);
 
 };

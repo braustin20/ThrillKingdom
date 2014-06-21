@@ -312,7 +312,7 @@ void AGuest::DownEnergy(float Amount)
 	}
 }
 
-void AGuest::Interact(AAttraction CurrAttraction)
+void AGuest::Interact(AAttraction* CurrAttraction)
 {
 	//TODO: impliment this methods
 }
@@ -340,8 +340,8 @@ void AGuest::GenerateGender()
 	}
 }
 
-void AGuest::AddToRidesRidden(ARide CurrRide)
+void AGuest::AddToRidesRidden(ARide* CurrRide)
 {
-	RidesRidden[NumRidesRidden] = CurrRide.GetAttractionName();
+	RidesRidden[NumRidesRidden] = CurrRide->GetAttractionName();
 	NumRidesRidden++;
 }
