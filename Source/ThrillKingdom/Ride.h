@@ -22,8 +22,8 @@ class ARide : public AAttraction
 
 
 	/*
-	 *  Start Fields
-	 */
+	*  Start Fields
+	*/
 
 	float Durability;
 };
