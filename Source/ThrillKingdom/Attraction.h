@@ -25,8 +25,6 @@ namespace EAttractionStatus
  *				can directly interact with.  Cannot be instantiated in
  *				game.
  *
- *	Native:		Attraction.h
- *
  *	Fields:
  *	Methods:
  */
@@ -44,8 +42,15 @@ public:
 		/*
 		 *	Start Getter Methods
 		 */
+
 	UFUNCTION(BlueprintCallable, Category = getters)
 		FString GetAttractionName();
+
+	UFUNCTION(BlueprintCallable, Category = getters)
+		FString GetAttractionType();
+
+	UFUNCTION(BlueprintCallable, Category = getters)
+		FVector GetEntranceLocation();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
 		float GetEntranceFee();
@@ -66,6 +71,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = setters)
 		void SetAttractionName(FString NewAttractionName);
+
+	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetEntranceLocation(FVector NewEntranceLocation);
 
 	UFUNCTION(BlueprintCallable, Category = setters)
 		void SetEntranceFee(float NewEntranceFee);
@@ -117,8 +125,11 @@ protected:
 	 */
 
 	FString AttractionName;
+	FString AttractionType;
 
 	EAttractionStatus::Status AttractionStatus;
+
+	FVector EntranceLocation;
 
 	float Length;
 	float Width;

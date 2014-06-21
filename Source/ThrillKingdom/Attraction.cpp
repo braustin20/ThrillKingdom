@@ -3,6 +3,9 @@
 #include "ThrillKingdom.h"
 #include "Attraction.h"
 
+/*
+ *	Start Constructors
+ */
 
 AAttraction::AAttraction(const class FPostConstructInitializeProperties& PCIP)
 : Super(PCIP)
@@ -12,15 +15,28 @@ AAttraction::AAttraction(const class FPostConstructInitializeProperties& PCIP)
 	MaxEntranceFee = 999.99f;
 }
 
-//Not a useable implementation, this function is a pure virtual one
-//AGuest* AAttraction::ServiceGuest(AGuest* CurrGuest)
-//{
-//	return CurrGuest;
-//}
+/*
+ *	End Constructors
+ */
+
+
+/*
+ *	Start Getters
+ */
 
 FString AAttraction::GetAttractionName()
 {
 	return AttractionName;
+}
+
+FString AAttraction::GetAttractionType()
+{
+	return AttractionType;
+}
+
+FVector AAttraction::GetEntranceLocation()
+{
+	return EntranceLocation;
 }
 
 float AAttraction::GetEntranceFee()
@@ -28,19 +44,35 @@ float AAttraction::GetEntranceFee()
 	return EntranceFee;
 }
 
+float AAttraction::GetOperatingCosts()
+{
+	return OperatingCosts;
+}
+
 EAttractionStatus::Status AAttraction::GetAttractionStatus()
 {
 	return AttractionStatus;
 }
 
-void AAttraction::SetAttractionStatus(EAttractionStatus::Status NewAttractionStatus)
-{
-	AttractionStatus = NewAttractionStatus;
-}
+/*
+ *	End Getters
+ */
+
+
+/*
+ *	Start Setters
+ */
 
 void AAttraction::SetAttractionName(FString NewAttractionName)
 {
 	AttractionName = NewAttractionName;
+}
+
+void AAttraction::SetEntranceLocation(FVector NewEntranceLocation)
+{
+	//TODO: check that the location is within the bounds of the park before setting this
+	EntranceLocation = NewEntranceLocation;
+	//TODO: do something if entrance is not within park boundaries
 }
 
 void AAttraction::SetEntranceFee(float NewEntranceFee)
@@ -54,6 +86,25 @@ void AAttraction::SetEntranceFee(float NewEntranceFee)
 		//TODO:  make something happen here if the above conditions are not met
 	}
 }
+
+void AAttraction::SetOperatingCosts(float NewOperatingCosts)
+{
+	OperatingCosts = NewOperatingCosts;
+}
+
+void AAttraction::SetAttractionStatus(EAttractionStatus::Status NewAttractionStatus)
+{
+	AttractionStatus = NewAttractionStatus;
+}
+
+/*
+ *	End Setters
+ */
+
+
+/*
+ *	Start Attraction Actions
+ */
 
 void AAttraction::UpEntranceFee(float Amount)
 {
@@ -83,12 +134,6 @@ void AAttraction::DownEntranceFee(float Amount)
 	}
 }
 
-float AAttraction::GetOperatingCosts()
-{
-	return OperatingCosts;
-}
-
-void AAttraction::SetOperatingCosts(float NewOperatingCosts)
-{
-	OperatingCosts = NewOperatingCosts;
-}
+/*
+ *	End Attraction Actions
+ */
