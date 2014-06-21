@@ -39,9 +39,9 @@ class AAttraction : public AActor
 public:
 	GENERATED_UCLASS_BODY()
 
-	/*
-	 *	Start Getter Methods
-	 */
+		/*
+		 *	Start Getter Methods
+		 */
 
 	UFUNCTION(BlueprintCallable, Category = getters)
 		FString GetAttractionName();
