@@ -52,7 +52,7 @@ public:
 	 *	End Getters
 	 */
 
-	virtual void BeConsumed(AGuest Possesor) PURE_VIRTUAL(AAttraction::ServiceGuest, return CurrGuest;);
+	virtual void BeConsumed(AGuest Possesor) PURE_VIRTUAL(UGuestItem::BeConsumed,);
 
 protected:
 	FString ItemName;
