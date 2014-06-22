@@ -6,11 +6,11 @@
 #include "Guest.generated.h"
 
 
-UENUM(BlueprintType)
 /**
- 	Enum representing the gender of the guest.
- 	Has two options, female and male.
- */
+Enum representing the gender of the guest.
+Has two options, female and male.
+*/
+UENUM(BlueprintType)
 namespace EGuestGender
 {
 	enum Gender
@@ -26,12 +26,12 @@ class AAttraction;
 class ARide;
 
 
-UCLASS(abstract)
 /**
-	A character in a park.  Can interact with attractions.
-	Has a number of attributes which affect the behavior of
-	this Guest, which are represented by fields.  An abstract class.
+A character in a park.  Can interact with attractions.
+Has a number of attributes which affect the behavior of
+this Guest, which are represented by fields.  An abstract class.
 */
+UCLASS(abstract)
 class AGuest : public ACharacter
 {
 public:
@@ -407,6 +407,9 @@ protected:
 		to store the total number of rides the guest has ridden
 	*/
 	TArray <FString> RidesRidden;
+	
+	//TArray <UGuestItem> Inventory;
+
 	/** The number of rides this Guest has ridden.*/
 	int8 NumRidesRidden;
 
@@ -417,6 +420,7 @@ protected:
 
 	//TODO:  impliment and comment these methods
 	/*virtual*/ void GenerateAge();     //TODO: impliment this method and uncomment virtual
+
 	/** 
 		Generates a value for this Guest's Gender.  50% chance of male, 50% for female.
 		Used in a constructor for individual Guests.
