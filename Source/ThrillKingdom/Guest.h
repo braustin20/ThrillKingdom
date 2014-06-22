@@ -72,7 +72,7 @@ public:
 		/**
 		 *	Gets Wallet.
 		 *
-		 *	@return a float containing how much money this Guest currently has
+		 *	@return a float containing how much money this Guest currently has, rounded to two decimal places
 		 */
 		float GetWallet();
 
@@ -185,36 +185,93 @@ public:
 	 */
 
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		 *	Removes an amount of money from Wallet.  Will not subtract negative values or
+		 *	remove money from an empty Wallet.
+		 *
+		 *	@param Amount - The float amount to be subtracted from Wallet, cannot be a negative value.
+		 */
 		void Spend(float Amount);
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		 *	Adds an amount of money from Wallet.  Will not add negative values or
+		 *	add money to a full Wallet.
+		 *
+		 *	@param Amount - The float amount to be added to Wallet, cannot be a negative value.
+		 */
 		void Withdraw(float Amount);
 
 
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		 *	Adds to Thirst by Amount.  UpThirst cannot increase Thirst beyond MaxThirst.
+		 *
+		 *	@param Amount - The float amount to be added to Thirst, cannot be a negative value.
+		 */
 		void UpThirst(float Amount);
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		 *	Subtracts from Thirst by Amount.  DownThirst cannot decrease Thirst below MinThirst.
+		 *	
+		 *	@param Amount - The float amount to be subtracted from Thirst, cannot be a negative value.
+		 */
 		void DownThirst(float Amount);
 
 
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		 *	Adds to Hunger by Amount.  UpHunger cannot increase Hunger beyond MaxHunger.
+		 *
+		 *	@param Amount - The float amount to be added to Hunger, cannot be a negative value.
+		 */
 		void UpHunger(float Amount);
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		 *	Subtracts from Hunger by Amount.  DownHunger cannot decrease Hunger below MinHunger.
+		 *
+		 *	@param Amount - The float amount to be subtracted from Hunger, cannot be a negative value.
+		 */
 		void DownHunger(float Amount);
 
 
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		 *	Adds to Mood by Amount.  UpMood cannot increase Mood beyond MaxMood.
+		 *
+		 *	@param Amount - The float amount to be added to Mood, cannot be a negative value.
+		 */
 		void UpMood(float Amount);
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		 *	Subtracts from Mood by Amount.  DownMood cannot decrease Mood below MinMood.
+		 *
+		 *	@param Amount - The float amount to be subtracted from Mood, cannot be a negative value.
+		 */
 		void DownMood(float Amount);
 
 
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		 *	Adds to Energy by Amount.  UpEnergy cannot increase Energy beyond MaxEnergy.
+		 *
+		 *	@param Amount - The float amount to be added to Energy, cannot be a negative value.
+		 */
 		void UpEnergy(float Amount);
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		 *	Subtracts from Energy by Amount.  DownEnergy cannot decrease Energy below MinEnergy.
+		 *
+		 *	@param Amount - The float amount to be subtracted from Energy, cannot be a negative value.
+		 */
 		void DownEnergy(float Amount);
 
 
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		 *	Allows this Guest to interact with an Attraction.  A virtual function.  Not finished yet :/
+		 *	
+		 *	@param CurrAttraction - The Attraction this Guest is currently trying to interact with.
+		 */
 		virtual void Interact(AAttraction* CurrAttraction);
 
 	/*
