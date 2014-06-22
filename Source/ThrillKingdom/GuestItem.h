@@ -13,6 +13,6 @@ class UGuestItem : public UObject
 {
 	GENERATED_UCLASS_BODY()
 
-	
-	
+	FString ItemName;
+	float Price;
 };
