@@ -34,9 +34,11 @@ AEditorCharacter::AEditorCharacter(const class FPostConstructInitializePropertie
 	Camera->AddLocalRotation(FRotator(-30.0f, 0.0f, 0.f));
 
 	MoveSpeed = 15.0f;
-	RotateFactor = 30.0f;
-	ZoomFactor = 2.0f;
+	RotateFactor = 2.0f;
+	ZoomFactor = 30.0f;
 	SprintMultiplyAmt = 2.5f;
+	MinZoomAltitude = 10.0f;
+	MaxZoomAltitude = 1000.0f;
 }
 
 // Frame loop
@@ -58,34 +60,57 @@ void AEditorCharacter::SetupPlayerInputComponent(class UInputComponent* InputCom
 	InputComponent->BindAxis("Forward", this, &AEditorCharacter::MoveForward);
 	InputComponent->BindAxis("Right", this, &AEditorCharacter::MoveRight);
 
+	InputComponent->BindAxis("Rotate", this, &AEditorCharacter::Rotate);
+
+	InputComponent->BindAction("ZoomIn", IE_Pressed, this, &AEditorCharacter::ZoomIn);
+	InputComponent->BindAction("ZoomOut", IE_Pressed, this, &AEditorCharacter::ZoomOut);
+
+	InputComponent->BindAction("Sprint", IE_Pressed, this, &AEditorCharacter::ToggleSprintOn);
+	InputComponent->BindAction("Sprint", IE_Released, this, &AEditorCharacter::ToggleSprintOff);
 }
 
+// Input called
 void AEditorCharacter::MoveForward(float Val)
 {
-
+	SetActorLocation((GetActorForwardVector() * (Val * MoveSpeed)) + GetActorLocation());
 }
 
 void AEditorCharacter::MoveRight(float Val)
 {
-
+	SetActorLocation((GetActorRightVector() * (Val * MoveSpeed)) + GetActorLocation());
 }
 
 void AEditorCharacter::Rotate(float Val)
 {
-
+	TempRotation = GetActorRotation();
+	TempRotation.Yaw = TempRotation.Yaw + (Val * RotateFactor);
+	SetActorRotation(TempRotation);
 }
 
 void AEditorCharacter::ZoomIn()
 {
-
+	if (GetActorLocation().Z > MinZoomAltitude){
+		SetActorLocation(GetActorLocation() + (GetActorUpVector() - GetActorForwardVector()) * (ZoomFactor * -1.0f));
+	}
 }
 
 void AEditorCharacter::ZoomOut()
 {
-
+	if (GetActorLocation().Z < MaxZoomAltitude){
+		SetActorLocation(GetActorLocation() + (GetActorUpVector() - GetActorForwardVector()) * ZoomFactor);
+	}
 }
 
-void AEditorCharacter::ToggleSprint()
+void AEditorCharacter::ToggleSprintOn()
 {
+	MoveSpeed *= SprintMultiplyAmt;
+	RotateFactor *= SprintMultiplyAmt;
+	ZoomFactor *= SprintMultiplyAmt;
+}
 
+void AEditorCharacter::ToggleSprintOff()
+{
+	MoveSpeed /= SprintMultiplyAmt;
+	RotateFactor /= SprintMultiplyAmt;
+	ZoomFactor /= SprintMultiplyAmt;
 }

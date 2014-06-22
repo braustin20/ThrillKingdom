@@ -38,24 +38,42 @@ public:
 		float ZoomFactor;
 
 	UPROPERTY(Category = Controls, EditAnywhere, BlueprintReadWrite)
+		float MinZoomAltitude;
+
+	UPROPERTY(Category = Controls, EditAnywhere, BlueprintReadWrite)
+		float MaxZoomAltitude;
+
+	UPROPERTY(Category = Controls, EditAnywhere, BlueprintReadWrite)
 		float SprintMultiplyAmt;
 
 protected:
 
-	// Begin APawn overrides
+	// APawn overrides
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) OVERRIDE; // Allows binding actions/axes to functions
-	// End APawn overrides
 
-	// Called when forward input is pressed
+	// Called when forward/back input is pressed
 	void MoveForward(float Val);
 
+	// Called when right/left input is pressed
 	void MoveRight(float Val);
 
+	// Called when the rotation input is pressed
 	void Rotate(float Val);
 
+	// Called when the zoom in input is pressed
 	void ZoomIn();
 
+	// Called when the zoom out input is pressed
 	void ZoomOut();
 
-	void ToggleSprint();
+	// Called when sprint input is pressed
+	void ToggleSprintOn();
+
+	// Called when sprint input is released
+	void ToggleSprintOff();
+
+private:
+	
+	// Store current rotation before editing
+	FRotator TempRotation;
 };
