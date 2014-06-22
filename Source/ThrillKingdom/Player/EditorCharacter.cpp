@@ -32,6 +32,11 @@ AEditorCharacter::AEditorCharacter(const class FPostConstructInitializePropertie
 
 	// Rotate the camera facing downwards
 	Camera->AddLocalRotation(FRotator(-30.0f, 0.0f, 0.f));
+
+	MoveSpeed = 15.0f;
+	RotateFactor = 30.0f;
+	ZoomFactor = 2.0f;
+	SprintMultiplyAmt = 2.5f;
 }
 
 // Frame loop
@@ -51,9 +56,36 @@ void AEditorCharacter::SetupPlayerInputComponent(class UInputComponent* InputCom
 	check(InputComponent);
 
 	InputComponent->BindAxis("Forward", this, &AEditorCharacter::MoveForward);
+	InputComponent->BindAxis("Right", this, &AEditorCharacter::MoveRight);
 
 }
+
 void AEditorCharacter::MoveForward(float Val)
+{
+
+}
+
+void AEditorCharacter::MoveRight(float Val)
+{
+
+}
+
+void AEditorCharacter::Rotate(float Val)
+{
+
+}
+
+void AEditorCharacter::ZoomIn()
+{
+
+}
+
+void AEditorCharacter::ZoomOut()
+{
+
+}
+
+void AEditorCharacter::ToggleSprint()
 {
 
 }

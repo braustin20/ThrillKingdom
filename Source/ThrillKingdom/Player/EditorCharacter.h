@@ -28,6 +28,18 @@ public:
 	virtual void ReceiveHit(class UPrimitiveComponent* MyComp, class AActor* Other, class UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit) OVERRIDE;
 	// End AActor overrides
 
+	UPROPERTY(Category = Controls, EditAnywhere, BlueprintReadWrite)
+		float MoveSpeed;
+
+	UPROPERTY(Category = Controls, EditAnywhere, BlueprintReadWrite)
+		float RotateFactor;
+
+	UPROPERTY(Category = Controls, EditAnywhere, BlueprintReadWrite)
+		float ZoomFactor;
+
+	UPROPERTY(Category = Controls, EditAnywhere, BlueprintReadWrite)
+		float SprintMultiplyAmt;
+
 protected:
 
 	// Begin APawn overrides
@@ -36,4 +48,14 @@ protected:
 
 	// Called when forward input is pressed
 	void MoveForward(float Val);
+
+	void MoveRight(float Val);
+
+	void Rotate(float Val);
+
+	void ZoomIn();
+
+	void ZoomOut();
+
+	void ToggleSprint();
 };
