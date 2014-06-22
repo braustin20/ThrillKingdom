@@ -28,7 +28,7 @@ namespace EItemType
 /**
  
  */
-UCLASS(absrtact)
+UCLASS(abstract)
 class UGuestItem : public UObject
 {
 public:
