@@ -287,28 +287,38 @@ public:
 	//TODO:  Re-const these fields once they have been changed to ints, also set these values in the constructor.  May need to use #define to set these values
 
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/** The minimum value that Thirst can be. A float, needs to be made an int and const after the final value is decided.*/
 		/*const*/ float MinThirst;
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/** The maximum value that Thirst can be. A float, needs to be made an int and const after the final value is decided.*/
 		/*const*/ float MaxThirst;
 
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/** The minimum value that Hunger can be. A float, needs to be made an int and const after the final value is decided.*/
 		/*const*/ float MinHunger;
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/** The maximum value that Hunger can be. A float, needs to be made an int and const after the final value is decided.*/
 		/*const*/ float MaxHunger;
 
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/** The minimum value that Mood can be. A float, needs to be made an int and const after the final value is decided.*/
 		/*const*/ float MinMood;
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/** The maximum value that Mood can be. A float, needs to be made an int and const after the final value is decided.*/
 		/*const*/ float MaxMood;
 
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/** The minimum value that Energy can be. A float, needs to be made an int and const after the final value is decided.*/
 		/*const*/ float MinEnergy;
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/** The maximum value that Energy can be. A float, needs to be made an int and const after the final value is decided.*/
 		/*const*/ float MaxEnergy;
 
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/** The minimum value that Wallet can be. A float, will need to be specified by #define after final value is decided.*/
 		/*const*/ float MinWallet;
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/** The maximum value that Wallet can be. A float, will need to be specified by #define after final value is decided.*/
 		/*const*/ float MaxWallet;	//TODO: figure out a good value for this
 
 	/*
@@ -325,58 +335,79 @@ protected:
 
 	//TODO: write a set of functions using NTCS instead of FStrings
 
-	//The guest's name
+	/** The guest's name.*/
 	FString GuestName;
 
-	//A string containing a short status update regarding the guest
+	/** A string containing a short status update regarding the guest.*/
 	FString Status;
 
-	//A string containing the thoughts of the guest about the park.
-	//Not 100% sure if we need one of these, what do you guys think?
+	/** 
+		A string containing the thoughts of the guest about the park.
+		Not 100% sure if we need one of these, what do you guys think?
+	*/
 	FString CurrThought;
 
-	//Represents how thirsty the guest is, always positive.
-	//0 meeans no thirst, 100.0f is the maximum value for thirst.
+	/**
+		Represents how thirsty the guest is, always positive.
+		0 meeans no thirst, 100.0f is the maximum value for thirst.
+	*/
 	float Thirst;
 
-	//Represents how hungry the guest is, always positive.
-	//0 means no hunger, 100.0f is the maximum value for hunger.
+	/**
+		Represents how hungry the guest is, always positive.
+		0 means no hunger, 100.0f is the maximum value for hunger.
+	*/
 	float Hunger;
 
-	//Represents how the guest feels.  0 is neutral,
-	//a negative number represents a bad mood, a positive number
-	//represents a good mood. -100.0f and 100.0f are the lower
-	//and upper limits respectively.
+	/**
+		Represents how the guest feels.  0 is neutral,
+		a negative number represents a bad mood, a positive number
+		represents a good mood. -100.0f and 100.0f are the lower
+		and upper limits respectively.
+	*/
 	float Mood;
 
-	//Represents how tired the guest is, always positive.
-	//0 means no energy, 100.0f is the maximum amount of energy
+	/**
+		Represents how tired the guest is, always positive.
+		0 means no energy, 100.0f is the maximum amount of energy
+	*/
 	float Energy;
 
-	//Represents how sick the guest feels, always positive.
-	//0 means the guest does not feel sick, and 100.0f means the guest
-	//feels very sick
+	/**
+		Represents how sick the guest feels, always positive.
+		0 means the guest does not feel sick, and 100.0f means the guest
+		feels very sick
+	*/
 	float Nauseau;
 
-	//Represents the amount of money the guest has, is never
-	//a negative number.  Always truncated to two decimal
-	//points.
+	/**
+		Represents the amount of money the guest has, is never
+		a negative number.  Always truncated to two decimal
+		points.
+	*/
 	float Wallet;
 
-	//Represents the age of the guest.  Determined by the protected
-	//method generateAge when a Guest is initialized.
+	/**
+		Represents the age of the guest.  Determined by the protected
+		method generateAge when a Guest is initialized.
+	*/
 	int8 Age;
 
-	//Represents the guest's Gender.  Determined by the protected
-	//method generateGender when a Guest is initialized, or when
-	//initialized through the constructor.
+	/**
+		Represents the guest's Gender.  Determined by the protected
+		method generateGender when a Guest is initialized, or when
+		initialized through the constructor.
+	*/
 	EGuestGender::Gender Gender;
 
 	//TODO: write containers
 
-	//An array of strings that contains the names of the rides ridden by the guest, uses NumRidesRidden 
-	//to store the total number of rides the guest has ridden 
+	/**
+		An array of strings that contains the names of the rides ridden by the guest, uses NumRidesRidden 
+		to store the total number of rides the guest has ridden
+	*/
 	TArray <FString> RidesRidden;
+	/** The number of rides this Guest has ridden.*/
 	int8 NumRidesRidden;
 
 
@@ -384,7 +415,12 @@ protected:
 	 *	End fields
 	 */
 
+	//TODO:  impliment and comment these methods
 	/*virtual*/ void GenerateAge();     //TODO: impliment this method and uncomment virtual
+	/** 
+		Generates a value for this Guest's Gender.  50% chance of male, 50% for female.
+		Used in a constructor for individual Guests.
+	*/
 	void GenerateGender();
 	void GenerateName();    //TODO: impliment this method
 	void AddToRidesRidden(ARide* CurrRide);
