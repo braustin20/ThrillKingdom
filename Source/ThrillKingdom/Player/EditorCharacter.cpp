@@ -33,10 +33,13 @@ AEditorCharacter::AEditorCharacter(const class FPostConstructInitializePropertie
 	// Rotate the camera facing downwards
 	Camera->AddLocalRotation(FRotator(-30.0f, 0.0f, 0.f));
 
+	// Speed variables
 	MoveSpeed = 15.0f;
 	RotateFactor = 2.0f;
 	ZoomFactor = 30.0f;
 	SprintMultiplyAmt = 2.5f;
+
+	// Zoom bounds
 	MinZoomAltitude = 10.0f;
 	MaxZoomAltitude = 1000.0f;
 }
@@ -53,6 +56,7 @@ void AEditorCharacter::ReceiveHit(class UPrimitiveComponent* MyComp, class AActo
 	Super::ReceiveHit(MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
 }
 
+// Set up input actions
 void AEditorCharacter::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 {
 	check(InputComponent);
@@ -69,7 +73,7 @@ void AEditorCharacter::SetupPlayerInputComponent(class UInputComponent* InputCom
 	InputComponent->BindAction("Sprint", IE_Released, this, &AEditorCharacter::ToggleSprintOff);
 }
 
-// Input called
+
 void AEditorCharacter::MoveForward(float Val)
 {
 	SetActorLocation((GetActorForwardVector() * (Val * MoveSpeed)) + GetActorLocation());
@@ -80,6 +84,7 @@ void AEditorCharacter::MoveRight(float Val)
 	SetActorLocation((GetActorRightVector() * (Val * MoveSpeed)) + GetActorLocation());
 }
 
+// Rotates around the origin at a determined rate
 void AEditorCharacter::Rotate(float Val)
 {
 	TempRotation = GetActorRotation();
@@ -87,6 +92,7 @@ void AEditorCharacter::Rotate(float Val)
 	SetActorRotation(TempRotation);
 }
 
+// Move up and back at a 45 degree angle
 void AEditorCharacter::ZoomIn()
 {
 	if (GetActorLocation().Z > MinZoomAltitude){
@@ -94,6 +100,7 @@ void AEditorCharacter::ZoomIn()
 	}
 }
 
+// Move forward and down at a 45 degree angle
 void AEditorCharacter::ZoomOut()
 {
 	if (GetActorLocation().Z < MaxZoomAltitude){
@@ -101,6 +108,7 @@ void AEditorCharacter::ZoomOut()
 	}
 }
 
+// Multiply movement speeds by the multiplier
 void AEditorCharacter::ToggleSprintOn()
 {
 	MoveSpeed *= SprintMultiplyAmt;
@@ -108,6 +116,7 @@ void AEditorCharacter::ToggleSprintOn()
 	ZoomFactor *= SprintMultiplyAmt;
 }
 
+// Divide movement speeds by the multiplier
 void AEditorCharacter::ToggleSprintOff()
 {
 	MoveSpeed /= SprintMultiplyAmt;
