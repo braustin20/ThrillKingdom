@@ -39,25 +39,24 @@ public:
 	 *	Start Getters
 	 */
 
-	UPROPERTY(BlueprintCallable, Category = getters)
+	UFUNCTION(BlueprintCallable, Category = getters)
 		FString GetName();
-	UPROPERTY(BlueprintCallable, Category = getters)
+	UFUNCTION(BlueprintCallable, Category = getters)
 		float GetRetailPrice();
-	UPROPERTY(BlueprintCallable, Category = getters)
+	UFUNCTION(BlueprintCallable, Category = getters)
 		float GetSupplyCost();
-	UPROPERTY(BlueprintCallable, Category = getters)
+	UFUNCTION(BlueprintCallable, Category = getters)
 		EItemType::Type GetType();
 
 	/*
 	 *	End Getters
 	 */
 
+	virtual void BeConsumed(AGuest Possesor) PURE_VIRTUAL(AAttraction::ServiceGuest, return CurrGuest;);
 
 protected:
 	FString ItemName;
 	float RetailPrice;
 	float SupplyCost;
 	EItemType::Type Type;
-
-	virtual void BeConsumed(AGuest Possesor) PURE_VIRTUAL(AAttraction::ServiceGuest, return CurrGuest;);
 };
