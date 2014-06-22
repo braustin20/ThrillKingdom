@@ -4,10 +4,10 @@
 #include "Slate.h"
 
 UCLASS()
-class EditorUIWidget : public SCompoundWidget
+class SEditorUIWidget : public SCompoundWidget
 {
 
-	SLATE_BEGIN_ARGS(EditorUIWidget)
+	SLATE_BEGIN_ARGS(SEditorUIWidget)
 	{}
 	/*See private declaration of OwnerHUD below.*/
 	SLATE_ARGUMENT(TWeakObjectPtr<class AEditorHUD>, OwnerHUD)
