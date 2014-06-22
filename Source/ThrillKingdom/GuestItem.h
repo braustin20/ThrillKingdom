@@ -39,7 +39,8 @@ public:
 	 */
 
 	FString GetName();
-	float GetPrice();
+	float GetRetailPrice();
+	float GetSupplyCost();
 	EItemType::Type GetType();
 
 	/*
@@ -47,8 +48,9 @@ public:
 	 */
 
 
-private:
+protected:
 	FString ItemName;
-	float Price;
+	float RetailPrice;
+	float SupplyCost;
 	EItemType::Type Type;
 };
