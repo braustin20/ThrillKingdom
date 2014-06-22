@@ -5,7 +5,12 @@
 #include "GameFramework/Character.h"
 #include "Guest.generated.h"
 
+
 UENUM(BlueprintType)
+/**
+ 	Enum representing the gender of the guest.
+ 	Has two options, female and male.
+ */
 namespace EGuestGender
 {
 	enum Gender
@@ -16,23 +21,17 @@ namespace EGuestGender
 }
 
 
-/**
- *	Class:      Guest
- *
- *	Purpose :	A character in a park.Can interact with attractions.
- *				Has a number of attributes which affect the behavior of
- *				the Guest, which are represented by fields.
- *
- *	Fields :
- *	Methods :
- */
-
 //forward declarations
 class AAttraction;
 class ARide;
 
-//TODO:  add autodoc syntax to comments
-UCLASS()
+
+UCLASS(abstract)
+/**
+	A character in a park.  Can interact with attractions.
+	Has a number of attributes which affect the behavior of
+	this Guest, which are represented by fields.  An abstract class.
+*/
 class AGuest : public ACharacter
 {
 public:
@@ -44,28 +43,69 @@ public:
 	 *	All methods will need to be refactored at some point as well
 	 */
 
+	
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		 *	Gets GuestName.
+		 *
+		 *	@return the name of this Guest
+		 */
 		FString GetName();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		 *	Gets Status.
+		 *
+		 *	@return an FString of what this Guest is currently doing
+		 */
 		FString GetStatus();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		 *	Gets CurrThought.
+		 *
+		 *	@return an FString of what this Guest is currently thinking
+		 */
 		FString GetCurrThought();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		 *	Gets Wallet.
+		 *
+		 *	@return a float containing how much money this Guest currently has
+		 */
 		float GetWallet();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		 *	Gets Age.
+		 *
+		 *	@return an int8 containing the age of this Guest
+		 */
 		int8 GetAge();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		 *	Gets NumRidesRidden.
+		 *
+		 *	@return an int8 containing the number of rides this Guest has ridden while in the current park
+		 */
 		int8 GetNumRidesRidden();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		 *	Gets Gender.
+		 *
+		 *	@return an EGuestGender::Gender containing this Guest's gender
+		 */
 		EGuestGender::Gender GetGender();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		 *	Gets RidesRidden.
+		 *
+		 *	@return a TArray containing the names of rides this Guest has ridden while in the current park
+		 */
 		TArray <FString> GetRidesRidden();
 
 	/*
@@ -77,25 +117,61 @@ public:
 	 */
 
 	UFUNCTION(BlueprintCallable, Category = setters)
+		/**
+		 *	Sets GuestName to Name.
+		 *
+		 *	@param Name - The value which GuestName will be set to, an FString.
+		 */
 		void SetName(FString Name);
 
 	UFUNCTION(BlueprintCallable, Category = setters)
+		/**
+		 *	Sets Status to NewStatus.
+		 *
+		 *	@param NewStatus - The value which Status will be set to, an FString.
+		 */
 		void SetStatus(FString NewStatus);
 
 	//not sure if I want to keep any of the below setters, but I have a feeling they might be useful, delete them if they don't end up being used
+
 	UFUNCTION(BlueprintCallable, Category = setters)
+		/**
+		 *	Sets Hunger to NewHunger if NewHunger is in between MinHunger and MaxHunger.
+		 *
+		 *	@param NewHunger - The value which Hunger will be set to, a float.
+		 */
 		void SetHunger(float NewHunger);
 
 	UFUNCTION(BlueprintCallable, Category = setters)
+		/**
+		 *	Sets Thrist to NewThrist if NewThirst is in between MinThirst and MaxThirst.
+		 *
+		 *	@param NewThirst - The value which Thirst will be set to, a float.
+		 */
 		void SetThirst(float NewThirst);
 
 	UFUNCTION(BlueprintCallable, Category = setters)
+		/**
+		 *	Sets Mood to NewMood if NewMoood is in between MinMood and MaxMood.
+		 *
+		 *	@param NewMood - The value which Mood will be set to, a float.
+		 */
 		void SetMood(float NewMood);
 
 	UFUNCTION(BlueprintCallable, Category = setters)
+		/**
+		 *	Sets Energy to NewEnergy if NewEnergy is in between MinEnergy and MaxEnergy.
+		 *
+		 *	@param NewEnergy - The value which Energy will be set to, a float.
+		 */
 		void SetEnergy(float NewEnergy);
 
 	UFUNCTION(BlueprintCallable, Category = setters)
+		/**
+		 *	Sets Wallet to NewWallet if NewWallet is in between MinWallet and MaxWallet.
+		 *
+		 *	@param NewWallet - The value which Wallet will be set to, a float.
+		 */
 		void SetWallet(float NewWallet);
 
 	/*
@@ -105,7 +181,7 @@ public:
 	/*
 	 *	Start Guest actions
 	 *
-	 *	May want to use excpetions in these to detect errors, or return boolean values to designate failure or success
+	 *	May want to use excpetions in these to detect errors, or return boolean values to designate failure or success, or return error strings upon failure
 	 */
 
 	UFUNCTION(BlueprintCallable, Category = actions)
@@ -113,25 +189,30 @@ public:
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void Withdraw(float Amount);
 
+
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void UpThirst(float Amount);
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void DownThirst(float Amount);
+
 
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void UpHunger(float Amount);
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void DownHunger(float Amount);
 
+
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void UpMood(float Amount);
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void DownMood(float Amount);
 
+
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void UpEnergy(float Amount);
 	UFUNCTION(BlueprintCallable, Category = actions)
 		void DownEnergy(float Amount);
+
 
 	UFUNCTION(BlueprintCallable, Category = actions)
 		virtual void Interact(AAttraction* CurrAttraction);
@@ -246,7 +327,7 @@ protected:
 	 *	End fields
 	 */
 
-	void GenerateAge();     //TODO: impliment this method
+	/*virtual*/ void GenerateAge();     //TODO: impliment this method and uncomment virtual
 	void GenerateGender();
 	void GenerateName();    //TODO: impliment this method
 	void AddToRidesRidden(ARide* CurrRide);
