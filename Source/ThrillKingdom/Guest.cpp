@@ -87,19 +87,16 @@ TArray <FString> AGuest::GetRidesRidden()
  *	Start Setters
  */
 
-//Sets guestName to name
 void AGuest::SetName(FString name)
 {
 	GuestName = name;
 }
 
-//sets status to NewStatus
 void AGuest::SetStatus(FString NewStatus)
 {
 	Status = NewStatus;
 }
 
-//sets Hunger to NewHunger if NewHunger is in between MinHunger and MaxHunger
 void AGuest::SetHunger(float NewHunger)
 {
 	if (NewHunger >= MinHunger && NewHunger <= MaxHunger)
@@ -112,7 +109,6 @@ void AGuest::SetHunger(float NewHunger)
 	}
 }
 
-//sets thrist to NewThrist if NewThirst is in between MinThirst and MaxThirst
 void AGuest::SetThirst(float NewThirst)
 {
 	if (NewThirst >= MinThirst && NewThirst <= MaxThirst)
@@ -125,7 +121,6 @@ void AGuest::SetThirst(float NewThirst)
 	}
 }
 
-//sets Mood to NewMood if NewMoood is in between MinMood and MaxMood
 void AGuest::SetMood(float NewMood)
 {
 	if (NewMood >= MinMood && NewMood <= MaxMood)
@@ -156,7 +151,7 @@ void AGuest::SetWallet(float NewWallet)
 	{
 		Wallet = NewWallet;
 	}
-	//else
+	else
 	{
 		//TODO: do something`
 	}
