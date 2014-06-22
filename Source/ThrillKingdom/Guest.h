@@ -407,6 +407,9 @@ protected:
 		to store the total number of rides the guest has ridden
 	*/
 	TArray <FString> RidesRidden;
+	
+	//TArray <UGuestItem> Inventory;
+
 	/** The number of rides this Guest has ridden.*/
 	int8 NumRidesRidden;
 
@@ -417,6 +420,7 @@ protected:
 
 	//TODO:  impliment and comment these methods
 	/*virtual*/ void GenerateAge();     //TODO: impliment this method and uncomment virtual
+
 	/** 
 		Generates a value for this Guest's Gender.  50% chance of male, 50% for female.
 		Used in a constructor for individual Guests.
