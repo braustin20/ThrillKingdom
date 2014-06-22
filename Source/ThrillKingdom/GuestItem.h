@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Object.h"
+#include "Guest.h"
 #include "GuestItem.generated.h"
 
 
@@ -27,7 +28,7 @@ namespace EItemType
 /**
  
  */
-UCLASS()
+UCLASS(absrtact)
 class UGuestItem : public UObject
 {
 public:
@@ -38,10 +39,14 @@ public:
 	 *	Start Getters
 	 */
 
-	FString GetName();
-	float GetRetailPrice();
-	float GetSupplyCost();
-	EItemType::Type GetType();
+	UPROPERTY(BlueprintCallable, Category = getters)
+		FString GetName();
+	UPROPERTY(BlueprintCallable, Category = getters)
+		float GetRetailPrice();
+	UPROPERTY(BlueprintCallable, Category = getters)
+		float GetSupplyCost();
+	UPROPERTY(BlueprintCallable, Category = getters)
+		EItemType::Type GetType();
 
 	/*
 	 *	End Getters
@@ -53,4 +58,6 @@ protected:
 	float RetailPrice;
 	float SupplyCost;
 	EItemType::Type Type;
+
+	virtual void BeConsumed(AGuest Possesor) PURE_VIRTUAL(AAttraction::ServiceGuest, return CurrGuest;);
 };

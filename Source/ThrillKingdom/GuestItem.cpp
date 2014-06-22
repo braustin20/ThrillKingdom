@@ -11,6 +11,10 @@ UGuestItem::UGuestItem(const class FPostConstructInitializeProperties& PCIP)
 }
 
 
+/*
+ *	Start Getters
+ */
+
 FString UGuestItem::GetName()
 {
 	return ItemName;
@@ -30,3 +34,7 @@ EItemType::Type UGuestItem::GetType()
 {
 	return Type;
 }
+
+/*
+ *	End Getters
+ */
