@@ -6,11 +6,11 @@
 #include "Guest.generated.h"
 
 
-UENUM(BlueprintType)
 /**
- 	Enum representing the gender of the guest.
- 	Has two options, female and male.
- */
+Enum representing the gender of the guest.
+Has two options, female and male.
+*/
+UENUM(BlueprintType)
 namespace EGuestGender
 {
 	enum Gender
@@ -26,12 +26,12 @@ class AAttraction;
 class ARide;
 
 
-UCLASS(abstract)
 /**
-	A character in a park.  Can interact with attractions.
-	Has a number of attributes which affect the behavior of
-	this Guest, which are represented by fields.  An abstract class.
+A character in a park.  Can interact with attractions.
+Has a number of attributes which affect the behavior of
+this Guest, which are represented by fields.  An abstract class.
 */
+UCLASS(abstract)
 class AGuest : public ACharacter
 {
 public:
