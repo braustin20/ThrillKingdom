@@ -1,9 +1,10 @@
+
+
 #pragma once
 
 #include "EditorHUD.h"
 #include "Slate.h"
 
-UCLASS()
 class SEditorUIWidget : public SCompoundWidget
 {
 

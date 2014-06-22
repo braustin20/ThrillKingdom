@@ -1,5 +1,9 @@
-#include "EditorUIWidget.h"
+
+
+#pragma once
+
 #include "ThrillKingdom/ThrillKingdom.h"
+#include "EditorUIWidget.h"
 
 //EditorUIWidget::EditorUIWidget()
 //{
