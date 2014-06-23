@@ -106,6 +106,16 @@ public:
 	 *	Start GuestItem actions
 	 */
 
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void UpRetailPrice(float Amount);
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void DownRetailPrice(float Amount);
+
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void UpSupplyCost(float Amount);
+	UFUNCTION(BlueprintCallable, Category = actions)
+		void DownSupplyCost(float Amount);
+
 	virtual void BeConsumed(AGuest Possesor) PURE_VIRTUAL(UGuestItem::BeConsumed,);		//TODO: add the boilerplate for this
 
 	/*
