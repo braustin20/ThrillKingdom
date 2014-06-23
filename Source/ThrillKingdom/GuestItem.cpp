@@ -22,12 +22,12 @@ FString UGuestItem::GetName()
 
 float UGuestItem::GetRetailPrice()
 {
-	return RetailPrice;
+	return trunc(RetailPrice * 100) / 100;
 }
 
 float UGuestItem::GetSupplyCost()
 {
-	return SupplyCost;
+	return trunc(SupplyCost * 100) / 100;
 }
 
 EItemType::Type UGuestItem::GetType()
@@ -37,4 +37,23 @@ EItemType::Type UGuestItem::GetType()
 
 /*
  *	End Getters
+ */
+
+
+/*
+ *	Start Setters
+ */
+
+void UGuestItem::SetRetailPrice(float NewPrice)
+{
+	RetailPrice = NewPrice;
+}
+
+void UGuestItem::SetSupplyCost(float NewCost)
+{
+	SupplyCost = NewCost;
+}
+
+/*
+ *	End Setters
  */
