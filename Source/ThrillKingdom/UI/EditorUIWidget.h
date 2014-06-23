@@ -4,6 +4,7 @@
 
 #include "EditorHUD.h"
 #include "Slate.h"
+#include "Templates/SharedPointer.h"
 
 class SEditorUIWidget : public SCompoundWidget
 {
@@ -21,6 +22,10 @@ public:
 	/////Needed for every widget
 	/////Builds this widget and any of it's children
 	void Construct(const FArguments& InArgs);
+
+protected:
+	
+	TSharedRef <FString> OnGenerateWidgetForTileView(FString* InItem);
 
 private:
 	////////////////////////////////////////////////////////////////////////////////////////////////////

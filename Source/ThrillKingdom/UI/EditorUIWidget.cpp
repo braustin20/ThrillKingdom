@@ -4,6 +4,7 @@
 
 #include "ThrillKingdom/ThrillKingdom.h"
 #include "EditorUIWidget.h"
+#include "EditorHUD.h"
 
 //EditorUIWidget::EditorUIWidget()
 //{
@@ -23,9 +24,11 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 	/////Slate makes extensive use of the C++ Prerocessor(macros) and operator overloading,
 	/////Epic is trying to make our lives easier, look-up the macro/operator definitions to see why.
 	ChildSlot
+		
 		.VAlign(VAlign_Fill)
 		.HAlign(HAlign_Fill)
 		[
+			/**
 			SNew(SOverlay)
 			+ SOverlay::Slot()
 			.VAlign(VAlign_Top)
@@ -38,7 +41,16 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 				.Font(FSlateFontInfo("Veranda", 16)) //don't believe this works, see Rama's tutorial
 				.Text(FText::FromString("Hello, Slate!"))
 			]
+			*/
+			SNew(STileView<FString>)
+				.ListItemsSource(OwnerHUD->Items)
+				.OnGenerateTile(this, &SEditorUIWidget::OnGenerateWidgetForTileView)
+
 		];
+		
 }
 
-
+TSharedRef <FString> SEditorUIWidget::OnGenerateWidgetForTileView(FString* InItem)
+{
+	return SNew(STextBlock).Text((*InItem))
+}

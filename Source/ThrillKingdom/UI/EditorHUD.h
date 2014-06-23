@@ -22,6 +22,9 @@ class AEditorHUD : public AHUD
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////Called as soon as game starts, create SCompoundWidget and give Viewport access
 	void BeginPlay();
+
+public:
+	const TArray <FString> * Items;
 };
 
 
