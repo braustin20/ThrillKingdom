@@ -409,6 +409,9 @@ protected:
 	*/
 	TArray <FString> RidesRidden;
 	
+	/**
+		An array of GuestItems.  Represents the items that this Guest is carrying on their person.
+	*/
 	TArray <UGuestItem> Inventory;
 
 	/** The number of rides this Guest has ridden.*/
