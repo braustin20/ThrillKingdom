@@ -26,7 +26,8 @@ namespace EItemType
 
 
 /**
- 
+	An item that can be carried by a Guest.  These items are also sold at in-park shops.
+	Abstract class.
  */
 UCLASS(abstract)
 class UGuestItem : public UObject
@@ -40,23 +41,89 @@ public:
 	 */
 
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		 *	Gets ItemName.
+		 *
+		 *	@return the name of this GuestItem
+		 */
 		FString GetName();
+
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		 *	Gets RetailPrice.
+		 *
+		 *	@return the price that this GuestItem costs a Guest
+		 */
 		float GetRetailPrice();
+
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		 *	Gets SupplyCost.
+		 *
+		 *	@return the cost of this item to the Park owner
+		 */
 		float GetSupplyCost();
+
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		 *	Gets Type.
+		 *
+		 *	@return the type of this GuestItem
+		 */
 		EItemType::Type GetType();
 
 	/*
 	 *	End Getters
 	 */
 
-	virtual void BeConsumed(AGuest Possesor) PURE_VIRTUAL(UGuestItem::BeConsumed,);
+
+	/*
+	 *	Start Setters
+	 */
+
+	UFUNCTION(BlueprintCallable, Category = setters)
+		/**
+		 *	Sets RetailPrice.
+		 *
+		 *	@param NewPrice - The value which RetailPrice will be set to, a float.
+		 */
+		void SetRetailPrice(float NewPrice);
+
+	UFUNCTION(BlueprintCallable, Category = setters)
+		/**
+		 *	Sets SupplyCost.
+		 *
+		 *	@param NewCost - The value which SupplyCost will be set to, a float.
+		 */
+		void SetSupplyCost(float NewCost);
+
+	/*
+	 *	End Setters
+	 */
+
+
+	/*
+	 *	Start GuestItem actions
+	 */
+
+	virtual void BeConsumed(AGuest Possesor) PURE_VIRTUAL(UGuestItem::BeConsumed,);		//TODO: add the boilerplate for this
+
+	/*
+	 *	End GuestItem actions
+	 */
+
 
 protected:
+
+	/** The name of this GuestItem.*/
 	FString ItemName;
+
+	/** The price of this GuestItem to a Guest.*/
 	float RetailPrice;
+
+	/** The cost of this GuestItem to the Park owner.*/
 	float SupplyCost;
+
+	/** The type of this GuestItem.*/
 	EItemType::Type Type;
 };
