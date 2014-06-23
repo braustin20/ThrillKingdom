@@ -430,7 +430,7 @@ protected:
 		Used in a constructor for individual Guests.
 	*/
 	void GenerateGender();
-	void GenerateName();    //TODO: impliment this method
+	void GenerateName(EGuestGender::Gender Gender);    //TODO: impliment this method
 	void AddToRidesRidden(ARide* CurrRide);
 
 };

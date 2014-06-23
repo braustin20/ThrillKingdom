@@ -3,6 +3,7 @@
 #include "ThrillKingdom.h"
 #include "Guest.h"
 #include "Ride.h"
+#include "GuestName.h"
 
 /*
  *	Start Constructors
@@ -333,6 +334,11 @@ void AGuest::GenerateGender()
 	{
 		Gender = EGuestGender::male;
 	}
+}
+
+void AGuest::GenerateName(EGuestGender::Gender Gender)
+{
+	//TODO: fill in this function
 }
 
 void AGuest::AddToRidesRidden(ARide* CurrRide)
