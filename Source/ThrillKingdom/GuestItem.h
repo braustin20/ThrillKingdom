@@ -18,7 +18,7 @@ namespace EItemType
 		food		UMETA(DisplayName = "food"),
 		drink		UMETA(DisplayName = "drink"),
 		souvenier	UMETA(DisplayName = "souvenier"),	
-		accessory	UMETA(DisplayName = "accesory"),
+		accessory	UMETA(DisplayName = "accessory"),
 		clothing	UMETA(DisplayName = "clothing"),
 		camera		UMETA(DisplayName = "camera")		//Not sure if this should be an item or just a bool in Guest like hasCamera
 	};
