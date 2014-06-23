@@ -77,3 +77,69 @@ void UGuestItem::SetSupplyCost(float NewCost)
 /*
  *	End Setters
  */
+
+
+/*
+ *	Start GuestItems actions
+ */
+
+void UGuestItem::UpRetailPrice(float Amount)
+{
+	float NewPrice = RetailPrice + Amount;
+
+	if (Amount >= 0 && NewPrice <= MaxRetailPrice)
+	{
+		RetailPrice = NewPrice;
+	}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
+}
+
+void UGuestItem::DownRetailPrice(float Amount)
+{
+	float NewPrice = RetailPrice - Amount;
+
+	if (Amount >= 0 && NewPrice >= MinRetailPrice)
+	{
+		RetailPrice = NewPrice;
+	}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
+}
+
+
+void UGuestItem::UpSupplyCost(float Amount)
+{
+	float NewCost = SupplyCost + Amount;
+
+	if (Amount >= 0 && NewCost <= MaxSupplyCost)
+	{
+		SupplyCost = NewCost;
+	}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
+}
+
+void UGuestItem::DownSupplyCost(float Amount)
+{
+	float NewCost = SupplyCost - Amount;
+
+	if (Amount >= 0 && NewCost >= MinSupplyCost)
+	{
+		SupplyCost = NewCost;
+	}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
+}
+
+/*
+ *	End GuestItems actions
+ */
