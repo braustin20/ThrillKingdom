@@ -8,7 +8,7 @@
 
 
 /**
-
+	The type of this GuestItem.  Can be food, drink, souvenier, accessory, clothing, and camera (for now).
 */
 UENUM(BlueprintType)
 namespace EItemType
@@ -18,7 +18,7 @@ namespace EItemType
 		food		UMETA(DisplayName = "food"),
 		drink		UMETA(DisplayName = "drink"),
 		souvenier	UMETA(DisplayName = "souvenier"),	
-		accesory	UMETA(DisplayName = "accesory"),
+		accessory	UMETA(DisplayName = "accesory"),
 		clothing	UMETA(DisplayName = "clothing"),
 		camera		UMETA(DisplayName = "camera")		//Not sure if this should be an item or just a bool in Guest like hasCamera
 	};
