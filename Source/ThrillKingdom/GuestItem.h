@@ -107,13 +107,33 @@ public:
 	 */
 
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		*	Adds to RetailPrice by Amount.  UpRetailPrice cannot increase RetailPrice beyond MaxRetailPrice.
+		*
+		*	@param Amount - The float amount to be added to RetailPrice, cannot be a negative value.
+		*/
 		void UpRetailPrice(float Amount);
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		*	Subtracts from RetailPrice by Amount.  DownRetailPrice cannot decrease RetailPrice below MinRetailPrice.
+		*
+		*	@param Amount - The float amount to be subtracted from RetailPrice, cannot be a negative value.
+		*/
 		void DownRetailPrice(float Amount);
 
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		*	Adds to SupplyCost by Amount.  UpSupplyCost cannot increase SupplyCost beyond MaxSupplyCost.
+		*
+		*	@param Amount - The float amount to be added to SupplyCost, cannot be a negative value.
+		*/
 		void UpSupplyCost(float Amount);
 	UFUNCTION(BlueprintCallable, Category = actions)
+		/**
+		*	Subtracts from SupplyCost by Amount.  DownSupplyCost cannot decrease SupplyCost below MinSupplyCost.
+		*
+		*	@param Amount - The float amount to be subtracted from SupplyCost, cannot be a negative value.
+		*/
 		void DownSupplyCost(float Amount);
 
 	virtual void BeConsumed(AGuest Possesor) PURE_VIRTUAL(UGuestItem::BeConsumed,);		//TODO: add the boilerplate for this
@@ -122,6 +142,28 @@ public:
 	 *	End GuestItem actions
 	 */
 
+
+	/*
+	 *	Start Constants
+	 */
+
+	UPROPERTY(VisibleDefaultsOnly, Category = constants)
+		/** The minimum value that RetailPrice can be. A float, will need to be specified by #define after final value is decided.*/
+		float MinRetailPrice;
+	UPROPERTY(VisibleDefaultsOnly, Category = constants)
+		/** The maximum value that RetailPrice can be. A float, will need to be specified by #define after final value is decided.*/
+		float MaxRetailPrice;
+
+	UPROPERTY(VisibleDefaultsOnly, Category = constants)
+		/** The minimum value that SupplyCost can be. A float, will need to be specified by #define after final value is decided.*/
+		float MinSupplyCost;
+	UPROPERTY(VisibleDefaultsOnly, Category = constants)
+		/** The maximum value that SupplyCost can be. A float, will need to be specified by #define after final value is decided.*/
+		float MaxSupplyCost;
+
+	/*
+	 *	End Constants
+	 */
 
 protected:
 
