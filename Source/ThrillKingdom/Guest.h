@@ -3,6 +3,7 @@
 #pragma once
 
 #include "GameFramework/Character.h"
+#include "GuestItem.h"
 #include "Guest.generated.h"
 
 
@@ -408,7 +409,7 @@ protected:
 	*/
 	TArray <FString> RidesRidden;
 	
-	//TArray <UGuestItem> Inventory;
+	TArray <UGuestItem> Inventory;
 
 	/** The number of rides this Guest has ridden.*/
 	int8 NumRidesRidden;

@@ -3,9 +3,10 @@
 #pragma once
 
 #include "Object.h"
-#include "Guest.h"
 #include "GuestItem.generated.h"
 
+//forward declarations
+class AGuest;
 
 /**
 	The type of this GuestItem.  Can be food, drink, souvenier, accessory, clothing, and camera (for now).
@@ -136,7 +137,7 @@ public:
 		*/
 		void DownSupplyCost(float Amount);
 
-	virtual void BeConsumed(AGuest Possesor) PURE_VIRTUAL(UGuestItem::BeConsumed,);		//TODO: add the boilerplate for this
+	virtual void BeConsumed(AGuest* Possesor) PURE_VIRTUAL(UGuestItem::BeConsumed,);		//TODO: add the boilerplate for this
 
 	/*
 	 *	End GuestItem actions
