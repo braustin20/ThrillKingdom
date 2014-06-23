@@ -7,7 +7,13 @@
 UGuestItem::UGuestItem(const class FPostConstructInitializeProperties& PCIP)
 	: Super(PCIP)
 {
+	//TODO: add constructor code, or not
 
+	MinRetailPrice = 0.0f;
+	MaxRetailPrice = 999.99f;
+
+	MinSupplyCost = 0.0f;
+	MaxSupplyCost = 999.99f;
 }
 
 
@@ -46,12 +52,26 @@ EItemType::Type UGuestItem::GetType()
 
 void UGuestItem::SetRetailPrice(float NewPrice)
 {
-	RetailPrice = NewPrice;
+	if (NewPrice >= MinRetailPrice && NewPrice <= MaxRetailPrice)
+	{
+		RetailPrice = NewPrice;
+	}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 void UGuestItem::SetSupplyCost(float NewCost)
 {
-	SupplyCost = NewCost;
+	if (NewCost >= MinSupplyCost && NewCost <= MaxSupplyCost)
+	{
+		SupplyCost = NewCost;
+	}
+	else
+	{
+		//TODO: do something if either of the above conditions are not met
+	}
 }
 
 /*
