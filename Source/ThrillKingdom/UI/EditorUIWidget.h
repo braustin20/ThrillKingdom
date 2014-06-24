@@ -34,5 +34,10 @@ private:
 	/////HUD has "strong" pointer to Widget,
 	/////circular ownership would prevent/break self-destruction of hud/widget (cause memory leak).
 	TWeakObjectPtr<class AEditorHUD> OwnerHUD;
+
+	FString TestString1;
+
+	TArray <FString*> Items;
+
 };
 

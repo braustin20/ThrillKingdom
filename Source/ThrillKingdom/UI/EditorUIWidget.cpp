@@ -19,6 +19,10 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 {
 	OwnerHUD = InArgs._OwnerHUD;
 
+	TestString1 = FString("WorkPLZ");
+
+	Items.Add(&TestString1);
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////If the code below doesn't look like C++ to you it's because it (sort-of) isn't,
 	/////Slate makes extensive use of the C++ Prerocessor(macros) and operator overloading,
@@ -42,15 +46,14 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 				.Text(FText::FromString("Hello, Slate!"))
 			]
 			*/
-			SNew(STileView<FString>)
-				.ListItemsSource(OwnerHUD->Items)
+			SNew(STileView<FString*>)
+				.ListItemsSource(&Items)
 				.OnGenerateTile(this, &SEditorUIWidget::OnGenerateWidgetForTileView)
-
 		];
-		
+
 }
 
-TSharedRef <FString> SEditorUIWidget::OnGenerateWidgetForTileView(FString* InItem)
+TSharedRef <FString> OnGenerateWidgetForTileView(FString* InItem, const TSharedRef< STableViewBase >& OwnerTable)
 {
-	return SNew(STextBlock).Text((*InItem))
+	return SNew(STextBlock).Text((*InItem));
 }

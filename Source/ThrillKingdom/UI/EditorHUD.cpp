@@ -10,7 +10,7 @@
 AEditorHUD::AEditorHUD(const class FPostConstructInitializeProperties& PCIP)
 	: Super(PCIP)
 {
-	Items->Add(FString("WorkPLZ"));
+
 }
 
 void AEditorHUD::BeginPlay()
