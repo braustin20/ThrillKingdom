@@ -32,6 +32,24 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 		.VAlign(VAlign_Fill)
 		.HAlign(HAlign_Fill)
 		[
+			SNew(SBox)
+			.Padding(FMargin(30.0f, 10.0f))
+			.WidthOverride(1000.0f)
+			[
+				SNew(SHorizontalBox)
+				+ SHorizontalBox::Slot()
+				[
+					SNew(SVerticalBox)
+					+ SVerticalBox::Slot()
+					[
+						SAssignNew(this->TileViewWidget, STileView<FString*>)
+						.ListItemsSource(&Items)
+						.OnGenerateTile(this, &SEditorUIWidget::OnGenerateTile)
+					]
+				] // end horizontal slot
+			] //end border
+		]; //end childslot
+}
 			/**
 			SNew(SOverlay)
 			+ SOverlay::Slot()
@@ -46,20 +64,14 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 				.Text(FText::FromString("Hello, Slate!"))
 			]
 			*/
-			SNew(STileView<TWeakObjectPtr<FString>>)
-				.ListItemsSource(&Items)
-				.OnGenerateTile(this, &SEditorUIWidget::OnGenerateWidgetForTileView)
-		];
 
-}
-
-TSharedRef <ITableRow> OnGenerateWidgetForTileView(FString* InItem, const TSharedRef< STableViewBase >& OwnerTable)
+TSharedRef<ITableRow> SEditorUIWidget::OnGenerateTile(FString* Item, const TSharedRef<STableViewBase>& OwnerTable)
 {
-//	return SNew(STextBlock).Text((*InItem));
-	return SNew(STableRow< TSharedPtr<SWidget> >, OwnerTable)
-		[
-			SNew(STextBlock)
-			.Text((*InItem))
-		];
+
+		return SNew(STableRow< TSharedPtr<SWidget> >, OwnerTable)
+			[
+				SNew(STextBlock).Text(*Item)
+			];
+
 
 }

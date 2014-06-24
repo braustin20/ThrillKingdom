@@ -25,7 +25,7 @@ public:
 
 protected:
 	
-	TSharedRef <ITableRow> OnGenerateWidgetForTileView(FString* InItem, const TSharedRef<STableViewBase>& OwnerTable);
+	TSharedRef <ITableRow> SEditorUIWidget::OnGenerateTile(FString* Item, const TSharedRef<STableViewBase>& OwnerTable);
 
 private:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,9 +35,11 @@ private:
 	/////circular ownership would prevent/break self-destruction of hud/widget (cause memory leak).
 	TWeakObjectPtr<class AEditorHUD> OwnerHUD;
 
+	TSharedPtr<STileView<FString*>> TileViewWidget;
+
 	FString TestString1;
 
 //	TArray <FString*> Items;
-	TArray<TWeakObjectPtr<FString>> Items;
+	TArray<FString*> Items;
 };
 
