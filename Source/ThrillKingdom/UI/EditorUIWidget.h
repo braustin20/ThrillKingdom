@@ -37,9 +37,9 @@ private:
 
 	TSharedPtr<STileView<FString*>> TileViewWidget;
 
-	FString TestString1;
+	//FString TestString1;
 
-//	TArray <FString*> Items;
-	TArray<FString*> Items;
+	TArray <FString*> Items;
+//	TArray> Items;
 };
 

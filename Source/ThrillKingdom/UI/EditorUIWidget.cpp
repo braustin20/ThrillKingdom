@@ -19,9 +19,11 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 {
 	OwnerHUD = InArgs._OwnerHUD;
 
-	TestString1 = FString("WorkPLZ");
+	//TestString1 = FString("WorkPLZ");
 
-	Items.Add(&TestString1);
+	//Items.Add(&TestString1);
+	Items.Empty();
+	Items.Add(MakeShareable(new FString("TestText")));
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////If the code below doesn't look like C++ to you it's because it (sort-of) isn't,
@@ -72,6 +74,5 @@ TSharedRef<ITableRow> SEditorUIWidget::OnGenerateTile(FString* Item, const TShar
 			[
 				SNew(STextBlock).Text(*Item)
 			];
-
 
 }
