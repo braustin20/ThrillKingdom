@@ -19,11 +19,11 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 {
 	OwnerHUD = InArgs._OwnerHUD;
 
-	//TestString1 = FString("WorkPLZ");
+	TestString1 = (MakeShareable(new FString("WorkPLZ")));
 
 	//Items.Add(&TestString1);
 	Items.Empty();
-	Items.Add(MakeShareable(new FString("TestText")));
+	Items.Add(TestString1);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////If the code below doesn't look like C++ to you it's because it (sort-of) isn't,
@@ -44,7 +44,7 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 					SNew(SVerticalBox)
 					+ SVerticalBox::Slot()
 					[
-						SAssignNew(this->TileViewWidget, STileView<FString*>)
+						SAssignNew(this->TileViewWidget, STileView<TSharedPtr<FString>>)
 						.ListItemsSource(&Items)
 						.OnGenerateTile(this, &SEditorUIWidget::OnGenerateTile)
 					]
@@ -67,7 +67,7 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 			]
 			*/
 
-TSharedRef<ITableRow> SEditorUIWidget::OnGenerateTile(FString* Item, const TSharedRef<STableViewBase>& OwnerTable)
+TSharedRef<ITableRow> SEditorUIWidget::OnGenerateTile(TSharedPtr<FString> Item, const TSharedRef<STableViewBase>& OwnerTable)
 {
 
 		return SNew(STableRow< TSharedPtr<SWidget> >, OwnerTable)
