@@ -3,7 +3,6 @@
 #include "ThrillKingdom.h"
 #include "Guest.h"
 #include "Ride.h"
-#include "GuestName.h"
 
 /*
  *	Start Constructors
