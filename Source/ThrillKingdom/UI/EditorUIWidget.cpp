@@ -46,14 +46,20 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 				.Text(FText::FromString("Hello, Slate!"))
 			]
 			*/
-			SNew(STileView<FString*>)
+			SNew(STileView<TWeakObjectPtr<FString>>)
 				.ListItemsSource(&Items)
 				.OnGenerateTile(this, &SEditorUIWidget::OnGenerateWidgetForTileView)
 		];
 
 }
 
-TSharedRef <FString> OnGenerateWidgetForTileView(FString* InItem, const TSharedRef< STableViewBase >& OwnerTable)
+TSharedRef <ITableRow> OnGenerateWidgetForTileView(FString* InItem, const TSharedRef< STableViewBase >& OwnerTable)
 {
-	return SNew(STextBlock).Text((*InItem));
+//	return SNew(STextBlock).Text((*InItem));
+	return SNew(STableRow< TSharedPtr<SWidget> >, OwnerTable)
+		[
+			SNew(STextBlock)
+			.Text((*InItem))
+		];
+
 }

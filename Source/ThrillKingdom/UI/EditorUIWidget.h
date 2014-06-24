@@ -25,7 +25,7 @@ public:
 
 protected:
 	
-	TSharedRef <FString> OnGenerateWidgetForTileView(FString* InItem);
+	TSharedRef <ITableRow> OnGenerateWidgetForTileView(FString* InItem, const TSharedRef<STableViewBase>& OwnerTable);
 
 private:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +37,7 @@ private:
 
 	FString TestString1;
 
-	TArray <FString*> Items;
-
+//	TArray <FString*> Items;
+	TArray<TWeakObjectPtr<FString>> Items;
 };
 
