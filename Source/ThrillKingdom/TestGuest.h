@@ -5,6 +5,7 @@
 #include "Guest.h"
 #include "TestGuest.generated.h"
 
+
 /**
  * 
  */
@@ -13,6 +14,4 @@ class ATestGuest : public AGuest
 {
 	GENERATED_UCLASS_BODY()
 
-	
-	
 };

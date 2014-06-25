@@ -7,7 +7,7 @@
 ATestGuest::ATestGuest(const class FPostConstructInitializeProperties& PCIP)
 	: Super(PCIP)
 {
-
+	Super::GenerateName(EGuestGender::female);
 }
 
 
