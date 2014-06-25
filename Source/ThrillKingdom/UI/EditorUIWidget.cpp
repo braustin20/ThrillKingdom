@@ -19,13 +19,13 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 {
 	OwnerHUD = InArgs._OwnerHUD;
 
-	TestString1 = (MakeShareable(new FString("WorkPLZ")));
+	TestString1 = (MakeShareable(new FString("Test String 1")));
 
 	//Items.Add(&TestString1);
 	Items.Empty();
 	Items.Add(TestString1);
-	Items.Add(MakeShareable(new FString("WorkPLZ2")));
-	Items.Add(MakeShareable(new FString("WorkPLZ3")));
+	Items.Add(MakeShareable(new FString("Test String 2")));
+	Items.Add(MakeShareable(new FString("Test String 3")));
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////If the code below doesn't look like C++ to you it's because it (sort-of) isn't,
@@ -33,25 +33,29 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 	/////Epic is trying to make our lives easier, look-up the macro/operator definitions to see why.
 	ChildSlot
 
-		.VAlign(VAlign_Fill)
-		.HAlign(HAlign_Fill)
+		.VAlign(VAlign_Top)
+		.HAlign(HAlign_Center)
 		[
-			SNew(SScrollBox)
-			+SScrollBox::Slot().Padding(10, 5)
+			
+			SNew(SWindow)
+			.SizingRule(ESizingRule::UserSized)
+			.ScreenPosition(FVector2D(200.f, 200.f))
+			.ClientSize(FVector2D(200.f, 200.f))
+			.bDragAnywhere(true)
+			.IsInitiallyMaximized(false)
 			[
-				SNew(SHorizontalBox)
-				+ SHorizontalBox::Slot()
+		
+				SNew(SScrollBox)
+				+ SScrollBox::Slot().Padding(10, 5)
 				[
-					SNew(SVerticalBox)
-					+ SVerticalBox::Slot()
-					[
-						SAssignNew(this->TileViewWidget, STileView<TSharedPtr<FString>>)
-						.ListItemsSource(&Items)
-						.OnGenerateTile(this, &SEditorUIWidget::OnGenerateTile)
-					]
-				] // end horizontal slot
-				//end border
+					SAssignNew(this->TileViewWidget, STileView<TSharedPtr<FString>>)
+					.ItemWidth(128)
+					.ItemHeight(128)
+					.ListItemsSource(&Items)
+					.OnGenerateTile(this, &SEditorUIWidget::OnGenerateTile)
+				]
 			]
+			
 		]; //end childslot
 }
 			/**
