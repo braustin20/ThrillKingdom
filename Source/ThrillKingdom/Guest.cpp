@@ -3,6 +3,7 @@
 #include "ThrillKingdom.h"
 #include "Guest.h"
 #include "Ride.h"
+#include "GuestNameData.h"
 
 /*
  *	Start Constructors
@@ -338,6 +339,7 @@ void AGuest::GenerateGender()
 void AGuest::GenerateName(EGuestGender::Gender Gender)
 {
 	//TODO: fill in this function
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, MaleNameTable.GetRow<FGuestNameData>("MaleNames.csv")[2].Name);
 }
 
 void AGuest::AddToRidesRidden(ARide* CurrRide)

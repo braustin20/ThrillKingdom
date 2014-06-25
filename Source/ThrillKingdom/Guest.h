@@ -326,9 +326,28 @@ public:
 	 *	End constants
 	 */
 
+
+	/*
+	 *	Start public Fields
+	 */
+
+	UPROPERTY(BlueprintReadOnly, Category = csvreader)
+		FDataTableRowHandle MaleNameTable;
+
+	UPROPERTY(BlueprintReadOnly, Category = csvreader)
+		FDataTableRowHandle FemNameTable;
+
+	UPROPERTY(BlueprintReadOnly, Category = csvreader)
+		FDataTableRowHandle LastNameTable;
+
+	/*
+	 *	End public Fields
+	 */
+
+
 protected:
 	/*
-	 *	Start Fields
+	 *	Start protected Fields
 	 *
 	 *	These fields are written using easy to tweak and work with types
 	 *	should be refactored for efficiency once tweaked with more efficient types
@@ -417,9 +436,8 @@ protected:
 	/** The number of rides this Guest has ridden.*/
 	int8 NumRidesRidden;
 
-
 	/*
-	 *	End fields
+	 *	End protected fields
 	 */
 
 	//TODO:  impliment and comment these methods
