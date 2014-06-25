@@ -339,7 +339,16 @@ void AGuest::GenerateGender()
 void AGuest::GenerateName(EGuestGender::Gender Gender)
 {
 	//TODO: fill in this function
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, MaleNameTable.GetRow<FGuestNameData>("MaleNames.csv")[2].Name);
+
+	//GEngine seems to not have a value here and is preventing me from printing and testing this value
+	if (GEngine != 0)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, MaleNameTable.GetRow<FGuestNameData>("MaleNames.csv")[2].Name);
+	}
+	else
+	{
+
+	}
 }
 
 void AGuest::AddToRidesRidden(ARide* CurrRide)
