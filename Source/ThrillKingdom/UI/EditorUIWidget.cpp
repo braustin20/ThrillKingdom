@@ -24,19 +24,20 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 	//Items.Add(&TestString1);
 	Items.Empty();
 	Items.Add(TestString1);
+	Items.Add(MakeShareable(new FString("WorkPLZ2")));
+	Items.Add(MakeShareable(new FString("WorkPLZ3")));
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////If the code below doesn't look like C++ to you it's because it (sort-of) isn't,
 	/////Slate makes extensive use of the C++ Prerocessor(macros) and operator overloading,
 	/////Epic is trying to make our lives easier, look-up the macro/operator definitions to see why.
 	ChildSlot
-		
+
 		.VAlign(VAlign_Fill)
 		.HAlign(HAlign_Fill)
 		[
-			SNew(SBox)
-			.Padding(FMargin(30.0f, 10.0f))
-			.WidthOverride(1000.0f)
+			SNew(SScrollBox)
+			+SScrollBox::Slot().Padding(10, 5)
 			[
 				SNew(SHorizontalBox)
 				+ SHorizontalBox::Slot()
@@ -49,7 +50,8 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 						.OnGenerateTile(this, &SEditorUIWidget::OnGenerateTile)
 					]
 				] // end horizontal slot
-			] //end border
+				//end border
+			]
 		]; //end childslot
 }
 			/**
