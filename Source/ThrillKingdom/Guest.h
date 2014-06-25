@@ -35,8 +35,8 @@ class ARide;
 UCLASS(abstract)
 class AGuest : public ACharacter
 {
-public:
 	GENERATED_UCLASS_BODY()
+public:
 
 	/*
 	 *	Start Getter methods
