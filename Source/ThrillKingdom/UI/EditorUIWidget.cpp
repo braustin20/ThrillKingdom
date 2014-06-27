@@ -5,6 +5,7 @@
 #include "ThrillKingdom/ThrillKingdom.h"
 #include "EditorUIWidget.h"
 #include "EditorHUD.h"
+#include "WindowOverlayWidget.h"
 
 //EditorUIWidget::EditorUIWidget()
 //{
@@ -27,35 +28,42 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 	Items.Add(MakeShareable(new FString("Test String 2")));
 	Items.Add(MakeShareable(new FString("Test String 3")));
 
+	//GEngine->GameViewport->AddViewportWidgetContent(SAssignNew(OverlayWidget, SWindowOverlayWidget));
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/////If the code below doesn't look like C++ to you it's because it (sort-of) isn't,
 	/////Slate makes extensive use of the C++ Prerocessor(macros) and operator overloading,
 	/////Epic is trying to make our lives easier, look-up the macro/operator definitions to see why.
 	ChildSlot
 
-		.VAlign(VAlign_Top)
-		.HAlign(HAlign_Center)
+	//	.VAlign(VAlign_Top)
+	//	.HAlign(HAlign_Left)
 		[
-			
-			SNew(SWindow)
-			.SizingRule(ESizingRule::UserSized)
-			.ScreenPosition(FVector2D(200.f, 200.f))
-			.ClientSize(FVector2D(200.f, 200.f))
-			.bDragAnywhere(true)
-			.IsInitiallyMaximized(false)
+			SNew(SCanvas)
+			+ SCanvas::Slot()
+			.Size(FVector2D(200.0f, 200.0f))
+			.VAlign(VAlign_Top)
+			.HAlign(HAlign_Left)
 			[
-		
-				SNew(SScrollBox)
-				+ SScrollBox::Slot().Padding(10, 5)
+				SNew(SWindowOverlayWidget)
+				+ SWindowOverlayWidget::Slot()
+				//.SizingRule(ESizingRule::UserSized)
+				//.ScreenPosition(FVector2D(200.f, 200.f))
+				//.ClientSize(FVector2D(200.f, 200.f))
+				//.bDragAnywhere(true)
+				//.IsInitiallyMaximized(false)
 				[
-					SAssignNew(this->TileViewWidget, STileView<TSharedPtr<FString>>)
-					.ItemWidth(128)
-					.ItemHeight(128)
-					.ListItemsSource(&Items)
-					.OnGenerateTile(this, &SEditorUIWidget::OnGenerateTile)
+					SNew(SScrollBox)
+					+ SScrollBox::Slot().Padding(10, 5)
+					[
+						SAssignNew(this->TileViewWidget, STileView<TSharedPtr<FString>>)
+						.ItemWidth(128)
+						.ItemHeight(128)
+						.ListItemsSource(&Items)
+						.OnGenerateTile(this, &SEditorUIWidget::OnGenerateTile)
+					]
 				]
 			]
-			
 		]; //end childslot
 }
 			/**
