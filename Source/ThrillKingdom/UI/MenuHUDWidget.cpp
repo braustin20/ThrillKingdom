@@ -27,7 +27,9 @@ void SMenuHUDWidget::Construct(const FArguments& InArgs)
 					SNew(SVerticalBox)
 					+ SVerticalBox::Slot()
 					[
-					
+							//poop
+						SNew(STextBlock)
+						.Text((FString)"Hello World")
 					]
 				] // end horizontal slot
 				//end border

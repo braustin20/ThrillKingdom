@@ -9,7 +9,7 @@
  * 
  */
 UCLASS()
-class UMenuHUD : public AHUD
+class AMenuHUD : public AHUD
 {
 	GENERATED_UCLASS_BODY()
 
