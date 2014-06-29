@@ -343,6 +343,7 @@ void AGuest::GenerateName(EGuestGender::Gender Gender)
 	//GEngine seems to not have a value here and is preventing me from printing and testing this value
 	if (GEngine != 0)
 	{
+		//TODO:  Figure out what is going wrong in the call to GetRow
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, MaleNameTable.GetRow<FGuestNameData>("MaleNames.csv")[2].Name);
 	}
 	else

@@ -17,7 +17,7 @@ public:
 
 	//Default values I think, the documentation isn't really clear
 	FGuestNameData()
-		: Name("")
+		: Name("Default Name")
 		, Frequency(0.0f)
 		, ApproxNumInUSA(0)
 		, Ranking(0)
