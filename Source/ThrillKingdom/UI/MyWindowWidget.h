@@ -4,9 +4,20 @@
 
 #include "Slate.h"
 
-/**
- * 
- */
+/** Notification that a window has been deactivated */
+DECLARE_DELEGATE(FOnWindowDeactivated);
+
+/** Notification that a window is about to be closed */
+DECLARE_DELEGATE_OneParam(FOnWindowClosed, const TSharedRef<SWindow>&);
+
+/** Notification that a window has been moved */
+DECLARE_DELEGATE_OneParam(FOnWindowMoved, const TSharedRef<SWindow>&);
+
+/** Override delegate for RequestDestroyWindow */
+DECLARE_DELEGATE_OneParam(FRequestDestroyWindowOverride, const TSharedRef<SWindow>&);
+
+/** Called when we need to switch game worlds for a window */
+DECLARE_DELEGATE_RetVal_OneParam(int32, FOnSwitchWorldHack, int32);
 
 class SMyWindowWidget : public SWindow
 {
@@ -107,4 +118,17 @@ public:
 
 		return FReply::Handled();
 	}
+private: 
+
+	/** Window overlay widget */
+	TSharedPtr<SOverlay> WindowOverlay;
+
+	/**
+	* This layer provides mechanism for tooltips, drag-drop
+	* decorators, and popups without creating a new window.
+	*/
+	TSharedPtr<class SPopupLayer> PopupLayer;
+
+	void SMyWindowWidget::ConstructWindowInternals(const bool bCreateTitleBar);
+
 };
