@@ -109,15 +109,10 @@ public:
 
 	void Construct(const FArguments& InArgs);
 
-	virtual FReply SMyWindowWidget::OnMouseButtonDown(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent) OVERRIDE
-	{
+protected:
 
-		// Update WindowContainers location, you can add offsets to mouse position here
-		MoveWindowTo(MouseEvent.GetScreenSpacePosition() + FSlateApplication::Get().GetCursorSize());
-	
+	FReply SMyWindowWidget::OnMouseButtonDown(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent) OVERRIDE;
 
-		return FReply::Handled();
-	}
 private: 
 
 	/** Window overlay widget */

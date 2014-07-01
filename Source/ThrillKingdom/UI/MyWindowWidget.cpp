@@ -246,3 +246,13 @@ void SMyWindowWidget::ConstructWindowInternals(const bool bCreateTitleBar)
 			];
 	}
 }
+
+FReply SMyWindowWidget::OnMouseButtonDown(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent)
+{
+
+	// Update WindowContainers location, you can add offsets to mouse position here
+	MoveWindowTo(MouseEvent.GetScreenSpacePosition() + FSlateApplication::Get().GetCursorSize());
+
+
+	return FReply::Handled();
+}
