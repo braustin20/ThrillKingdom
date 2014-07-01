@@ -5,7 +5,6 @@
 #include "ThrillKingdom/ThrillKingdom.h"
 #include "EditorUIWidget.h"
 #include "EditorHUD.h"
-#include "MyWindowWidget.h"
 
 //EditorUIWidget::EditorUIWidget()
 //{
@@ -41,41 +40,27 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 		[
 			SNew(SCanvas)
 			+ SCanvas::Slot()
-			.Size(FVector2D(200.0f, 200.0f))
-			.Position(FVector2D(100.f, 100.f))
-			.VAlign(VAlign_Top)
-			.HAlign(HAlign_Left)
-			[
-				SAssignNew(this->WindowWidget, SMyWindowWidget)
-				.bDragAnywhere(true)
+				.Size(FVector2D(200.0f, 200.0f))
+				.Position(FVector2D(100.f, 100.f))
+				.VAlign(VAlign_Top)
+				.HAlign(HAlign_Left)
 				[
-					SNew(SScrollBox)
-					+ SScrollBox::Slot().Padding(10, 5)
+					SAssignNew(this->WindowWidget, SMyWindowWidget)
+					.bDragAnywhere(true)
 					[
-						SAssignNew(this->TileViewWidget, STileView<TSharedPtr<FString>>)
-						.ItemWidth(128)
-						.ItemHeight(128)
-						.ListItemsSource(&Items)
-						.OnGenerateTile(this, &SEditorUIWidget::OnGenerateTile)
+						SNew(SScrollBox)
+						+ SScrollBox::Slot().Padding(10, 5)
+						[
+							SAssignNew(this->TileViewWidget, STileView<TSharedPtr<FString>>)
+							.ItemWidth(128)
+							.ItemHeight(128)
+							.ListItemsSource(&Items)
+							.OnGenerateTile(this, &SEditorUIWidget::OnGenerateTile)
+						]
 					]
 				]
-			]
 		]; //end childslot
 }
-			/**
-			SNew(SOverlay)
-			+ SOverlay::Slot()
-			.VAlign(VAlign_Top)
-			.HAlign(HAlign_Center)
-			[
-				SNew(STextBlock)
-				.ShadowColorAndOpacity(FLinearColor::Black)
-				.ColorAndOpacity(FLinearColor::White)
-				.ShadowOffset(FIntPoint(-1, 1))
-				.Font(FSlateFontInfo("Veranda", 16)) //don't believe this works, see Rama's tutorial
-				.Text(FText::FromString("Hello, Slate!"))
-			]
-			*/
 
 TSharedRef<ITableRow> SEditorUIWidget::OnGenerateTile(TSharedPtr<FString> Item, const TSharedRef<STableViewBase>& OwnerTable)
 {
