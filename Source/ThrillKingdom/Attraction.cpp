@@ -59,9 +59,9 @@ EAttractionStatus::Status AAttraction::GetAttractionStatus()
 	return AttractionStatus;
 }
 
-bool AAttraction::IsConstructionComplete()
+bool AAttraction::IsUnderConstruction()
 {
-	return bConstructionComplete;
+	return bUnderConstruction;
 }
 
 /*
@@ -114,9 +114,9 @@ void AAttraction::SetAttractionStatus(EAttractionStatus::Status NewAttractionSta
 	AttractionStatus = NewAttractionStatus;
 }
 
-void AAttraction::SetConstructionComplete(bool bIsConstructionComplete)
+void AAttraction::SetUnderConstruction(bool bIsUnderConstruction)
 {
-	bConstructionComplete = bIsConstructionComplete;
+	bUnderConstruction = bIsUnderConstruction;
 }
 
 /*
