@@ -36,12 +36,12 @@ class AGuest;
 UCLASS(abstract)
 class AAttraction : public AActor
 {
-public:
 	GENERATED_UCLASS_BODY()
+public:
 
-		/*
-		 *	Start Getter Methods
-		 */
+	/*
+	 *	Start Getter Methods
+	 */
 
 	UFUNCTION(BlueprintCallable, Category = getters)
 		FString GetAttractionName();
@@ -53,12 +53,19 @@ public:
 		FVector GetEntranceLocation();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
+		FVector GetExitLocation();
+
+	UFUNCTION(BlueprintCallable, Category = getters)
 		float GetEntranceFee();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
 		float GetOperatingCosts();
 
+	//TODO: come up with a UFUNCTION for this
 	virtual EAttractionStatus::Status GetAttractionStatus();
+
+	UFUNCTION(BlueprintCallable Category = getters)
+		bool IsConstructionComplete();
 
 	/*
 	 *	End Getter Methods
@@ -76,10 +83,16 @@ public:
 		void SetEntranceLocation(FVector NewEntranceLocation);
 
 	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetExitLocation(FVector NewExitLocation);
+
+	UFUNCTION(BlueprintCallable, Category = setters)
 		void SetEntranceFee(float NewEntranceFee);
 
 	UFUNCTION(BlueprintCallable, Category = setters)
 		void SetOperatingCosts(float NewOperatingCosts);
+
+	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetConstructionComplete(bool bIsConstructionComplete);
 
 	//can see situations in which this may need to be overriden
 	virtual void SetAttractionStatus(EAttractionStatus::Status NewAttractionStatus);
@@ -130,12 +143,15 @@ protected:
 	EAttractionStatus::Status AttractionStatus;
 
 	FVector EntranceLocation;
+	FVector ExitLocation;
 
 	float Length;
 	float Width;
 	float Height;
 	float EntranceFee;
 	float OperatingCosts;
+
+	bool bConstructionComplete;
 
 	//TODO: add a container for scenery tags
 
