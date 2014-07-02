@@ -93,7 +93,7 @@ public:
 	 */
 	virtual EAttractionStatus::Status GetAttractionStatus();
 
-	UFUNCTION(BlueprintCallable Category = getters)
+	UFUNCTION(BlueprintCallable, Category = getters)
 		/**
 		 *	Returns the Construction state of this Attraction.
 		 *	
@@ -198,9 +198,11 @@ public:
 	//TODO:  Re-const these fields once they have been changed to ints, also set these values in the constructor.  May need to use #define to set these values
 
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/** The minimum amount that can be charged by this Attraction.*/
 		/*const*/ float MinEntranceFee;
 
 	UPROPERTY(/*Const,*/ VisibleDefaultsOnly, Category = constants)
+		/** The maximum amount that can be charged by this Attraction.*/
 		/*const*/ float MaxEntranceFee;
 
 	/*
@@ -212,20 +214,31 @@ protected:
 	 *	Start Fields
 	 */
 
+	/** The name of this Attraction.*/
 	FString AttractionName;
+	/** The type of Attraction this Attraction is.*/
 	FString AttractionType;
 
+	/** The current state of opperation for this Attraction.*/
 	EAttractionStatus::Status AttractionStatus;
 
+	/** The location of this Attraction's entrance in the park.*/
 	FVector EntranceLocation;
+	/** The location of this Attraction's exit in the park.*/
 	FVector ExitLocation;
 
+	/** The length of the attraction.  Determined by the attraction's longest point.  Measured in the X direction.*/
 	float Length;
+	/** The width of the attraction.  Determined by the attraction's widest point.  Measured in the Y direction.*/
 	float Width;
+	/** The height of the attraction. Determined by the attraction's tallest point.  Measured in the Z direction.*/
 	float Height;
+	/** The price of entry for a Guest to interact with this Attraction.*/
 	float EntranceFee;
+	/** The cost per hour of this Attraction to the park owner.*/
 	float OperatingCosts;
 
+	/** True if this Attraction is currently under construction, false otherwise.*/
 	bool bUnderConstruction;
 
 	//TODO: add a container for scenery tags
