@@ -237,6 +237,10 @@ protected:
 	float EntranceFee;
 	/** The cost per hour of this Attraction to the park owner.*/
 	float OperatingCosts;
+	/** The total income for this Attraction per hour to the park owner.*/
+	float Income;
+	/** The net profit of this Attraction per hour tot he park owner.*/
+	float NetProfit;
 
 	/** True if this Attraction is currently under construction, false otherwise.*/
 	bool bUnderConstruction;
