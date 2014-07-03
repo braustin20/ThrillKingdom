@@ -5,7 +5,6 @@
 #include "EditorHUD.h"
 #include "Slate.h"
 #include "Templates/SharedPointer.h"
-#include "MyWindowWidget.h"
 
 class SEditorUIWidget : public SCompoundWidget
 {
@@ -31,7 +30,7 @@ protected:
 	
 	TSharedRef <ITableRow> SEditorUIWidget::OnGenerateTile(TSharedPtr<FString> Item, const TSharedRef<STableViewBase>& OwnerTable);
 
-	FReply SEditorUIWidget::OnMouseButtonUp(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent) OVERRIDE;
+	FReply SEditorUIWidget::OnMouseButtonDown(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent) OVERRIDE;
 
 private:
 	//Pointer to our parent HUD
@@ -42,7 +41,9 @@ private:
 
 	TSharedPtr<STileView<TSharedPtr<FString>>> TileViewWidget;
 
-	TSharedPtr<SMyWindowWidget> WindowWidget;
+	TSharedPtr<SWindow> WindowWidget;
+
+	TSharedPtr<SBox> ComponentContainer;
 
 	TSharedPtr<FString> TestString1;
 

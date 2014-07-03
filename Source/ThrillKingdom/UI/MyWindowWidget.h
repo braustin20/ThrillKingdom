@@ -10,8 +10,8 @@ class SMyWindowWidget : public SWindow
 public:
 
 	SLATE_BEGIN_ARGS( SMyWindowWidget )
-	{ 
-	}
+
+	{}
 	SLATE_DEFAULT_SLOT(FArguments, Content)
 	SLATE_END_ARGS()
 

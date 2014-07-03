@@ -5,6 +5,7 @@
 #include "ThrillKingdom/ThrillKingdom.h"
 #include "EditorUIWidget.h"
 #include "EditorHUD.h"
+#include "MyWindowWidget.h"
 
 //EditorUIWidget::EditorUIWidget()
 //{
@@ -29,10 +30,9 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 
 	//GEngine->GameViewport->AddViewportWidgetContent(SAssignNew(OverlayWidget, SWindowOverlayWidget));
 
-	////////////////////////////////////////////////////////////////////////////////////////////////////
-	/////If the code below doesn't look like C++ to you it's because it (sort-of) isn't,
-	/////Slate makes extensive use of the C++ Prerocessor(macros) and operator overloading,
-	/////Epic is trying to make our lives easier, look-up the macro/operator definitions to see why.
+	//If the code below doesn't look like C++ to you it's because it (sort-of) isn't,
+	//Slate makes extensive use of the C++ Prerocessor(macros) and operator overloading,
+	//Epic is trying to make our lives easier, look-up the macro/operator definitions to see why.
 	ChildSlot
 
 		//.VAlign(VAlign_Top)
@@ -45,8 +45,7 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 				.VAlign(VAlign_Top)
 				.HAlign(HAlign_Left)
 				[
-					SAssignNew(this->WindowWidget, SMyWindowWidget)
-					.bDragAnywhere(true)
+					SAssignNew(this->WindowWidget, SWindow)
 					[
 						SNew(SScrollBox)
 						+ SScrollBox::Slot().Padding(10, 5)
@@ -56,6 +55,7 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 							.ItemHeight(128)
 							.ListItemsSource(&Items)
 							.OnGenerateTile(this, &SEditorUIWidget::OnGenerateTile)
+							.IsEnabled(true)
 						]
 					]
 				]
@@ -71,7 +71,7 @@ TSharedRef<ITableRow> SEditorUIWidget::OnGenerateTile(TSharedPtr<FString> Item, 
 			];
 
 }
-FReply SEditorUIWidget::OnMouseButtonUp(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent){
+FReply SEditorUIWidget::OnMouseButtonDown(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent){
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, (FString) "Touched");
 	return FReply::Handled();
 }
