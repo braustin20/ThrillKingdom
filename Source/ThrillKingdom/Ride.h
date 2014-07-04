@@ -21,14 +21,43 @@ public:
 	 */
 
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		 *	Gets Durability.
+		 *
+		 *	@return the Durability of this ride
+		 */
 		float GetDurability();
+
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		*	Gets ThrillFactor.
+		*
+		*	@return the ThrillFactor of this ride
+		*/
 		float GetThrillFactor();
+
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		*	Gets EnjoymentFactor.
+		*
+		*	@return the EnjoymentFactor of this ride
+		*/
 		float GetEnjoymentFactor();
+
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		*	Gets NauseaFactor.
+		*
+		*	@return the NauseaFactor of this ride
+		*/
 		float GetNauseaFactor();
+
 	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
+		*	Gets GForceFactor.
+		*
+		*	@return the GForceFactor of this ride
+		*/
 		float GetGForceFactor();
 
 	/*
@@ -39,7 +68,13 @@ public:
 	/*
 	 *	Start Setters
 	 */
+
 	UFUNCTION(BlueprintCallable, Category = setters)
+		/**
+		*	Sets Durability to NewDurability.
+		*
+		*	@param NewDurability - The value which Durability will be set to, a float.
+		*/
 		void SetDurability(float NewDurability);
 
 	/*
@@ -77,19 +112,29 @@ protected:
 	 */
 
 	//TODO: make these actual constants when their associated variables are their final types and values
+	/** The minimum value for Durability.*/
 	float MinDurability;
+	/** The maximum value for Durability.*/
 	float MaxDurability;
 
+	/** The minimum value for ThrillFactor.*/
 	float MinThrillFactor;
+	/** The maximum value for ThrillFactor.*/
 	float MaxThrillFactor;
 
+	/** The minimum value for EnjoymentFactor.*/
 	float MinEnjoymentFactor;
+	/** The maximum value for EnjoymentFactor.*/
 	float MaxEnjoymentFactor;
 
+	/** The minimum value for NauseaFactor.*/
 	float MinNauseaFactor;
+	/** The maximum value for NauseaFactor.*/
 	float MaxNauseaFactor;
 
+	/** The minimum value for GForceFactor.*/
 	float MinGForceFactor;
+	/** The maximum value for GForceFactor.*/
 	float MaxGForceFactor;
 
 	/*
