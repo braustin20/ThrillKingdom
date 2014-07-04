@@ -39,6 +39,11 @@ FVector AAttraction::GetEntranceLocation()
 	return EntranceLocation;
 }
 
+FVector AAttraction::GetExitLocation()
+{
+	return ExitLocation;
+}
+
 float AAttraction::GetEntranceFee()
 {
 	return EntranceFee;
@@ -52,6 +57,11 @@ float AAttraction::GetOperatingCosts()
 EAttractionStatus::Status AAttraction::GetAttractionStatus()
 {
 	return AttractionStatus;
+}
+
+bool AAttraction::IsUnderConstruction()
+{
+	return bUnderConstruction;
 }
 
 /*
@@ -75,6 +85,13 @@ void AAttraction::SetEntranceLocation(FVector NewEntranceLocation)
 	//TODO: do something if entrance is not within park boundaries
 }
 
+void AAttraction::SetExitLocation(FVector NewExitLocation)
+{
+	//TODO: check that the location is within the bounds of the park before setting this
+	ExitLocation = NewExitLocation;
+	//TODO: do something if entrance is not within park boundaries
+}
+
 void AAttraction::SetEntranceFee(float NewEntranceFee)
 {
 	if (NewEntranceFee >= MinEntranceFee && NewEntranceFee <= MaxEntranceFee)
@@ -95,6 +112,11 @@ void AAttraction::SetOperatingCosts(float NewOperatingCosts)
 void AAttraction::SetAttractionStatus(EAttractionStatus::Status NewAttractionStatus)
 {
 	AttractionStatus = NewAttractionStatus;
+}
+
+void AAttraction::SetUnderConstruction(bool bIsUnderConstruction)
+{
+	bUnderConstruction = bIsUnderConstruction;
 }
 
 /*
