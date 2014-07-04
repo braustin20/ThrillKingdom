@@ -78,4 +78,8 @@ protected:
 
 	float MinGForceFactor;
 	float MaxGForceFactor;
+
+	/*
+	 *	End Constants
+	 */
 };
