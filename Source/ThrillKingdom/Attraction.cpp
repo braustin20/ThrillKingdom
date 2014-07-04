@@ -59,6 +59,11 @@ EAttractionStatus::Status AAttraction::GetAttractionStatus()
 	return AttractionStatus;
 }
 
+int32 AAttraction::GetTotalGuestsServed()
+{
+	return TotalGuestsServed;
+}
+
 bool AAttraction::IsUnderConstruction()
 {
 	return bUnderConstruction;

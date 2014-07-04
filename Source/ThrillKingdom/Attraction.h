@@ -95,6 +95,14 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = getters)
 		/**
+		 *	Gets TotalGuestsServed.
+		 *
+		 *	@return the total number of Guests served by this ride, an int32
+		 */
+		int32 GetTotalGuestsServed();
+
+	UFUNCTION(BlueprintCallable, Category = getters)
+		/**
 		 *	Returns the Construction state of this Attraction.
 		 *	
 		 *	@returns false if this Attraction is no longer under construction, and true if it is still under construction
@@ -241,6 +249,9 @@ protected:
 	float Income;
 	/** The net profit of this Attraction per hour tot he park owner.*/
 	float NetProfit;
+
+	/** The total number of Guests served by this Attraction.*/
+	int32 TotalGuestsServed;
 
 	/** True if this Attraction is currently under construction, false otherwise.*/
 	bool bUnderConstruction;
