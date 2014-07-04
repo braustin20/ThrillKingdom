@@ -53,10 +53,18 @@ protected:
 	 */
 	
 	//TODO: work on finding good types and values for these fields
+	/** How likely the ride is to breakdown.  0 Durability means 100% chance of breakdown, 100 Durability means 0% chance of breakdown.*/
 	float Durability;
+	/** How thrilling the ride is considered by Guests.  0 is the least thrilling, 10 is the most thrilling.  Determined by things like speed, acceleration, airtime, 
+	and g-forces.*/
 	float ThrillFactor;
+	/** How enjoyable the ride is considered by Guests.  0 is the least enjoyable, 10 is the most enjoyable.  Determined by things like theming, comfort, special effects, 
+	and thrill.*/
 	float EnjoymentFactor;
+	/** How nauseous the ride makes Guests.  0 does not make Guests nauseous, 10 makes Guests extrememly nauseous.  Determined by rapid acceleration, directional changes, 
+	and disorientation.*/
 	float NauseaFactor;
+	/** How intense the G-forces this ride exerts on guests are.  0 is minimal G-forces, 10 is maximum G-forces.  Determined by vertical, lateral, and horizontal Gs.*/
 	float GForceFactor;
 
 	/*
