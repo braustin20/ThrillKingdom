@@ -52,5 +52,12 @@ float ARide::GetGForceFactor()
 
 void ARide::SetDurability(float NewDurability)
 {
-	Durability = NewDurability;
+	if (NewDurability >= MinDurability && NewDurability <= MaxDurability)
+	{
+		Durability = NewDurability;
+	}
+	else
+	{
+		//TODO: make a thing happen here
+	}
 }

@@ -20,11 +20,16 @@ public:
 	 *	Start Getters
 	 */
 
-	float GetDurability();
-	float GetThrillFactor();
-	float GetEnjoymentFactor();
-	float GetNauseaFactor();
-	float GetGForceFactor();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		float GetDurability();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		float GetThrillFactor();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		float GetEnjoymentFactor();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		float GetNauseaFactor();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		float GetGForceFactor();
 
 	/*
 	 *	End Getters
@@ -34,8 +39,8 @@ public:
 	/*
 	 *	Start Setters
 	 */
-
-	void SetDurability(float NewDurability);
+	UFUNCTION(BlueprintCallable, Category = setters)
+		void SetDurability(float NewDurability);
 
 	/*
 	 *	End Setters
