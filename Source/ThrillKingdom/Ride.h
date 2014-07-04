@@ -30,34 +30,34 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = getters)
 		/**
-		*	Gets ThrillFactor.
-		*
-		*	@return the ThrillFactor of this ride
-		*/
+		 *	Gets ThrillFactor.
+		 *
+		 *	@return the ThrillFactor of this ride
+		 */
 		float GetThrillFactor();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
 		/**
-		*	Gets EnjoymentFactor.
-		*
-		*	@return the EnjoymentFactor of this ride
-		*/
+		 *	Gets EnjoymentFactor.
+		 *
+		 *	@return the EnjoymentFactor of this ride
+		 */
 		float GetEnjoymentFactor();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
 		/**
-		*	Gets NauseaFactor.
-		*
-		*	@return the NauseaFactor of this ride
-		*/
+		 *	Gets NauseaFactor.
+		 *
+		 *	@return the NauseaFactor of this ride
+		 */
 		float GetNauseaFactor();
 
 	UFUNCTION(BlueprintCallable, Category = getters)
 		/**
-		*	Gets GForceFactor.
-		*
-		*	@return the GForceFactor of this ride
-		*/
+		 *	Gets GForceFactor.
+		 *
+		 *	@return the GForceFactor of this ride
+		 */
 		float GetGForceFactor();
 
 	/*
@@ -71,10 +71,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = setters)
 		/**
-		*	Sets Durability to NewDurability.
-		*
-		*	@param NewDurability - The value which Durability will be set to, a float.
-		*/
+		 *	Sets Durability to NewDurability.
+		 *
+		 *	@param NewDurability - The value which Durability will be set to, a float.
+		 */
 		void SetDurability(float NewDurability);
 
 	/*
