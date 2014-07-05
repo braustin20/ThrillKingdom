@@ -4,6 +4,13 @@
 
 #include "CircuitTrackInterface.generated.h"
 
+
+USTRUCT()
+struct FTrackPiece
+{
+	GENERATED_USTRUCT_BODY()
+};
+
 /**
  * 
  */
