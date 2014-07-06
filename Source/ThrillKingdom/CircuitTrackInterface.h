@@ -19,4 +19,5 @@ class ICircuitTrackInterface
 {
 	GENERATED_IINTERFACE_BODY()
 
+	virtual void Test();
 };
