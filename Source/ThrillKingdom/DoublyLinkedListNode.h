@@ -49,8 +49,9 @@ public:
 	virtual UDoublyLinkedListNode* AddToEnd(UDoublyLinkedListNode* NewNode);
 	virtual UDoublyLinkedListNode* AddToFront(UDoublyLinkedListNode* NewNode);
 	virtual UDoublyLinkedListNode* DeleteNode();
-	virtual UDoublyLinkedListNode* ShiftFrontForwardOne();
-	virtual UDoublyLinkedListNode* ShiftFrontBackOne();
+	virtual UDoublyLinkedListNode* ShiftFrontForward();
+	virtual UDoublyLinkedListNode* ShiftFrontBack();
+	virtual void PrintList();
 
 	/*
 	 *	End Utilities
