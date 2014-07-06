@@ -46,8 +46,8 @@ public:
 	UDoublyLinkedListNode* FindFront();
 	UDoublyLinkedListNode* ChangeFront(int32 DistanceToMove);
 
-	virtual UDoublyLinkedListNode* AddToEnd(UDoublyLinkedListNode* NewNode);
-	virtual UDoublyLinkedListNode* AddToFront(UDoublyLinkedListNode* NewNode);
+	//virtual UDoublyLinkedListNode* AddToEnd(UDoublyLinkedListNode* NewNode);
+	//virtual UDoublyLinkedListNode* AddToFront(UDoublyLinkedListNode* NewNode);
 	virtual UDoublyLinkedListNode* DeleteNode();
 	virtual UDoublyLinkedListNode* ShiftFrontForward();
 	virtual UDoublyLinkedListNode* ShiftFrontBack();

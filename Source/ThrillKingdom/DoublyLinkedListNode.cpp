@@ -1,6 +1,5 @@
 //TODO: read through this and make sure it all looks good.  also test thoroughly
 //TODO: rewrite functions to always return and operate from the front node
-//TODO: write a set of recursive functions and decide which to use based on performance and maintainability
 
 #include "ThrillKingdom.h"
 #include "DoublyLinkedListNode.h"
@@ -9,8 +8,8 @@
 UDoublyLinkedListNode::UDoublyLinkedListNode(const class FPostConstructInitializeProperties& PCIP)
 	: Super(PCIP)
 {
-	Next = NULL;
-	Prev = NULL;
+	Next = nullptr;
+	Prev = nullptr;
 	Front = false;
 }
 
@@ -40,93 +39,93 @@ bool UDoublyLinkedListNode::IsFront()
 	return Front;
 }
 
-UDoublyLinkedListNode*  UDoublyLinkedListNode::AddToEnd(UDoublyLinkedListNode* NewNode)
-{
-	//Store a reference to the current node
-	UDoublyLinkedListNode* Curr;
-	Curr = this;
-
-	//if the next node is null you have reached the end
-	if (Curr->GetNext() == nullptr)
-	{
-		//set NewNode as the next node
-		Curr->SetNext(NewNode);
-
-		//Set NewNode's Next to null and Prev to Curr
-		NewNode->SetNext(nullptr);
-		NewNode->SetPrev(Curr);
-	}
-
-	while (!Curr->GetNext()->IsFront() && Curr->GetNext() != nullptr)
-	{
-		Curr = Curr->GetNext();
-	}
-
-	if (Curr->GetNext() == nullptr)
-	{
-		Curr->SetNext(NewNode);
-
-		NewNode->SetNext(nullptr);
-		NewNode->SetPrev(Curr);
-
-		//return Curr as the front node of the list
-		while (!Curr->IsFront() && Curr->GetPrev() != nullptr)
-		{
-			Curr = Curr->GetPrev();
-		}
-
-		return Curr;
-	}
-
-	//TODO:  print something here
-
-	while (!Curr->GetPrev()->IsFront())
-	{
-		Curr = Curr->GetPrev();
-	}
-
-	return Curr;
-}
-
-UDoublyLinkedListNode* UDoublyLinkedListNode::AddToFront(UDoublyLinkedListNode* NewNode)
-{
-	UDoublyLinkedListNode* Curr;
-	Curr = this;
-
-	if (Curr->GetPrev() == nullptr)
-	{
-		Curr->SetPrev(NewNode);
-
-		NewNode->SetPrev(nullptr);
-		NewNode->SetNext(Curr);
-
-		return Curr;
-	}
-
-	while (!Curr->GetPrev()->IsFront() && Curr->GetPrev() != nullptr)
-	{
-		Curr = Curr->GetPrev();
-	}
-
-	if (Curr->GetPrev() == nullptr)
-	{
-		Curr->SetPrev(NewNode);
-
-		NewNode->SetPrev(nullptr);
-		NewNode->SetNext(Curr);
-
-		return Curr;
-	}
-
-	//TODO: print something here since the list is circular
-
-	while (!Curr->GetNext()->IsFront())
-	{
-		Curr = Curr->GetNext();
-	}
-
-	return Curr;
-}
+//UDoublyLinkedListNode*  UDoublyLinkedListNode::AddToEnd(UDoublyLinkedListNode* NewNode)
+//{
+//	//Store a reference to the current node
+//	UDoublyLinkedListNode* Curr;
+//	Curr = this;
+//
+//	//if the next node is null you have reached the end
+//	if (Curr->GetNext() == nullptr)
+//	{
+//		//set NewNode as the next node
+//		Curr->SetNext(NewNode);
+//
+//		//Set NewNode's Next to null and Prev to Curr
+//		NewNode->SetNext(nullptr);
+//		NewNode->SetPrev(Curr);
+//	}
+//
+//	while (!Curr->GetNext()->IsFront() && Curr->GetNext() != nullptr)
+//	{
+//		Curr = Curr->GetNext();
+//	}
+//
+//	if (Curr->GetNext() == nullptr)
+//	{
+//		Curr->SetNext(NewNode);
+//
+//		NewNode->SetNext(nullptr);
+//		NewNode->SetPrev(Curr);
+//
+//		//return Curr as the front node of the list
+//		while (!Curr->IsFront() && Curr->GetPrev() != nullptr)
+//		{
+//			Curr = Curr->GetPrev();
+//		}
+//
+//		return Curr;
+//	}
+//
+//	//TODO:  print something here
+//
+//	while (!Curr->GetPrev()->IsFront())
+//	{
+//		Curr = Curr->GetPrev();
+//	}
+//
+//	return Curr;
+//}
+//
+//UDoublyLinkedListNode* UDoublyLinkedListNode::AddToFront(UDoublyLinkedListNode* NewNode)
+//{
+//	UDoublyLinkedListNode* Curr;
+//	Curr = this;
+//
+//	if (Curr->GetPrev() == nullptr)
+//	{
+//		Curr->SetPrev(NewNode);
+//
+//		NewNode->SetPrev(nullptr);
+//		NewNode->SetNext(Curr);
+//
+//		return Curr;
+//	}
+//
+//	while (!Curr->GetPrev()->IsFront() && Curr->GetPrev() != nullptr)
+//	{
+//		Curr = Curr->GetPrev();
+//	}
+//
+//	if (Curr->GetPrev() == nullptr)
+//	{
+//		Curr->SetPrev(NewNode);
+//
+//		NewNode->SetPrev(nullptr);
+//		NewNode->SetNext(Curr);
+//
+//		return Curr;
+//	}
+//
+//	//TODO: print something here since the list is circular
+//
+//	while (!Curr->GetNext()->IsFront())
+//	{
+//		Curr = Curr->GetNext();
+//	}
+//
+//	return Curr;
+//}
 
 UDoublyLinkedListNode* UDoublyLinkedListNode::DeleteNode()
 {
@@ -265,14 +264,14 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftFrontForward()
 {
 	if (this->IsFront())
 	{
-		UDoublyLinkedListNode* Curr;
+		UDoublyLinkedListNode* Curr = NewObject<UDoublyLinkedListNode>();
 
 		if (this->GetNext() == nullptr)
 		{
 			this->SetNext(Curr);
 			this->Front = false;
 			Curr->Front = true;
-			Curr->SetPrev(this);
+			Curr->GetNext()->SetPrev(this);
 			Curr->SetNext(nullptr);
 
 			return Curr;
@@ -290,7 +289,7 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftFrontBack()
 {
 	if (this->IsFront())
 	{
-		UDoublyLinkedListNode* Curr;
+		UDoublyLinkedListNode* Curr = NewObject<UDoublyLinkedListNode>();;
 
 		if (this->GetPrev() == nullptr)
 		{
