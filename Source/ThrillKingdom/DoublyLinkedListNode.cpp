@@ -282,6 +282,8 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftFrontForward()
 		this->GetNext()->Front = true;
 		return this->GetNext();
 	}
+
+	return this->FindFront();
 }
 
 UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftFrontBack()
@@ -305,4 +307,6 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftFrontBack()
 		this->GetPrev()->Front = true;
 		return this->GetPrev();
 	}
+
+	return this->FindFront();
 }
