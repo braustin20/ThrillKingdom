@@ -43,11 +43,14 @@ public:
 	 */
 
 	bool IsFront();
-	UDoublyLinkedListNode* AddToEnd(UDoublyLinkedListNode* NewNode);
-	UDoublyLinkedListNode* AddtoFront(UDoublyLinkedListNode* NewNode);
-	UDoublyLinkedListNode* DeleteNode();
 	UDoublyLinkedListNode* FindFront();
 	UDoublyLinkedListNode* ChangeFront(int32 DistanceToMove);
+
+	virtual UDoublyLinkedListNode* AddToEnd(UDoublyLinkedListNode* NewNode);
+	virtual UDoublyLinkedListNode* AddToFront(UDoublyLinkedListNode* NewNode);
+	virtual UDoublyLinkedListNode* DeleteNode();
+	virtual UDoublyLinkedListNode* ShiftFrontForwardOne();
+	virtual UDoublyLinkedListNode* ShiftFrontBackOne();
 
 	/*
 	 *	End Utilities
