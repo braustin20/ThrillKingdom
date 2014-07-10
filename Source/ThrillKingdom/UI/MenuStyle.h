@@ -2,7 +2,7 @@
 
 #pragma once
 
-//#include "Styling/SlateWidgetStyleAsset.h"
+#include "Styling/SlateWidgetStyleAsset.h"
 //#include "MenuStyle.generated.h"
 
 /**

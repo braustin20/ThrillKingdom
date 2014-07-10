@@ -27,7 +27,7 @@ void FMenuStyle::Shutdown()
 
 FName FMenuStyle::GetStyleSetName()
 {
-	static FName StyleSetName(TEXT("MenuStyles"));
+	static FName StyleSetName(TEXT("MenuStyle"));
 	return StyleSetName;
 }
 
