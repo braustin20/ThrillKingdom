@@ -18,8 +18,12 @@ public:
 	 *	Start Getters
 	 */
 
-	UDoublyLinkedListNode* GetNext();
-	UDoublyLinkedListNode* GetPrev();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		UDoublyLinkedListNode* GetNext();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		UDoublyLinkedListNode* GetPrev();
+	UFUNCTION(BlueprintCallable, Category = getters)
+		bool IsSelected();
 
 	/*
 	 *	End Getters
@@ -27,37 +31,45 @@ public:
 
 
 	/*
-	 *	Start Setters
+	 *	Start List Operations
 	 */
 
-	/*
-	 *	End Setters
-	 */
+	UFUNCTION(BlueprintCallable, Category = listOperations)
+		UDoublyLinkedListNode* RFindSelected();
+	UFUNCTION(BlueprintCallable, Category = listOps)
+		UDoublyLinkedListNode* ChangeSelected(int32 DistanceToMove);
 
-
-	/*
-	 *	Start Utilities
-	 */
-
-	bool IsSelected();
-	UDoublyLinkedListNode* RFindSelected();
-	UDoublyLinkedListNode* ChangeSelected(int32 DistanceToMove);
-
-	virtual UDoublyLinkedListNode* DeleteNode();
-	virtual UDoublyLinkedListNode* ShiftSelectedForward();
-	virtual UDoublyLinkedListNode* ShiftSelectedBack();
-	virtual UDoublyLinkedListNode* MakeNodeSelected();
-	virtual UDoublyLinkedListNode* AddToPrev(UDoublyLinkedListNode* NewNode);
-	virtual UDoublyLinkedListNode* AddToNext(UDoublyLinkedListNode* NewNode);
+	UFUNCTION(BlueprintCallable, Category = listOperations)
+		virtual UDoublyLinkedListNode* DeleteNode();
+	UFUNCTION(BlueprintCallable, Category = listOperations)
+		virtual UDoublyLinkedListNode* ShiftSelectedForward();
+	UFUNCTION(BlueprintCallable, Category = listOperations)
+		virtual UDoublyLinkedListNode* ShiftSelectedBack();
+	UFUNCTION(BlueprintCallable, Category = listOperations)
+		virtual UDoublyLinkedListNode* MakeNodeSelected();
+	UFUNCTION(BlueprintCallable, Category = listOperations)
+		virtual UDoublyLinkedListNode* AddToPrev(UDoublyLinkedListNode* NewNode);
+	UFUNCTION(BlueprintCallable, Category = listOperations)
+		virtual UDoublyLinkedListNode* AddToNext(UDoublyLinkedListNode* NewNode);
+	
+	//TODO: probably going to want to make this a pure virtual method
 	virtual void PrintList();
 
 	/*
-	 *	End Utilities
+	 *	End List Operations
 	 */
 	
 protected:
 
+	/*
+	 *	Start Fields
+	 */
+
 	UDoublyLinkedListNode* Next;
 	UDoublyLinkedListNode* Prev;
 	bool bSelected;
+
+	/*
+	 *  End Fields
+	 */
 };
