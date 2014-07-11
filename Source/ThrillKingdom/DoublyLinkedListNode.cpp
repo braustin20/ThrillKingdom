@@ -143,6 +143,7 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::MakeNodeSelected()
 
 	//find the old selected node and unselect it
 	UDoublyLinkedListNode* Curr;
+	Curr = this;
 
 	while (!Curr->bSelected)
 	{

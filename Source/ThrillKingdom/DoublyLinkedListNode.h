@@ -36,8 +36,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = listOperations)
 		UDoublyLinkedListNode* RFindSelected();
-	UFUNCTION(BlueprintCallable, Category = listOps)
-		UDoublyLinkedListNode* ChangeSelected(int32 DistanceToMove);
 
 	UFUNCTION(BlueprintCallable, Category = listOperations)
 		virtual UDoublyLinkedListNode* DeleteNode();
@@ -53,7 +51,7 @@ public:
 		virtual UDoublyLinkedListNode* AddToNext(UDoublyLinkedListNode* NewNode);
 	
 	//TODO: probably going to want to make this a pure virtual method
-	virtual void PrintList();
+	//virtual void PrintList();
 
 	/*
 	 *	End List Operations
