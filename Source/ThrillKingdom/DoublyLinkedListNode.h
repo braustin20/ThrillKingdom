@@ -40,15 +40,15 @@ public:
 	 */
 
 	bool IsSelected();
-	UDoublyLinkedListNode* FindSelected();
+	UDoublyLinkedListNode* RFindSelected();
 	UDoublyLinkedListNode* ChangeSelected(int32 DistanceToMove);
 
 	virtual UDoublyLinkedListNode* DeleteNode();
 	virtual UDoublyLinkedListNode* ShiftSelectedForward();
 	virtual UDoublyLinkedListNode* ShiftSelectedBack();
 	virtual UDoublyLinkedListNode* MakeNodeSelected();
-	virtual UDoublyLinkedListNode* AddToPrev(UDoublyLinkedListNode NewNode);
-	virtual UDoublyLinkedListNode* AddToNext(UDoublyLinkedListNode NewNode);
+	virtual UDoublyLinkedListNode* AddToPrev(UDoublyLinkedListNode* NewNode);
+	virtual UDoublyLinkedListNode* AddToNext(UDoublyLinkedListNode* NewNode);
 	virtual void PrintList();
 
 	/*
@@ -59,5 +59,5 @@ protected:
 
 	UDoublyLinkedListNode* Next;
 	UDoublyLinkedListNode* Prev;
-	bool Selected;
+	bool bSelected;
 };
