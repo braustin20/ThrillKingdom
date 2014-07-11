@@ -1,4 +1,4 @@
-//TODO: fill in all the empty functions
+
 
 #include "ThrillKingdom.h"
 #include "DoublyLinkedListNode.h"
@@ -26,6 +26,16 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::GetPrev()
 bool UDoublyLinkedListNode::IsSelected()
 {
 	return bSelected;
+}
+
+UDoublyLinkedListNode* UDoublyLinkedListNode::RFindSelected()
+{
+	if (this->bSelected)
+	{
+		return this;
+	}
+
+	return this->GetNext()->RFindSelected();
 }
 
 UDoublyLinkedListNode* UDoublyLinkedListNode::DeleteNode()
@@ -78,16 +88,6 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::DeleteNode()
 	}
 }
 
-UDoublyLinkedListNode* UDoublyLinkedListNode::RFindSelected()
-{
-	if (this->bSelected)
-	{
-		return this;
-	}
-
-	return this->GetNext()->RFindSelected();
-}
-
 UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftSelectedForward()
 {
 	if (this->IsSelected())
@@ -128,6 +128,34 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftSelectedBack()
 
 	//TODO: print an error message here
 	return nullptr;
+}
+
+UDoublyLinkedListNode* UDoublyLinkedListNode::MakeNodeSelected()
+{
+	//if this node is the selected node just return this node
+	if (this->bSelected)
+	{
+		return this;
+	}
+
+	//set this node to selected
+	this->bSelected = true;
+
+	//find the old selected node and unselect it
+	UDoublyLinkedListNode* Curr;
+
+	while (!Curr->bSelected)
+	{
+		Curr = Curr->GetNext();
+	}
+
+	//make sure that there actually was a previously selected node before unselecting it
+	if (Curr != this)
+	{
+		Curr->bSelected = false;
+	}
+
+	return this;
 }
 
 UDoublyLinkedListNode* UDoublyLinkedListNode::AddToPrev(UDoublyLinkedListNode* NewNode)
@@ -234,32 +262,4 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::AddToNext(UDoublyLinkedListNode* N
 	
 	//TODO: print an error message
 	return nullptr;
-}
-
-UDoublyLinkedListNode* UDoublyLinkedListNode::MakeNodeSelected()
-{
-	//if this node is the selected node just return this node
-	if (this->bSelected)
-	{
-		return this;
-	}
-
-	//set this node to selected
-	this->bSelected = true;
-
-	//find the old selected node and unselect it
-	UDoublyLinkedListNode* Curr;
-
-	while (!Curr->bSelected)
-	{
-		Curr = Curr->GetNext();
-	}
-
-	//make sure that there actually was a previously selected node before unselecting it
-	if (Curr != this)
-	{
-		Curr->bSelected = false;
-	}
-
-	return this;
 }
