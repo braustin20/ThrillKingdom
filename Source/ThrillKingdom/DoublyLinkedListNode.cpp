@@ -1,5 +1,4 @@
-//TODO: read through this and make sure it all looks good.  also test thoroughly
-//TODO: rewrite functions to always return and operate from the front node
+//TODO: fill in all the empty functions
 
 #include "ThrillKingdom.h"
 #include "DoublyLinkedListNode.h"
@@ -10,7 +9,7 @@ UDoublyLinkedListNode::UDoublyLinkedListNode(const class FPostConstructInitializ
 {
 	Next = nullptr;
 	Prev = nullptr;
-	Front = false;
+	Selected = false;
 }
 
 
@@ -24,288 +23,184 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::GetPrev()
 	return Prev;
 }
 
-void UDoublyLinkedListNode::SetNext(UDoublyLinkedListNode* NewNext)
+bool UDoublyLinkedListNode::IsSelected()
 {
-	Next = NewNext;
+	return Selected;
 }
-
-void UDoublyLinkedListNode::SetPrev(UDoublyLinkedListNode* NewPrev)
-{
-	Prev = NewPrev;
-}
-
-bool UDoublyLinkedListNode::IsFront()
-{
-	return Front;
-}
-
-//UDoublyLinkedListNode*  UDoublyLinkedListNode::AddToEnd(UDoublyLinkedListNode* NewNode)
-//{
-//	//Store a reference to the current node
-//	UDoublyLinkedListNode* Curr;
-//	Curr = this;
-//
-//	//if the next node is null you have reached the end
-//	if (Curr->GetNext() == nullptr)
-//	{
-//		//set NewNode as the next node
-//		Curr->SetNext(NewNode);
-//
-//		//Set NewNode's Next to null and Prev to Curr
-//		NewNode->SetNext(nullptr);
-//		NewNode->SetPrev(Curr);
-//	}
-//
-//	while (!Curr->GetNext()->IsFront() && Curr->GetNext() != nullptr)
-//	{
-//		Curr = Curr->GetNext();
-//	}
-//
-//	if (Curr->GetNext() == nullptr)
-//	{
-//		Curr->SetNext(NewNode);
-//
-//		NewNode->SetNext(nullptr);
-//		NewNode->SetPrev(Curr);
-//
-//		//return Curr as the front node of the list
-//		while (!Curr->IsFront() && Curr->GetPrev() != nullptr)
-//		{
-//			Curr = Curr->GetPrev();
-//		}
-//
-//		return Curr;
-//	}
-//
-//	//TODO:  print something here
-//
-//	while (!Curr->GetPrev()->IsFront())
-//	{
-//		Curr = Curr->GetPrev();
-//	}
-//
-//	return Curr;
-//}
-//
-//UDoublyLinkedListNode* UDoublyLinkedListNode::AddToFront(UDoublyLinkedListNode* NewNode)
-//{
-//	UDoublyLinkedListNode* Curr;
-//	Curr = this;
-//
-//	if (Curr->GetPrev() == nullptr)
-//	{
-//		Curr->SetPrev(NewNode);
-//
-//		NewNode->SetPrev(nullptr);
-//		NewNode->SetNext(Curr);
-//
-//		return Curr;
-//	}
-//
-//	while (!Curr->GetPrev()->IsFront() && Curr->GetPrev() != nullptr)
-//	{
-//		Curr = Curr->GetPrev();
-//	}
-//
-//	if (Curr->GetPrev() == nullptr)
-//	{
-//		Curr->SetPrev(NewNode);
-//
-//		NewNode->SetPrev(nullptr);
-//		NewNode->SetNext(Curr);
-//
-//		return Curr;
-//	}
-//
-//	//TODO: print something here since the list is circular
-//
-//	while (!Curr->GetNext()->IsFront())
-//	{
-//		Curr = Curr->GetNext();
-//	}
-//
-//	return Curr;
-//}
 
 UDoublyLinkedListNode* UDoublyLinkedListNode::DeleteNode()
 {
-	UDoublyLinkedListNode* Curr;
-	Curr = this;
-
-	if (this->GetNext() == nullptr)
+	if (this->Selected)
 	{
-		if (this->GetPrev() == nullptr)
+		//If this node is the only node in the list mark it as a pending kill for the garbage collector
+		if (Next == nullptr && Prev == nullptr)
 		{
+			MarkPendingKill();
 			return nullptr;
 		}
 
-		if (this->IsFront())
+		//If this node only has a previous or next reference and not both, the list is not circular, print an error and return a null pointer reference
+		else if ((Next == nullptr && Prev != nullptr) || (Next != nullptr && Prev == nullptr))
 		{
-			this->Front = false;
-			this->GetPrev()->Front = true;
-
-			Curr = this->GetPrev();
-			Curr->SetNext(nullptr);
-
-			return Curr;
+			//TODO:  print an error message
+			return nullptr;
 		}
 
-		Curr = this->GetPrev();
-		Curr->SetNext(nullptr);
-
-		return Curr;
-	}
-
-	if (this->GetPrev() == nullptr)
-	{
-		if (this->IsFront())
+		//otherwise this node is part of an active list
+		else
 		{
-			this->Front = false;
-			this->GetNext()->Front = true;
+			UDoublyLinkedListNode* CurrPrev;
+			UDoublyLinkedListNode* CurrNext;
 
-			Curr = this->GetNext();
-			Curr->SetPrev(nullptr);
+			//save references to Curr and Next of this node
+			CurrPrev = this->Prev;
+			CurrNext = this->Next;
+			
+			//remove references to Curr and Next from this node
+			this->Prev = nullptr;
+			this->Next = nullptr;
+			this->Selected = false;
 
-			return Curr;
-		}
+			//repair the list
+			CurrPrev->Next = CurrNext;
+			CurrNext->Prev = CurrPrev;
+			CurrPrev->Selected = true;
 
-		Curr = this->GetNext();
-		Curr->SetPrev(nullptr);
-
-		return Curr;
-	}
-
-	if (this->IsFront())
-	{
-		this->Front = false;
-		this->GetNext()->Front = true;
-
-		Curr = this->GetNext();
-		Curr->SetPrev(nullptr);
-
-		return Curr;
-	}
-
-	Curr = this->GetNext();
-	Curr->SetPrev(nullptr);
-
-	Curr = this->GetPrev();
-	Curr->SetNext(nullptr);
-
-	return Curr;
-}
-
-UDoublyLinkedListNode* UDoublyLinkedListNode::FindFront()
-{
-	UDoublyLinkedListNode* Curr;
-	Curr = this->GetNext();
-
-	if (this->IsFront())
-	{
-		return this;
-	}
-
-	//iterates through the list and stops either when front is found or the end of the list has been reached 
-	while (!Curr->IsFront() && Curr->GetNext() != nullptr)
-	{
-		Curr = Curr->GetNext();
-	}
-
-	//if the end of the list was reached but the front has not been found
-	if (!Curr->IsFront() && Curr->GetNext() == nullptr)
-	{
-		//search the other way from this
-		Curr = this;
-
-		while (!Curr->IsFront() && Curr->GetNext() == nullptr)
-		{
-			Curr = Curr->GetNext();
-		}
-
-		//if the end of the list has been reached but front has not been found
-		if (!Curr->IsFront() && Curr->GetPrev() != nullptr)
-		{
-			Curr = Curr->GetPrev();
-		}
-
-		//if front was found return Curr
-		return Curr;
-	}
-
-	//if front was found return Curr
-	return Curr;
-}
-
-void UDoublyLinkedListNode::PrintList()
-{
-	if (this->IsFront())
-	{
-		UDoublyLinkedListNode* Curr;
-		Curr = this->GetNext();
-
-		//TODO:  print the value of this node here
-
-		//repeat until the end of the list
-		while (!Curr->IsFront() && Curr->GetNext() != nullptr)
-		{
-			//TODO: print the values of this node here
-
-			Curr = Curr->GetNext();
+			MarkPendingKill();
+			return CurrPrev;
 		}
 	}
-
 	else
 	{
-		//TODO: do something if the current node is not the front of this list
+		//This node is not the selected node
+		//TODO: print an error here
+		return nullptr;
 	}
 }
 
-UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftFrontForward()
+UDoublyLinkedListNode* UDoublyLinkedListNode::FindSelected()
 {
-	if (this->IsFront())
+
+}
+
+UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftSelectedForward()
+{
+	if (this->IsSelected())
 	{
 		UDoublyLinkedListNode* Curr = NewObject<UDoublyLinkedListNode>();
 
 		if (this->GetNext() == nullptr)
 		{
-			this->SetNext(Curr);
-			this->Front = false;
-			Curr->Front = true;
-			Curr->GetNext()->SetPrev(this);
-			Curr->SetNext(nullptr);
+			this->Next = Curr;
+			this->Selected = false;
+			Curr->Selected = true;
+			Curr->GetNext()->Prev = this;
+			Curr->Next = nullptr;
 
 			return Curr;
 		}
 
-		this->Front = false;
-		this->GetNext()->Front = true;
+		this->Selected = false;
+		this->GetNext()->Selected = true;
 		return this->GetNext();
 	}
 
-	return this->FindFront();
+	return this->FindSelected();
 }
 
-UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftFrontBack()
+UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftSelectedBack()
 {
-	if (this->IsFront())
+	if (this->IsSelected())
 	{
 		UDoublyLinkedListNode* Curr = NewObject<UDoublyLinkedListNode>();;
 
 		if (this->GetPrev() == nullptr)
 		{
-			this->SetPrev(Curr);
-			this->Front = false;
-			Curr->Front = true;
-			Curr->SetNext(this);
-			Curr->SetPrev(nullptr);
+			this->Prev = Curr;
+			this->Selected = false;
+			Curr->Selected = true;
+			Curr->Next = this;
+			Curr->Prev = nullptr;
 
 			return Curr;
 		}
 
-		this->Front = false;
-		this->GetPrev()->Front = true;
+		this->Selected = false;
+		this->GetPrev()->Selected = true;
 		return this->GetPrev();
 	}
 
-	return this->FindFront();
+	return this->FindSelected();
+}
+
+UDoublyLinkedListNode* UDoublyLinkedListNode::AddToPrev(UDoublyLinkedListNode NewNode)
+{
+	//if there are no other nodes in this list
+	if (this->Next == nullptr && this->Prev == nullptr)
+	{
+		//set up circular references to NewNode from this node
+		this->Next = &NewNode;
+		this->Prev = &NewNode;
+		this->Selected = false;
+
+		//set up circular references to this node from NewNode
+		NewNode.Next = this;
+		NewNode.Prev = this;
+		NewNode.Selected = true;
+
+		//return the new node
+		return &NewNode;
+	}
+
+	//TODO: finish this function
+}
+
+UDoublyLinkedListNode* UDoublyLinkedListNode::AddToNext(UDoublyLinkedListNode NewNode)
+{
+	//if there are no other nodes in this list
+	if (this->Next == nullptr && this->Prev == nullptr)
+	{
+		//set up circular references to NewNode from this node
+		this->Next = &NewNode;
+		this->Prev = &NewNode;
+		this->Selected = false;
+
+		//set up circular references to this node from NewNode
+		NewNode.Next = this;
+		NewNode.Prev = this;
+		NewNode.Selected = true;
+
+		//return the new node
+		return &NewNode;
+	}
+
+	//if it is partially linked throw an error
+}
+
+UDoublyLinkedListNode* UDoublyLinkedListNode::MakeNodeSelected()
+{
+	//if this node is the selected node just return this node
+	if (this->Selected)
+	{
+		return this;
+	}
+
+	//set this node to selected
+	this->Selected = true;
+
+	//find the old selected node and unselect it
+	UDoublyLinkedListNode* Curr;
+
+	while (!Curr->Selected)
+	{
+		Curr = Curr->GetNext();
+	}
+
+	//make sure that there actually was a previously selected node before unselecting it
+	if (Curr != this)
+	{
+		Curr->Selected = false;
+	}
+
+	return this;
 }

@@ -30,9 +30,6 @@ public:
 	 *	Start Setters
 	 */
 
-	void SetNext(UDoublyLinkedListNode* NewNext);
-	void SetPrev(UDoublyLinkedListNode* NewPrev);
-
 	/*
 	 *	End Setters
 	 */
@@ -42,15 +39,16 @@ public:
 	 *	Start Utilities
 	 */
 
-	bool IsFront();
-	UDoublyLinkedListNode* FindFront();
-	UDoublyLinkedListNode* ChangeFront(int32 DistanceToMove);
+	bool IsSelected();
+	UDoublyLinkedListNode* FindSelected();
+	UDoublyLinkedListNode* ChangeSelected(int32 DistanceToMove);
 
-	//virtual UDoublyLinkedListNode* AddToEnd(UDoublyLinkedListNode* NewNode);
-	//virtual UDoublyLinkedListNode* AddToFront(UDoublyLinkedListNode* NewNode);
 	virtual UDoublyLinkedListNode* DeleteNode();
-	virtual UDoublyLinkedListNode* ShiftFrontForward();
-	virtual UDoublyLinkedListNode* ShiftFrontBack();
+	virtual UDoublyLinkedListNode* ShiftSelectedForward();
+	virtual UDoublyLinkedListNode* ShiftSelectedBack();
+	virtual UDoublyLinkedListNode* MakeNodeSelected();
+	virtual UDoublyLinkedListNode* AddToPrev(UDoublyLinkedListNode NewNode);
+	virtual UDoublyLinkedListNode* AddToNext(UDoublyLinkedListNode NewNode);
 	virtual void PrintList();
 
 	/*
@@ -61,5 +59,5 @@ protected:
 
 	UDoublyLinkedListNode* Next;
 	UDoublyLinkedListNode* Prev;
-	bool Front;
+	bool Selected;
 };
