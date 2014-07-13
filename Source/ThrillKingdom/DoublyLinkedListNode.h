@@ -19,9 +19,9 @@ public:
 	 */
 
 	UFUNCTION(BlueprintCallable, Category = getters)
-		void* GetNext();
+		UDoublyLinkedListNode* GetNext();
 	UFUNCTION(BlueprintCallable, Category = getters)
-		void* GetPrev();
+		UDoublyLinkedListNode* GetPrev();
 	UFUNCTION(BlueprintCallable, Category = getters)
 		bool IsSelected();
 
@@ -35,20 +35,20 @@ public:
 	 */
 
 	UFUNCTION(BlueprintCallable, Category = listOperations)
-		void* RFindSelected();
+		UDoublyLinkedListNode* RFindSelected();
 
 	UFUNCTION(BlueprintCallable, Category = listOperations)
-		virtual void* DeleteNode();
+		virtual UDoublyLinkedListNode* DeleteNode();
 	UFUNCTION(BlueprintCallable, Category = listOperations)
-		virtual void* ShiftSelectedForward();
+		virtual UDoublyLinkedListNode* ShiftSelectedForward();
 	UFUNCTION(BlueprintCallable, Category = listOperations)
-		virtual void* ShiftSelectedBack();
+		virtual UDoublyLinkedListNode* ShiftSelectedBack();
 	UFUNCTION(BlueprintCallable, Category = listOperations)
-		virtual void* MakeNodeSelected();
+		virtual UDoublyLinkedListNode* MakeNodeSelected();
 	UFUNCTION(BlueprintCallable, Category = listOperations)
-		virtual void* AddToPrev(void* NewNode);
+		virtual UDoublyLinkedListNode* AddToPrev(UDoublyLinkedListNode* NewNode);
 	UFUNCTION(BlueprintCallable, Category = listOperations)
-		virtual void* AddToNext(void* NewNode);
+		virtual UDoublyLinkedListNode* AddToNext(UDoublyLinkedListNode* NewNode);
 	
 	//TODO: probably going to want to make this a pure virtual method
 	//virtual void PrintList();
@@ -63,8 +63,8 @@ protected:
 	 *	Start Fields
 	 */
 
-	void* Next;
-	void* Prev;
+	UDoublyLinkedListNode* Next;
+	UDoublyLinkedListNode* Prev;
 	bool bSelected;
 
 	/*
