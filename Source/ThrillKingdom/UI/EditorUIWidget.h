@@ -43,7 +43,7 @@ private:
 
 	TSharedPtr<SWindow> WindowWidget;
 
-	TSharedPtr<SBox> ComponentContainer;
+	TSharedPtr<SCanvas> CanvasWidget;
 
 	TSharedPtr<FString> TestString1;
 

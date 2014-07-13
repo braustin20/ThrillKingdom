@@ -38,7 +38,7 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 		//.VAlign(VAlign_Top)
 		//.HAlign(HAlign_Left)
 		[
-			SNew(SCanvas)
+			SAssignNew(this->CanvasWidget ,SCanvas)
 			+ SCanvas::Slot()
 				.Size(FVector2D(200.0f, 200.0f))
 				.Position(FVector2D(100.f, 100.f))
@@ -46,6 +46,7 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 				.HAlign(HAlign_Left)
 				[
 					SAssignNew(this->WindowWidget, SWindow)
+					
 					[
 						SNew(SScrollBox)
 						+ SScrollBox::Slot().Padding(10, 5)
@@ -60,15 +61,16 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 					]
 				]
 		]; //end childslot
+	//FSlateApplication::AddModalWindow(WindowWidget, CanvasWidget, false);
 }
 
 TSharedRef<ITableRow> SEditorUIWidget::OnGenerateTile(TSharedPtr<FString> Item, const TSharedRef<STableViewBase>& OwnerTable)
 {
 
-		return SNew(STableRow< TSharedPtr<SWidget> >, OwnerTable)
-			[
-				SNew(STextBlock).Text(*Item)
-			];
+	return SNew(STableRow< TSharedPtr<SWidget> >, OwnerTable)
+		[
+			SNew(STextBlock).Text(*Item)
+		];
 
 }
 FReply SEditorUIWidget::OnMouseButtonDown(const FGeometry& MyGeometry, const FPointerEvent& MouseEvent){
