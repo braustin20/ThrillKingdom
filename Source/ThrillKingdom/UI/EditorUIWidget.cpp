@@ -61,7 +61,8 @@ void SEditorUIWidget::Construct(const FArguments& InArgs)
 					]
 				]
 		]; //end childslot
-	//FSlateApplication::AddModalWindow(WindowWidget, CanvasWidget, false);
+	//GEngine->GetSlateApplication();
+	//FSlateApplication->AddModalWindow(WindowWidget.ToSharedRef(), CanvasWidget, false);
 }
 
 TSharedRef<ITableRow> SEditorUIWidget::OnGenerateTile(TSharedPtr<FString> Item, const TSharedRef<STableViewBase>& OwnerTable)
