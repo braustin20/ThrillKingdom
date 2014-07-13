@@ -13,12 +13,12 @@ UDoublyLinkedListNode::UDoublyLinkedListNode(const class FPostConstructInitializ
 }
 
 
-UDoublyLinkedListNode* UDoublyLinkedListNode::GetNext()
+void* UDoublyLinkedListNode::GetNext()
 {
 	return Next;
 }
 
-UDoublyLinkedListNode* UDoublyLinkedListNode::GetPrev()
+void* UDoublyLinkedListNode::GetPrev()
 {
 	return Prev;
 }
@@ -28,17 +28,17 @@ bool UDoublyLinkedListNode::IsSelected()
 	return bSelected;
 }
 
-UDoublyLinkedListNode* UDoublyLinkedListNode::RFindSelected()
+void* UDoublyLinkedListNode::RFindSelected()
 {
 	if (IsSelected())
 	{
 		return this;
 	}
 
-	return Next->RFindSelected();
+	return ((UDoublyLinkedListNode*)Next)->RFindSelected();
 }
 
-UDoublyLinkedListNode* UDoublyLinkedListNode::DeleteNode()
+void* UDoublyLinkedListNode::DeleteNode()
 {
 	if (IsSelected())
 	{
@@ -63,8 +63,8 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::DeleteNode()
 			UDoublyLinkedListNode* CurrNext;
 
 			//save references to Curr and Next of this node
-			CurrPrev = Prev;
-			CurrNext = Next;
+			CurrPrev = (UDoublyLinkedListNode*)Prev;
+			CurrNext = (UDoublyLinkedListNode*)Next;
 			
 			//remove references to Curr and Next from this node
 			Prev = nullptr;
@@ -88,7 +88,7 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::DeleteNode()
 	}
 }
 
-UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftSelectedForward()
+void* UDoublyLinkedListNode::ShiftSelectedForward()
 {
 	if (IsSelected())
 	{
@@ -101,7 +101,7 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftSelectedForward()
 		}
 
 		bSelected = false;
-		Next->bSelected = true;
+		((UDoublyLinkedListNode*)Next)->bSelected = true;
 		return Next;
 	}
 
@@ -109,7 +109,7 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftSelectedForward()
 	return nullptr;
 }
 
-UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftSelectedBack()
+void* UDoublyLinkedListNode::ShiftSelectedBack()
 {
 	if (IsSelected())
 	{
@@ -122,7 +122,7 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftSelectedBack()
 		}
 
 		bSelected = false;
-		Prev->bSelected = true;
+		((UDoublyLinkedListNode*)Prev)->bSelected = true;
 		return Prev;
 	}
 
@@ -130,7 +130,7 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::ShiftSelectedBack()
 	return nullptr;
 }
 
-UDoublyLinkedListNode* UDoublyLinkedListNode::MakeNodeSelected()
+void* UDoublyLinkedListNode::MakeNodeSelected()
 {
 	//if this node is the selected node just return this node
 	if (IsSelected())
@@ -154,7 +154,7 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::MakeNodeSelected()
 
 	while (!Curr->bSelected)
 	{
-		Curr = Curr->Next;
+		Curr = (UDoublyLinkedListNode*)Curr->Next;
 	}
 
 	//make sure that there actually was a previously selected node before unselecting it
@@ -166,7 +166,7 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::MakeNodeSelected()
 	return this;
 }
 
-UDoublyLinkedListNode* UDoublyLinkedListNode::AddToPrev(UDoublyLinkedListNode* NewNode)
+void* UDoublyLinkedListNode::AddToPrev(void* NewNode)
 {
 	if (IsSelected())
 	{
@@ -179,9 +179,9 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::AddToPrev(UDoublyLinkedListNode* N
 			bSelected = false;
 
 			//set up circular references to this node from NewNode
-			NewNode->Next = this;
-			NewNode->Prev = this;
-			NewNode->bSelected = true;
+			((UDoublyLinkedListNode*)NewNode)->Next = this;
+			((UDoublyLinkedListNode*)NewNode)->Prev = this;
+			((UDoublyLinkedListNode*)NewNode)->bSelected = true;
 
 			//return the new node
 			return NewNode;
@@ -198,18 +198,18 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::AddToPrev(UDoublyLinkedListNode* N
 		{
 			//a temporary node for referencing this node's previous node
 			UDoublyLinkedListNode* Temp;
-			Temp = Prev;
+			Temp = (UDoublyLinkedListNode*)Prev;
 
 			//sandwich NewNode inbetween this node and the previous node
 			Prev = NewNode;
-			NewNode->Next = Prev;
+			((UDoublyLinkedListNode*)NewNode)->Next = Prev;
 
-			NewNode->Prev = Temp;
+			((UDoublyLinkedListNode*)NewNode)->Prev = Temp;
 			Temp->Next = NewNode;
 
 			//switch NewNode to the selected node
 			bSelected = false;
-			NewNode->bSelected = true;
+			((UDoublyLinkedListNode*)NewNode)->bSelected = true;
 
 			return NewNode;
 		}
@@ -219,7 +219,7 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::AddToPrev(UDoublyLinkedListNode* N
 	return nullptr;
 }
 
-UDoublyLinkedListNode* UDoublyLinkedListNode::AddToNext(UDoublyLinkedListNode* NewNode)
+void* UDoublyLinkedListNode::AddToNext(void* NewNode)
 {
 	if (IsSelected())
 	{
@@ -232,9 +232,9 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::AddToNext(UDoublyLinkedListNode* N
 			bSelected = false;
 
 			//set up circular references to this node from NewNode
-			NewNode->Next = this;
-			NewNode->Prev = this;
-			NewNode->bSelected = true;
+			((UDoublyLinkedListNode*)NewNode)->Next = this;
+			((UDoublyLinkedListNode*)NewNode)->Prev = this;
+			((UDoublyLinkedListNode*)NewNode)->bSelected = true;
 
 			//return the new node
 			return NewNode;
@@ -251,7 +251,7 @@ UDoublyLinkedListNode* UDoublyLinkedListNode::AddToNext(UDoublyLinkedListNode* N
 		{
 			//a temporary node for referencing this node's next node
 			UDoublyLinkedListNode* Temp;
-			Temp = GetNext();
+			Temp = (UDoublyLinkedListNode*)GetNext();
 
 			//sandwich NewNode inbetween this node and the next node
 			Next = NewNode;
